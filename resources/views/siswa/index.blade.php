@@ -233,7 +233,7 @@
                         <label for="kelas">Kelas</label>
                         <select name="kelas_id" class="form-control" id="kelas" required>
                             @foreach ($kelas1 as $row)
-                            <option value="{{ $row->id_kelas }}">{{ $row->nama_kelas }}</option>
+                            <option value="{{ $row->id_kelas }}"@if($feb->kelas_id==$row->id_kelas) selected @endif>{{ $row->nama_kelas }}</option>
                             @endforeach
                         </select>
                     </div>

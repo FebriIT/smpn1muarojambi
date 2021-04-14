@@ -76,6 +76,8 @@ class SiswaController extends Controller
         $siswa = Siswa::find($id);
         user::where(['id' => $siswa->user_id])
             ->update(['name' => $request->nama_siswa]);
+        $namakelas = Kelas::where('id_kelas', $request->kelas_id)->first()->nama_kelas;
+        $siswa->kelas_nama = $namakelas;
         $siswa->update($request->all());
         return redirect()->back()->with('toast_success', 'Data Berhasil diubah');
     }

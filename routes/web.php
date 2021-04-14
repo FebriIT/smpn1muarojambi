@@ -89,6 +89,7 @@ Route::prefix('admin')->middleware('auth', 'checkRole:admin')->group(function ()
 Route::prefix('guru')->middleware('auth', 'checkRole:guru')->group(function () {
     Route::get('/dashboard', 'DashboardController@index')->name('guru/dashboard');
     Route::get('/profile', 'ProfileController@index')->name('guru/profile');
+    Route::post('/profile/{id}/update', 'ProfileController@update');
 });
 
 //route siswa
