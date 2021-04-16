@@ -20,7 +20,7 @@ class AuthController extends Controller
         if (auth()->user()->role == 'guru') {
             return redirect('guru/dashboard/');
         } elseif (auth()->user()->role == 'siswa') {
-            return redirect('siswa/dashboard/' . auth()->user()->siswa->id);
+            return redirect('siswa/dashboard/');
         } elseif (auth()->user()->role == 'admin') {
             return redirect('admin/dashboard/');
         }

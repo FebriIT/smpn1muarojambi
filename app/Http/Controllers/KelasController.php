@@ -34,4 +34,12 @@ class KelasController extends Controller
         $data->delete();
         return redirect()->back()->with('toast_success', 'Data Berhasil Dihapus');
     }
+
+    public function open($id)
+    {
+        $data = Kelas::find($id);
+        $datasiswa = $data->siswa;
+
+        return view('kelas.open', compact('data', 'datasiswa'));
+    }
 }

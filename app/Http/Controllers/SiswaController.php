@@ -8,12 +8,13 @@ use App\Siswa;
 use App\Kelas;
 use App\User;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class SiswaController extends Controller
 {
     public function index()
     {
-        $data = Siswa::orderBy('id_siswa', 'desc')->get();
+        $data = Siswa::orderBy('id', 'desc')->get();
         $kelas = Kelas::all();
         $kelas1 = Kelas::all();
 
@@ -35,13 +36,13 @@ class SiswaController extends Controller
         $user->name = $request->nama_siswa;
         $user->email = $request->email;
         $user->password = bcrypt('siswa123');
-        $user->remember_token = str_random(60);
+        $user->remember_token = Str::random(60);
         $user->save();
 
-        $namakelas = Kelas::where('id_kelas', $request->kelas_id)->first()->nama_kelas;
+
         // dd($namakelas);
         //insert table siswa
-        $request->request->add(['user_id' => $user->id, 'kelas_nama' => $namakelas]);
+        $request->request->add(['user_id' => $user->id]);
 
 
         $siswa = \App\Siswa::create($request->all());
@@ -76,8 +77,7 @@ class SiswaController extends Controller
         $siswa = Siswa::find($id);
         user::where(['id' => $siswa->user_id])
             ->update(['name' => $request->nama_siswa]);
-        $namakelas = Kelas::where('id_kelas', $request->kelas_id)->first()->nama_kelas;
-        $siswa->kelas_nama = $namakelas;
+
         $siswa->update($request->all());
         return redirect()->back()->with('toast_success', 'Data Berhasil diubah');
     }

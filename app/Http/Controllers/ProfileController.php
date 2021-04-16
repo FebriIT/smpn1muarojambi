@@ -5,15 +5,25 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Guru;
 use App\User;
+use App\Siswa;
 
 class ProfileController extends Controller
 {
     public function index()
     {
-        $idguru = auth()->user()->guru->id_guru;
-        $data = Guru::find($idguru);
+        if(auth()->user()->role=='guru'){
+            $idguru = auth()->user()->guru->id_guru;
+            $data = Guru::find($idguru);
 
-        return view('profile.index', compact('data'));
+            return view('profile.guru', compact('data'));
+        }
+        elseif(auth()->user()->role=='siswa'){
+            $id_siswa = auth()->user()->siswa->id_siswa;
+            $data = Siswa::find($id_siswa);
+
+            return view('profile.siswa', compact('data'));
+        }
+        
     }
 
     public function update($id, Request $req)
@@ -46,5 +56,16 @@ class ProfileController extends Controller
 
         $data->update(['nip_guru' => $req->nip_guru, 'nama_guru' => $req->nama_guru, 'tanggal_lahir' => $req->tanggal_lahir, 'no_hp' => $req->no_hp]);
         return redirect()->back()->with('toast_success', 'Data Berhasil diubah');
+    }
+
+    public function changepassword(Request $req)
+    {
+        $id = auth()->user()->id;
+        $data = User::find($id);
+        $data->password = bcrypt($req->password);
+        $data->save();
+
+
+        return redirect()->back()->with('toast_success', 'Password Berhasil diubah');
     }
 }

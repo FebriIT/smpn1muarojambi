@@ -62,20 +62,20 @@
                                         <td>{{++$key}}</td>
                                         <td>{{$datas->nisn}}</td>
                                         <td>{{$datas->nama_siswa}}</td>
-                                        <td>{{$datas->kelas_nama}}</td>
+                                        <td>{{$datas->kelas->nama_kelas}}</td>
                                         <td>{{$datas->jenis_kelamin}}</td>
                                         <td>{{$datas->tanggal_lahir->format('d/m/Y')}}</td>
                                         <td class="project-actions text-right">
                                             <div>
 
                                                 <a class="btn btn-info btn-sm" href="#" data-toggle="modal"
-                                                    data-target="#editModal-{{$datas->id_siswa}}">
+                                                    data-target="#editModal-{{$datas->id}}">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>
                                                     Edit
                                                 </a>
                                                 <a class="btn btn-danger btn-sm"
-                                                    href="/{{auth()->user()->role}}/siswa/{{$datas->id_siswa}}/hapus"
+                                                    href="/{{auth()->user()->role}}/siswa/{{$datas->id}}/hapus"
                                                     onclick="return confirm('Apakah Anda Yakin Inggin Dihapus ?')">
                                                     <i class="fas fa-trash">
                                                     </i>
@@ -142,16 +142,22 @@
                                     <option value="">-pilih-</option>
                                     @foreach ($kelas as $kelas)
                                     <option
-                                        value="{{ $kelas->id_kelas }} {{ (old('id_kelas')==$kelas->id_kelas)?' selected':'' }}">
+                                        value="{{ $kelas->id }} {{ (old('kelas_id')==$kelas->id)?' selected':'' }}">
                                         {{ $kelas->nama_kelas }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="form-group {{ $errors->has('agama')?' has-error':'' }}">
                                 <label for="agama">Agama</label>
-                                <input name="agama" type="text" class="form-control" required id="agama"
-                                    aria-describedby="emailHelp" placeholder="Agama" value="{{ old('agama') }}">
+                                <select name="agama" class="form-control" id="agama" required>
+                                    <option value="">-pilih-</option>
+                                    <option value="Islam">Islam</option>
+                                    <option value="Kristen">Kristen</option>
+                                    <option value="Hindu">Hindu</option>
+                                    <option value="Budha">Budha</option>
+                                    <option value="Konghucu">Konghucu</option>
 
+                                </select>
                             </div>
                             <div class="form-group {{ $errors->has('email')?' has-error':'' }}">
                                 <label for="email">Email</label>
@@ -210,7 +216,7 @@
 
 {{-- Modal edit Data --}}
 @foreach ($data as $feb)
-<div class="modal fade" id="editModal-{{$feb->id_siswa}}">
+<div class="modal fade" id="editModal-{{$feb->id}}">
     <div class="modal-dialog ">
         <div class="modal-content">
             <div class="modal-header">
@@ -220,7 +226,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="/{{auth()->user()->role}}/siswa/{{$feb->id_siswa}}/edit" method="POST"
+                <form action="/{{auth()->user()->role}}/siswa/{{$feb->id}}/edit" method="POST"
                     enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-group">
@@ -231,9 +237,9 @@
 
                     <div class="form-group {{ $errors->has('kelas')?' has-error':'' }}">
                         <label for="kelas">Kelas</label>
-                        <select name="kelas_id" class="form-control" id="kelas" required>
+                        <select name="kelas_id_kelas" class="form-control" id="kelas" required>
                             @foreach ($kelas1 as $row)
-                            <option value="{{ $row->id_kelas }}"@if($feb->kelas_id==$row->id_kelas) selected @endif>{{ $row->nama_kelas }}</option>
+                            <option value="{{ $row->id_kelas }}"@if($feb->kelas_id_kelas==$row->id_kelas) selected @endif>{{ $row->nama_kelas }}</option>
                             @endforeach
                         </select>
                     </div>

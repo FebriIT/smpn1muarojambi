@@ -13,8 +13,7 @@ class GuruController extends Controller
 {
     public function index()
     {
-        $data = Guru::orderBy('id_guru', 'desc')->get();
-
+        $data = Guru::orderBy('id', 'desc')->get();
         $mapel = Mapel::all();
         $mapel1 = Mapel::all();
         return view('guru.index', compact('data', 'mapel', 'mapel1'));
@@ -51,9 +50,9 @@ class GuruController extends Controller
         $user->save();
 
 
-        $namamapel = Mapel::where('mapel_id', $request->mapel_id)->first()->mapel_nama;
+
         // insert table siswa
-        $request->request->add(['user_id' => $user->id, 'mapel_nama' => $namamapel]);
+        $request->request->add(['user_id' => $user->id]);
 
         $guru = \App\Guru::create($request->all());
         if ($request->has('avatar')) {
@@ -74,11 +73,23 @@ class GuruController extends Controller
 
 
         $guru = Guru::find($id);
-        user::where(['id' => $guru->user_id])
-            ->update(['name' => $request->nama_guru]);
-        $namamapel = Mapel::where('mapel_id', $request->mapel_id)->first()->mapel_nama;
-        $guru->mapel_nama = $namamapel;
+        $iduser = $guru->user_id;
+        $user = user::find($iduser);
+        if ($request->password) {
+            $join = $this->validate($request, [
+                'password' => 'min:6',
+
+            ]);
+            $user->password = bcrypt($request->password);
+            $user->save();
+        }
+        $user->update(['name' => $request->nama_guru]);
+
         $guru->update($request->all());
+
+
+
+
         // insert table siswa
 
         // $request->request->add(['user_id' => $user->id, 'mapel_nama' => $namamapel]);

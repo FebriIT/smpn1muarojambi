@@ -34,11 +34,13 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
+                        @if(auth()->user()->role=='admin')
                         <div class="card-header">
 
                             <button type="button" class="btn-sm btn-primary float-right" data-toggle="modal"
                                 data-target="#modaltambah"><i class="fas fa-plus"></i> Tambah Data</button>
                         </div>
+                        @endif
                         <!-- /.card-header -->
                         <div class="card-body">
 
@@ -60,14 +62,21 @@
                                         <td class="project-actions text-right">
                                             <div>
 
-                                               
+                                                <a class="btn btn-primary btn-sm"
+                                                    href="/{{auth()->user()->role}}/kelas/open/{{$datas->id}}">
+
+                                                    Open
+                                                </a>
+                                                @if(auth()->user()->role=='admin')
                                                 <a class="btn btn-danger btn-sm"
-                                                    href="/{{auth()->user()->role}}/kelas/{{$datas->id_kelas}}/hapus"
+                                                    href="/{{auth()->user()->role}}/kelas/{{$datas->id}}/hapus"
                                                     onclick="return confirm('Apakah Anda Yakin Inggin Dihapus ?')">
                                                     <i class="fas fa-trash">
                                                     </i>
                                                     Delete
                                                 </a>
+                                                @endif
+
 
                                             </div>
                                         </td>

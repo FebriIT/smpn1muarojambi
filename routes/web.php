@@ -74,7 +74,7 @@ Route::prefix('admin')->middleware('auth', 'checkRole:admin')->group(function ()
 
     Route::get('/kelas', 'KelasController@index')->name('admin/kelas');
     Route::post('/kelas/tambah', 'KelasController@tambah');
-    // Route::get('/kelas/{id}', 'KelasController@open');
+    Route::get('/kelas/open/{id}', 'KelasController@open');
     Route::get('/kelas/{id}/hapus', 'KelasController@hapus');
 
     Route::get('/mapel', 'MapelController@index')->name('admin/mapel');
@@ -90,10 +90,21 @@ Route::prefix('guru')->middleware('auth', 'checkRole:guru')->group(function () {
     Route::get('/dashboard', 'DashboardController@index')->name('guru/dashboard');
     Route::get('/profile', 'ProfileController@index')->name('guru/profile');
     Route::post('/profile/{id}/update', 'ProfileController@update');
+    Route::post('/profile/changepassword', 'ProfileController@changepassword');
+
+    Route::get('/kelas', 'KelasController@index')->name('guru/kelas');
+    Route::get('/kelas/open/{id}', 'KelasController@open');
+
+    Route::get('/mapel', 'MapelController@index')->name('guru/mapel');
+
+    Route::get('/materi', 'MateriController@index')->name('guru/materi');
+    Route::post('/materi/tambah', 'MateriController@tambah');
 });
 
 //route siswa
 Route::prefix('siswa')->middleware('auth', 'checkRole:siswa')->group(function () {
+    Route::get('/dashboard', 'DashboardController@index')->name('siswa/dashboard');
+    Route::get('/profile', 'ProfileController@index')->name('siswa/profile');
 });
 
 

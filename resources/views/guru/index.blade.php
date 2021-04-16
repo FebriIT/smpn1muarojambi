@@ -63,7 +63,7 @@
                                         <td>{{++$key}}</td>
                                         <td>{{$datas->nip_guru}}</td>
                                         <td>{{$datas->nama_guru}}</td>
-                                        <td>{{$datas->mapel_nama}}</td>
+                                        <td>{{$datas->mapel->mapel_nama}}</td>
                                         <td>{{$datas->jenis_kelamin}}</td>
                                         <td>{{$datas->no_hp}}</td>
                                         <td>{{$datas->tanggal_lahir->format('d/m/Y')}}</td>
@@ -71,13 +71,13 @@
                                             <div>
 
                                                 <a class="btn btn-info btn-sm" href="#" data-toggle="modal"
-                                                    data-target="#editModal-{{$datas->id_guru}}">
+                                                    data-target="#editModal-{{$datas->id}}">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>
                                                     Edit
                                                 </a>
                                                 <a class="btn btn-danger btn-sm"
-                                                    href="/{{auth()->user()->role}}/guru/{{$datas->id_guru}}/hapus"
+                                                    href="/{{auth()->user()->role}}/guru/{{$datas->id}}/hapus"
                                                     onclick="return confirm('Apakah Anda Yakin Inggin Dihapus ?')">
                                                     <i class="fas fa-trash">
                                                     </i>
@@ -148,7 +148,7 @@
                                     <option value="">-pilih-</option>
                                     @foreach ($mapel as $mapel)
                                     <option
-                                        value="{{ $mapel->mapel_id }} {{ (old('mapel_id')==$mapel->mapel_id)?' selected':'' }}">
+                                        value="{{ $mapel->id }} {{ (old('mapel_id')==$mapel->id)?' selected':'' }}">
                                         {{ $mapel->mapel_nama }}</option>
                                     @endforeach
                                 </select>
@@ -217,7 +217,7 @@
 
     {{-- Modal edit Data --}}
     @foreach ($data as $feb)
-    <div class="modal fade" id="editModal-{{$feb->id_guru}}">
+    <div class="modal fade" id="editModal-{{$feb->id}}">
         <div class="modal-dialog ">
             <div class="modal-content">
                 <div class="modal-header">
@@ -227,7 +227,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="/{{auth()->user()->role}}/guru/{{$feb->id_guru}}/edit" method="POST"
+                    <form action="/{{auth()->user()->role}}/guru/{{$feb->id}}/edit" method="POST"
                         enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="form-group">
@@ -240,7 +240,7 @@
                             <label for="mapel">Mapel</label>
                             <select name="mapel_id" class="form-control" id="mapel" required>
                                 @foreach ($mapel1 as $row)
-                                <option value="{{ $row->mapel_id }}"@if($row->mapel_id==$feb->mapel_id) selected @endif>{{ $row->mapel_nama }}</option>
+                                <option value="{{ $row->id }}"@if($row->id==$feb->mapel_id) selected @endif>{{ $row->mapel_nama }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -264,6 +264,11 @@
                             <label for="tgllhir">Tanggal Lahir</label>
                             <input name="tanggal_lahir" type="date" value="{{ $feb->tanggal_lahir->format('Y-m-d') }}"
                                 class="form-control" id="tgllhir" aria-describedby="emailHelp">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input name="password" type="password"
+                                class="form-control" id="password" >
                         </div>
 
                         <div class="modal-footer justify-content-between">
