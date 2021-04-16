@@ -99,6 +99,7 @@ Route::prefix('guru')->middleware('auth', 'checkRole:guru')->group(function () {
 
     Route::get('/materi', 'MateriController@index')->name('guru/materi');
     Route::post('/materi/tambah', 'MateriController@tambah');
+    Route::get('/materi/{id}/hapus', 'MateriController@hapus');
 });
 
 //route siswa

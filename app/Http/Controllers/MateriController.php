@@ -23,4 +23,11 @@ class MateriController extends Controller
         $data = Materi::create($request->all());
         return redirect()->back()->with('sukses', 'Data Berhasil Ditambah');
     }
+
+    public function hapus($id)
+    {
+        $data = Materi::find($id);
+        $data->delete();
+        return redirect()->back()->with('toast_success', 'Data Berhasil Dihapus');
+    }
 }

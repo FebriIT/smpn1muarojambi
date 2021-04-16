@@ -109,7 +109,7 @@
 
                                 <div class="tab-pane active" id="settings">
                                     <form class="form-horizontal"
-                                        action="/guru/profile/{{ auth()->user()->siswa->id_siswa }}/update" method="POST"
+                                        action="/guru/profile/{{ auth()->user()->siswa->id }}/update" method="POST"
                                         enctype="multipart/form-data">
                                         {{ csrf_field() }}
                                         <div class="form-group row">
@@ -134,7 +134,7 @@
                                                     required>
                                             </div>
                                         </div>
-                                       
+
                                         <div class="form-group row">
                                             <label for="avatar" class="col-sm-2 col-form-label">Avatar</label>
                                             <div class="col-sm-10">

@@ -11,19 +11,17 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        if(auth()->user()->role=='guru'){
-            $idguru = auth()->user()->guru->id_guru;
+        if (auth()->user()->role == 'guru') {
+            $idguru = auth()->user()->guru->id;
             $data = Guru::find($idguru);
 
             return view('profile.guru', compact('data'));
-        }
-        elseif(auth()->user()->role=='siswa'){
-            $id_siswa = auth()->user()->siswa->id_siswa;
+        } elseif (auth()->user()->role == 'siswa') {
+            $id_siswa = auth()->user()->siswa->id;
             $data = Siswa::find($id_siswa);
 
             return view('profile.siswa', compact('data'));
         }
-        
     }
 
     public function update($id, Request $req)

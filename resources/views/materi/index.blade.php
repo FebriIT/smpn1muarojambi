@@ -72,14 +72,9 @@
                                         <td class="project-actions text-right">
                                             <div>
 
-                                                <a class="btn btn-info btn-sm" href="#" data-toggle="modal"
-                                                    data-target="#editModal-{{$datas->mapel_id}}">
-                                                    <i class="fas fa-pencil-alt">
-                                                    </i>
-                                                    Edit
-                                                </a>
+
                                                 <a class="btn btn-danger btn-sm"
-                                                    href="/{{auth()->user()->role}}/mapel/{{$datas->mapel_id}}/hapus"
+                                                    href="/{{auth()->user()->role}}/materi/{{$datas->id}}/hapus"
                                                     onclick="return confirm('Apakah Anda Yakin Inggin Dihapus ?')">
                                                     <i class="fas fa-trash">
                                                     </i>
@@ -109,7 +104,7 @@
         </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
-
+</div>
 
     {{-- ###################################################################################################### --}}
 
@@ -137,32 +132,33 @@
                             <select name="mapel_id" class="form-control" id="mapel" required>
                                 <option value="">-pilih-</option>
                                 @foreach ($mapel as $row)
-                                <option value="{{ $row->mapel_id }}">{{ $row->mapel_nama }}</option>
+                                <option value="{{ $row->id }}">{{ $row->mapel_nama }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="deskripsi">Deskripsi</label>
-                            <input type="text" name="deskripsi" value="{{ old('deskripsi')}}" class="form-control" id="deskripsi"
-                                placeholder="Deskripsi" required>
+                            <input type="text" name="deskripsi" value="{{ old('deskripsi')}}" class="form-control"
+                                id="deskripsi" placeholder="Deskripsi" required>
                         </div>
                         <div class="form-group {{ $errors->has('kelas')?' has-error':'' }}">
                             <label for="kelas">Kelas</label>
                             <select name="kelas_id" class="form-control" id="kelas" required>
                                 <option value="">-pilih-</option>
                                 @foreach ($kelas as $row)
-                                <option value="{{ $row->id_kelas }}">{{ $row->nama_kelas }}</option>
+                                <option value="{{ $row->id }}">{{ $row->nama_kelas }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="file_materi">File Materi</label>
-                            <input type="file" name="file_materi" value="{{ old('file_materi')}}" class="form-control" id="file_materi">
+                            <input type="file" name="file_materi" value="{{ old('file_materi')}}" class="form-control"
+                                id="file_materi">
                         </div>
                         <div class="form-group">
                             <label for="link_materi">Link Materi</label>
-                            <input type="text" name="link_materi" value="{{ old('link_materi')}}" class="form-control" id="link_materi"
-                                placeholder="Link Materi">
+                            <input type="text" name="link_materi" value="{{ old('link_materi')}}" class="form-control"
+                                id="link_materi" placeholder="Link Materi">
                         </div>
 
 
@@ -187,42 +183,7 @@
 
 
 
-{{-- Modal edit Data --}}
-@foreach ($data as $feb)
-<div class="modal fade" id="editModal-{{$feb->mapel_id}}">
-    <div class="modal-dialog ">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Edit Mapel</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="/{{auth()->user()->role}}/mapel/{{$feb->mapel_id}}/edit" method="POST"
-                    enctype="multipart/form-data">
-                    {{ csrf_field() }}
+{
 
-
-                    <div class="form-group">
-                        <label for="mapel">Nama Mapel</label>
-                        <input type="text" value="{{$feb->mapel_nama}}" name="mapel_nama" id="mapel"
-                            class="form-control">
-
-                    </div>
-
-
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Update Data</button>
-            </div>
-            </form>
-        </div>
-
-    </div>
-</div>
-</div>
-@endforeach
 <!-- end modal edit data -->
 @stop
