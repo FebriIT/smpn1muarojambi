@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Kelas;
+use App\Materi;
 
 class KelasController extends Controller
 {
@@ -39,7 +40,18 @@ class KelasController extends Controller
     {
         $data = Kelas::find($id);
         $datasiswa = $data->siswa;
+        $materi = Materi::where('kelas_id', $id)->orderBy('id', 'desc')->get();
 
-        return view('kelas.open', compact('data', 'datasiswa'));
+
+        return view('kelas.open', compact('data', 'datasiswa', 'materi'));
+    }
+
+    public function opensiswa()
+    {
+        $id = auth()->user()->siswa->kelas_id;
+        $data = Kelas::find($id);
+        $datasiswa = $data->siswa;
+        $materi = Materi::where('kelas_id', $id)->orderBy('id', 'desc')->get();
+        return view('kelas.open', compact('datasiswa', 'materi'));
     }
 }

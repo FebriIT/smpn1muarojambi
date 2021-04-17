@@ -57,7 +57,11 @@ Route::prefix('admin')->middleware('auth', 'checkRole:admin')->group(function ()
 
     Route::get('listberita', 'BeritaController@index')->name('admin/listberita');
     Route::get('postberita', 'BeritaController@postberita')->name('admin/postberita');
-    Route::post('postberita/tambah', 'BeritaController@tambah');
+    Route::post('postberita/tambah', [
+        'uses' => 'BeritaController@tambah',
+        'as' => 'berita.tambah'
+    ]);
+    // Route::post('postberita/tambah', 'BeritaController@tambah');
     Route::get('/berita/{id}/hapus', 'BeritaController@hapus');
     Route::get('/berita/edit/{id}', 'BeritaController@edit');
     Route::post('/berita/update/{id}', 'BeritaController@update');
@@ -106,6 +110,8 @@ Route::prefix('guru')->middleware('auth', 'checkRole:guru')->group(function () {
 Route::prefix('siswa')->middleware('auth', 'checkRole:siswa')->group(function () {
     Route::get('/dashboard', 'DashboardController@index')->name('siswa/dashboard');
     Route::get('/profile', 'ProfileController@index')->name('siswa/profile');
+
+    Route::get('/kelas', 'KelasController@opensiswa')->name('siswa/kelas');
 });
 
 

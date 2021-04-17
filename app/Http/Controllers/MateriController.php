@@ -21,7 +21,15 @@ class MateriController extends Controller
     public function tambah(Request $request)
     {
         $data = Materi::create($request->all());
-        return redirect()->back()->with('sukses', 'Data Berhasil Ditambah');
+        if ($request->has('file_materi')) {
+            //   ini untuk update profile
+            // unlink('images/guru/'. $guru->avatar);
+
+            $request->file('file_materi')->move('file/materi/', $request->file('file_materi')->getClientOriginalName());
+            $data->file_materi = $request->file('file_materi')->getClientOriginalName();
+            $data->save();
+        }
+        return redirect()->back()->with('success', 'Data Berhasil Ditambah');
     }
 
     public function hapus($id)

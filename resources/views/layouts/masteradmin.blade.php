@@ -166,6 +166,7 @@
         // datatables
         $('#datapengumuman').DataTable();
         $('#dataagenda').DataTable();
+        $('#datamateri').DataTable();
         // end datatables
 
 

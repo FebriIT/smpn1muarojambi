@@ -301,15 +301,15 @@
             </li>
 
 
-            {{-- <li class="nav-item">
-        <a href="{{route('guru/kelas')}}" class="{{Request::is('guru/kelas')?'active':''}} nav-link">
-            <i class="nav-icon fas fa-database"></i>
-            <p>
-                Kelas
+            <li class="nav-item">
+                <a href="{{route('siswa/kelas')}}" class="{{Request::is('siswa/kelas')?'active':''}} nav-link">
+                    <i class="nav-icon fas fa-database"></i>
+                    <p>
+                        Kelas
 
-            </p>
-            </a>
-            </li> --}}
+                    </p>
+                </a>
+            </li>
             {{-- <li class="nav-item">
         <a href="{{route('guru/mapel')}}" class="{{Request::is('guru/mapel')?'active':''}} nav-link">
             <i class="nav-icon fas fa-book"></i>

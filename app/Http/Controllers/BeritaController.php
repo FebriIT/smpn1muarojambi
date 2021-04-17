@@ -15,7 +15,7 @@ class BeritaController extends Controller
     public function index()
     {
 
-        $data = Berita::orderBy('berita_id', 'desc')->get();
+        $data = Berita::orderBy('id', 'desc')->get();
 
         return view('berita.listberita', compact('data'));
     }
@@ -33,18 +33,14 @@ class BeritaController extends Controller
         $data = new Berita;
         $data->berita_judul = $request->berita_judul;
         $data->berita_isi = $request->berita_isi;
-        $idkategori = $data->berita_kategori_id = $request->berita_kategori_id;
-        $kategori = Kategori::where('kategori_id', $idkategori)->first();
-        $dd = $data->berita_kategori_nama = $kategori->kategori_nama;
-        $data->berita_user_id = auth()->user()->id;
-        $data->berita_author = auth()->user()->name;
+        $idkategori = $data->kategori_id = $request->kategori_id;
+
+        $data->user_id = auth()->user()->id;
+
         $data->berita_gambar = $request->berita_gambar;
         // dd($data);
         $data->save();
         // $datas = \App\Berita::create($request->all());
-
-
-
         if ($request->has('berita_gambar')) {
 
             $request->file('berita_gambar')->move('images/berita/', $request->file('berita_gambar')->getClientOriginalName());
@@ -79,7 +75,7 @@ class BeritaController extends Controller
         $kategori = Kategori::all();
         $populer = Berita::orderBy('berita_views', 'desc')->get();
         $post = Berita::where('berita_slug', '=', $slug)->first();
-        $idberita = $post->berita_id;
+        $idberita = $post->id;
         Berita::find($idberita)->increment('berita_views');
 
         return view('berita.singlepost', compact('post', 'kategori', 'populer'));
@@ -90,9 +86,9 @@ class BeritaController extends Controller
     {
 
         $kategori = Kategori::where('kategori_nama', $kategori_nama)->first();
-        $idkategori = $kategori->kategori_id;
+        $idkategori = $kategori->id;
 
-        $data = DB::select('SELECT * FROM `berita` join kategori on kategori.kategori_id=berita.berita_kategori_id WHERE kategori_id=?', [$idkategori]);
+        $data = DB::select('SELECT * FROM `berita` join kategori on kategori.id=berita.kategori_id WHERE kategori_id=?', [$idkategori]);
         // dd($data);
         $datakategori = Kategori::all();
 
