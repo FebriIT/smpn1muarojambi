@@ -50,9 +50,9 @@
                                 <h1>Bepikir Kreaftif &amp; Inovatif</h1>
                                 <h4>Bagi kami kreativitas merupakan gerbang masa depan.<br> kreativitas akan mendorong
                                     inovasi. <br> Itulah yang kami lakukan.</h4>
-                                <div class="slider-btn">
+                                {{-- <div class="slider-btn">
                                     <a href="#" class="btn btn-default">Learn more</a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -63,9 +63,9 @@
                                 <h1>Guru Bekualitas Tinggi</h1>
                                 <h4>Guru merupakan faktor penting dalam proses belajar-mengajar.<br> Itulah kenapa kami
                                     mendatangkan guru-guru <br>terbaik dari berbagai penjuru.</h4>
-                                <div class="slider-btn">
+                                {{-- <div class="slider-btn">
                                     <a href="#" class="btn btn-default">Learn more</a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -76,9 +76,9 @@
                                 <h1>Proses Belajar Interatif</h1>
                                 <h4>Kami membuat proses belajar mengajar menjadi lebih interatif.<br> dengan demikian
                                     siswa lebih menyukai <br>proses belajar.</h4>
-                                <div class="slider-btn">
+                                {{-- <div class="slider-btn">
                                     <a href="#" class="btn btn-default">Learn more</a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
