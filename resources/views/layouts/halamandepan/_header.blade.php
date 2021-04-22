@@ -8,7 +8,7 @@
                         <span class="icon-phone"></span>-
                     </div> --}}
                     <div class="header-top_list">
-                        <span class="icon-envelope-open"></span>spensamj01@gmail.com
+                        <span class="icon-envelope-open"></span>admin@smpn1muarojambi.sch.id
                     </div>
                     <div class="header-top_list">
                         <span class="fa fa-facebook"></span>Spensa Muaro Jambi
@@ -79,11 +79,11 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{url('/agenda')}}">Agenda</a>
                             </li>
-                            @if (auth()->user())
+
                             <li class="nav-item">
                                 <a class="nav-link" href="{{url('/login')}}">Login</a>
                             </li>
-                            @endif
+
 
 
                             {{-- <li class="nav-item">

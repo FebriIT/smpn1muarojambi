@@ -3,9 +3,9 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="foot-logo">
-                    <a href="#">
+                    {{-- <a href="#">
                         <img src="{{asset('template/theme/images/logosmp1.png')}}" class="img-fluid" alt="footer_logo">
-                    </a>
+                    </a> --}}
                     <p><?php echo date('Y');?> © copyright by <a href="#" target="_blank">Febri</a>. <br>All rights
                         reserved.</p>
                 </div>
@@ -39,7 +39,7 @@
                     <p><span>Alamat: </span> Jl. Jambi – Muaro Bulian KM. 17 desa Sungai Duren Rt.02 Kec.Jambi Luar Kota
                         Kab. Muaro Jambi Prov, Jambi
                     </p>
-                    <p>Email : spensamj01@gmail.com
+                    <p>Email : admin@smpn1muarojambi.sch.id
                         <br> Phone : -
                     </p>
                     <ul class="footer-social-icons">
