@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SMP N 1 MUARO JAMBI</title>
 
     <link rel="shorcut icon" href="{{asset('template/theme/images/LOGO SMPN 1 OK.png')}}">
@@ -164,9 +165,16 @@
 
     $(document).ready(function () {
         // datatables
-        $('#datapengumuman').DataTable();
-        $('#dataagenda').DataTable();
-        $('#datamateri').DataTable();
+        $('#datapengumuman').DataTable({
+            "scrollX": true
+        });
+        $('#dataagenda').DataTable({
+            "scrollX": true
+        });
+        $('#datamateri').DataTable({
+            "scrollX": true
+        });
+
         // end datatables
 
 
