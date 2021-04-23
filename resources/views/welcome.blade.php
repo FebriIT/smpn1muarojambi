@@ -38,13 +38,13 @@
         <div class="slider_img layout_two">
             <div id="carousel" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
-                    <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel" data-slide-to="0"></li>
                     <li data-target="#carousel" data-slide-to="1"></li>
                     <li data-target="#carousel" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active">
-                        <img class="d-block" src="{{ asset('images/bg1.jpg') }}" alt="First slide">
+                        <img class="d-block w-100" src="https://www.upload.ee/image/13076932/bg1.jpg" alt="First slide">
                         <div class="carousel-caption d-md-block">
                             <div class="slider_title">
                                 <h1>Bepikir Kreaftif &amp; Inovatif</h1>
@@ -57,7 +57,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block" src="{{ asset('images/bg2.jpg') }}" alt="Second slide">
+                        <img class="d-block w-100" src="https://www.upload.ee/image/13076936/bg2.jpg" alt="Second slide">
                         <div class="carousel-caption d-md-block">
                             <div class="slider_title">
                                 <h1>Guru Bekualitas Tinggi</h1>
@@ -70,7 +70,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block" src="{{ asset('images/bg3.jpg') }}" alt="Third slide">
+                        <img class="d-block w-100" src="https://www.upload.ee/image/13076938/bg3.jpg" alt="Third slide">
                         <div class="carousel-caption d-md-block">
                             <div class="slider_title">
                                 <h1>Proses Belajar Interatif</h1>
@@ -82,12 +82,13 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
                 <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
                     <i class="icon-arrow-left fa-slider" aria-hidden="true"></i>
                     <span class="sr-only">Previous</span>
                 </a>
-                <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                <a class="carousel-control-next" href="#carousel"  role="button" data-slide="next">
                     <i class="icon-arrow-right fa-slider" aria-hidden="true"></i>
                     <span class="sr-only">Next</span>
                 </a>
@@ -270,6 +271,8 @@
     <script src="{{asset('template/theme/js/subscribe.js')}}"></script>
     <!-- Script JS -->
     <script src="{{asset('template/theme/js/script.js')}}"></script>
-</body>
 
+
+</body>
+{{-- <iframe id="google_esf" name="google_esf" src="https://googleads.g.doubleclick.net/pagead/html/r20210420/r20190131/zrt_lookup.html#" data-ad-client="ca-pub-3786943708043906" style="display: none;"></iframe> --}}
 </html>

@@ -15,9 +15,9 @@
                     </div>
 
                 </div>
-                <div class="header-top_login2">
+                {{-- <div class="header-top_login2">
                     <a href="#">Hubungi Kami</a>
-                </div>
+                </div> --}}
             </div>
             {{-- <div class="col-xs-6 col-sm-4 col-md-3">
                 <div class="header-top_login mr-sm-3">
