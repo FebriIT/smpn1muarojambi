@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="maximum-scale=1">
     <title>SMP N 1 MUARO JAMBI</title>
 
     <link rel="shorcut icon" href="{{asset('template/theme/images/LOGO SMPN 1 OK.png')}}">
