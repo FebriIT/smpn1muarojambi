@@ -55,9 +55,9 @@
                                     href="{{route('site.single.post',$row->berita_slug)}}"><?php echo $row->berita_judul;?></a>
                             </h4>
                             <h6> <a href="#"><i class="fa fa-user"
-                                        aria-hidden="true"></i><span>{{$row->berita_author}}</span> </a> | <a
+                                        aria-hidden="true"></i><span>{{$row->user->name}}</span> </a> | <a
                                     href="#"><i class="fa fa-tags"
-                                        aria-hidden="true"></i><span>{{$row->berita_kategori_nama}}</span> </a> | <a
+                                        aria-hidden="true"></i><span>{{$row->kategori->kategori_nama}}</span> </a> | <a
                                     href="#"><i class="fa fa-eye"
                                         aria-hidden="true"></i><span>{{$row->berita_views}}</span></a></h6>
 

@@ -88,8 +88,9 @@ class BeritaController extends Controller
         $kategori = Kategori::where('kategori_nama', $kategori_nama)->first();
         $idkategori = $kategori->id;
 
-        $data = DB::select('SELECT * FROM `berita` join kategori on kategori.id=berita.kategori_id WHERE kategori_id=?', [$idkategori]);
-        // dd($data);
+        // $data = DB::select('SELECT * FROM `berita` join kategori on kategori.id=berita.kategori_id WHERE kategori_id=?', [$idkategori]);
+        $data = Berita::where('kategori_id', $idkategori)->get();
+        // dd($data1);
         $datakategori = Kategori::all();
 
         $kategori = Kategori::all();
