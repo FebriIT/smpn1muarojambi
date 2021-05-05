@@ -46,7 +46,7 @@
                                 style="font-size: 14px">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
+                                        <th style="width: 5%">No</th>
                                         <th>Kategori</th>
                                         <th style="width: 17%">Aksi</th>
                                     </tr>
@@ -68,11 +68,12 @@
                                                 </a>
                                                 <a class="btn btn-danger btn-sm"
                                                     href="/{{auth()->user()->role}}/kategori/{{$datas->id}}/hapus"
-                                                    onclick="return confirm('Apakah Anda Yakin Inggin Dihapus ?')">
+                                                    onclick="return confirm('Semua Yang Berkaitan Dengan Data Ini Akan Dihapus, Apakah Anda Yakin Inggin Menghapus Data Ini ?')">
                                                     <i class="fas fa-trash">
                                                     </i>
                                                     Delete
                                                 </a>
+
 
                                             </div>
                                         </td>
@@ -86,6 +87,7 @@
 
 
                         </div>
+
                         <!-- /.card-body -->
                     </div>
                 </div>

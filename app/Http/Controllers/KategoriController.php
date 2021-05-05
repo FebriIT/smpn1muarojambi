@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Kategori;
+use App\Berita;
 
 class KategoriController extends Controller
 {
@@ -25,6 +26,7 @@ class KategoriController extends Controller
     public function hapus($id)
     {
         $data = Kategori::where('id', $id);
+        Berita::where('kategori_id', $id)->delete();
         $data->delete();
 
         return redirect()->back()->with('toast_success', 'Data Berhasil Dihapus');
