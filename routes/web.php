@@ -85,6 +85,8 @@ Route::prefix('admin')->middleware('auth', 'checkRole:admin')->group(function ()
     Route::post('/mapel/tambah', 'MapelController@tambah');
     Route::post('/mapel/{id}/edit', 'MapelController@edit');
     Route::get('/mapel/{id}/hapus', 'MapelController@hapus');
+
+    Route::get('/pengaturan', 'PengaturanController@index')->name('admin/pengaturan');
 });
 
 

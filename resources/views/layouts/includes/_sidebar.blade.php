@@ -13,6 +13,7 @@
 
 
 
+
     <!-- Sidebar Menu -->
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -28,6 +29,7 @@
                     </p>
                 </a>
             </li>
+
 
             <li class="nav-item
 
@@ -153,6 +155,15 @@
                     </li>
 
                 </ul>
+            </li>
+            <li class="nav-item">
+                <a href="{{route('admin/pengaturan')}}" class="{{Request::is('admin/pengaturan')?'active':''}} nav-link ">
+                    <i class="nav-icon fas fa-user"></i>
+                    <p>
+                        Pengaturan
+
+                    </p>
+                </a>
             </li>
             <li class="nav-item">
                 <a href="/logout" class="nav-link">
@@ -290,6 +301,7 @@
                     </p>
                 </a>
             </li>
+            
             <li class="nav-item">
                 <a href="{{route('siswa/profile')}}" class="{{Request::is('siswa/profile')?'active':''}} nav-link ">
                     <i class="nav-icon fas fa-user"></i>
@@ -355,3 +367,7 @@
     <!-- /.sidebar-menu -->
 </div>
 @endif
+
+<script>
+
+</script>

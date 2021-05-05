@@ -4,7 +4,7 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="maximum-scale=3">
     <title>SMP N 1 MUARO JAMBI</title>
     <link rel="shorcut icon" href="{{asset('template/theme/images/LOGO SMPN 1 OK.png')}}">
     <!-- Bootstrap CSS -->
@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="{{asset('template/theme/css/owl.carousel.min.css')}}">
     <!-- Main CSS -->
     <link href="{{asset('template/theme/css/style.css')}}" rel="stylesheet">
+
+
     <?php
         function limit_words($string, $word_limit){
             $words = explode(" ",$string);

@@ -41,6 +41,8 @@
     <link rel="stylesheet" href="{{asset('template/admin/plugins/codemirror/codemirror.css')}}">
     <link rel="stylesheet" href="{{asset('template/admin/plugins/codemirror/theme/monokai.css')}}">
 
+
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -48,6 +50,7 @@
 
         <!-- Navbar -->
         @include('layouts.includes._navbar')
+
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
@@ -66,6 +69,7 @@
 
         <!-- Content Wrapper. Contains page content -->
         @yield('content')
+
 
         @include('sweetalert::alert')
         <!-- /.content-wrapper -->
@@ -149,7 +153,7 @@
     <script src="{{ asset('template/admin/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('template/admin/plugins/jquery-validation/additional-methods.min.js') }}"></script>
 
-
+{{-- <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script> --}}
 
 
 </body>
@@ -247,4 +251,5 @@
             }
         });
     });
+
 </script>
