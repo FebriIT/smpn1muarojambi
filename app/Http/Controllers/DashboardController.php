@@ -15,7 +15,8 @@ class DashboardController extends Controller
         $countpengumuman = Pengumuman::all()->count();
         $countagenda = Agenda::all()->count();
         $countberita = Berita::all()->count();
+        $countuser = User::all()->count();
         $lastuser = User::orderBy('created_at', 'desc')->paginate(8);
-        return view('dashboard', compact('countpengumuman', 'countagenda', 'countberita', 'lastuser'));
+        return view('dashboard', compact('countpengumuman', 'countagenda', 'countberita', 'lastuser', 'countuser'));
     }
 }

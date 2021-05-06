@@ -6,7 +6,7 @@
                     {{-- <a href="#">
                         <img src="{{asset('template/theme/images/logosmp1.png')}}" class="img-fluid" alt="footer_logo">
                     </a> --}}
-                    <p><?php echo date('Y');?> © copyright by <a href="#" target="_blank">Febri</a>. <br>All rights
+                    <p><?php echo date('Y');?> © copyright by <a href="https://www.instagram.com/febri.it/" target="_blank">Febri</a>. <br>All rights
                         reserved.</p>
                 </div>
             </div>

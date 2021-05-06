@@ -111,7 +111,7 @@
 
                 </div>
                 <div class="col-md-3">
-                    <img src="{{asset('template/theme/images/welcome.png')}}" class="img-fluid about-img" alt="#">
+                    <img src="{{asset('images/kepalasekolah.png')}}" class="img-fluid about-img" alt="#">
                     <p>
                         <center><b><u>Kepala Sekolah</u></b></center>
                         <center><b>ERMA DEWITA, S.Pd</b></center>

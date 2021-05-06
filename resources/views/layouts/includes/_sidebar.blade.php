@@ -158,11 +158,12 @@
             </li>
             <li class="nav-item">
                 <a href="{{route('admin/pengaturan')}}" class="{{Request::is('admin/pengaturan')?'active':''}} nav-link ">
-                    <i class="nav-icon fas fa-user"></i>
+                    <i class="nav-icon fas fa-cogs"></i>
                     <p>
                         Pengaturan
 
                     </p>
+                    <span class="right badge badge-danger">New</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -301,7 +302,7 @@
                     </p>
                 </a>
             </li>
-            
+
             <li class="nav-item">
                 <a href="{{route('siswa/profile')}}" class="{{Request::is('siswa/profile')?'active':''}} nav-link ">
                     <i class="nav-icon fas fa-user"></i>
