@@ -12,6 +12,7 @@
 */
 
 use Illuminate\Support\Facades\Route;
+use Whoops\Run;
 
 Route::get('/', 'WelcomeController@index');
 Route::get('/pengumuman', 'PengumumanController@halamandepan');
@@ -87,6 +88,7 @@ Route::prefix('admin')->middleware('auth', 'checkRole:admin')->group(function ()
     Route::get('/mapel/{id}/hapus', 'MapelController@hapus');
 
     Route::get('/pengaturan', 'PengaturanController@index')->name('admin/pengaturan');
+    Route::post('/pengaturan/tentangkami', 'PengaturanController@tentangkami');
 });
 
 
@@ -106,6 +108,8 @@ Route::prefix('guru')->middleware('auth', 'checkRole:guru')->group(function () {
     Route::get('/materi', 'MateriController@index')->name('guru/materi');
     Route::post('/materi/tambah', 'MateriController@tambah');
     Route::get('/materi/{id}/hapus', 'MateriController@hapus');
+
+    Route::get('/tugas', 'TugasController@index')->name('guru/tugas');
 });
 
 //route siswa

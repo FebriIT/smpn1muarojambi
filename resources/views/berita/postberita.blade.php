@@ -32,7 +32,7 @@
     <section class="content">
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
-            <form action="{{ route('berita.tambah') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('berita.tambah') }}" method="POST" enctype="multipart/form-data" id="formberita">
                 {{ csrf_field() }}
                 <div class="row">
                     <div class="col-12">
@@ -108,9 +108,10 @@
                                 <div class="form-group">
                                     <label>Gambar</label>
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="exampleInputFile"
+                                        <input type="file" class="custom-file-input" id="avatar"
                                             name="berita_gambar" required>
-                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                        <label class="custom-file-label" for="avatar">Choose file</label>
+                                        <span id="exampleInputEmail1-error" class="error invalid-feedback" style=""></span>
                                     </div>
                                 </div>
                             </div>

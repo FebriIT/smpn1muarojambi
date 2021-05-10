@@ -247,6 +247,15 @@
                     </p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{route('guru/tugas')}}" class="{{Request::is('guru/tugas')?'active':''}} nav-link">
+                    <i class="nav-icon fas fa-book"></i>
+                    <p>
+                        Manajement Tugas/Quiz
+
+                    </p>
+                </a>
+            </li>
             {{-- <li class="nav-item">
                 <a href="{{route('guru/mapel')}}" class="{{Request::is('guru/mapel')?'active':''}} nav-link">
             <i class="nav-icon fas fa-book"></i>

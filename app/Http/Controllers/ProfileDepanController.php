@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Guru;
+use App\Pengaturan;
 
 class ProfileDepanController extends Controller
 {
     public function tentangkami()
     {
-        return view('profiledepan.tentangkami');
+        $data = Pengaturan::where('id', 1)->first();
+        return view('profiledepan.tentangkami', compact('data'));
     }
     public function visimisi()
     {
@@ -37,7 +39,7 @@ class ProfileDepanController extends Controller
     }
     public function guru()
     {
-        $data=Guru::all();
-        return view('profiledepan.guru',compact('data'));
+        $data = Guru::all();
+        return view('profiledepan.guru', compact('data'));
     }
 }
