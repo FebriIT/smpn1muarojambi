@@ -146,7 +146,10 @@
     <script src="{{ asset('template/admin/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('template/admin/plugins/jquery-validation/additional-methods.min.js') }}"></script>
 
-    @include('layouts.includes._customjava')
+    {{-- custom febri --}}
+    <script src="{{ asset('admin.js') }}"></script>
+
+
 </body>
 
 </html>
