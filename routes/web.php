@@ -89,6 +89,7 @@ Route::prefix('admin')->middleware('auth', 'checkRole:admin')->group(function ()
 
     Route::get('/pengaturan', 'PengaturanController@index')->name('admin/pengaturan');
     Route::post('/pengaturan/tentangkami', 'PengaturanController@tentangkami');
+    Route::post('/pengaturan/visimisi', 'PengaturanController@visimisi');
 });
 
 

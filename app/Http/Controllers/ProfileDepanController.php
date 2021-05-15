@@ -15,7 +15,8 @@ class ProfileDepanController extends Controller
     }
     public function visimisi()
     {
-        return view('profiledepan.visimisi');
+        $data = Pengaturan::where('id', 2)->first();
+        return view('profiledepan.visimisi', compact('data'));
     }
     public function hubungikami()
     {

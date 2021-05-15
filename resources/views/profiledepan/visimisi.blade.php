@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -28,47 +28,15 @@
     <div class="container">
         <div class="row">
             <div class="col-md-7">
-                <h2>Visi Dan Misi</h2>
-               
-                <p> 
-                    <b><u>Visi</u></b><br>
-                    Visi pada SMP Negeri 1 Muaro Jambi adalah sebagai berikut :
-                    <ul>
-                        <li>Bertaqwa</li>
-                        <li>Berprestasi</li>
-                        <li>Kreatif</li>
-                        <li>Mandiri</li>
-                    </ul>
-                </p>
-                <p>
-                    <b><u>Misi</u></b><br>
-                    Dalam upaya mewujudkan visi tersebut, Misi SMP Negeri 1 Muaro Jambi adalah sebagai berikut :
-                    <ol type="a">
-                        <li>Menumbuh kembangkan penghayatan terhadap ajaran agama yang dianut dan budaya bangsa
-                            sehingga terbangun siswa yang kompeten dan berakhlak mulia
-                        </li>
-                        <li>
-                            Mewujudkan pembelajaran Aktif, Kreatif, Efektif dan Menyenangkan
-                        </li>
-                        <li>
-                            Mengembangkan keterampilan melalui kegiatan pembelajaran dan pelatihan berbasis IPTEK
-                        </li>
-                        <li>
-                            Menciptakan lingkungan pembelajaran yang kondusif dalam upaya meningkatkan mata pembelajaran
-                        </li>
-                        <li>
-                            Mewujudkan disiplin dalam proses belajar mengajar
-                        </li>
-                        <li>
-                            Menciptakan hubungan yang baik antara warga sekolah dan masyarakat untuk menciptakan mutu pendidikan
-                        </li>
-                    </ol>
-                </p>
-                
+                <h2>{{ $data->judul }}</h2>
+
+               {!! $data->deskripsi !!}
+
+
                 </div>
                 <div class="col-md-5">
-                    <img src="{{ asset('images/bg5.jpeg') }}" class="img-fluid" alt="#">
-                </div>  
+                    <img src="{{ asset('storage/pengaturan/'.$data->gambar) }}" class="img-fluid" alt="#">
+                </div>
             </div>
         </div>
 </section>
@@ -93,7 +61,7 @@
                   });
             });
           </script>
-        
+
     </body>
 
 </html>

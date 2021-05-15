@@ -27,7 +27,7 @@
 </div>
 </div>
 </div>
-<marquee bgcolor="FFF300">Maaf website sedang maintenance</marquee>
+{{-- <marquee bgcolor="FFF300">Maaf website sedang maintenance</marquee> --}}
 <div data-toggle="affix">
     <div class="container nav-menu2">
         <div class="row">

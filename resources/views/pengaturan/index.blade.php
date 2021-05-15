@@ -123,13 +123,58 @@
                                         </div>
                                         <div class="tab-pane fade" id="vert-tabs-profile" role="tabpanel"
                                             aria-labelledby="visimisi">
-                                            Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris
-                                            pharetra purus ut ligula tempor, et vulputate metus facilisis. Lorem ipsum
-                                            dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in
-                                            faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas
-                                            sollicitudin, nisi a luctus interdum, nisl ligula placerat mi, quis posuere
-                                            purus ligula eu lectus. Donec nunc tellus, elementum sit amet ultricies at,
-                                            posuere nec nunc. Nunc euismod pellentesque diam.
+                                            <div class="card card-warning">
+                                                <div class="card-header">
+                                                    <h3 class="card-title">Visi & Misi</h3>
+                                                </div>
+                                                <!-- /.card-header -->
+                                                <div class="card-body">
+                                                    <form action="/admin/pengaturan/visimisi" method="POST"
+                                                        enctype="multipart/form-data">
+                                                        {{ csrf_field() }}
+
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <!-- text input -->
+                                                                <div class="form-group">
+                                                                    <label>Judul</label>
+                                                                    <input type="text" name="judul" class="form-control"
+                                                                        placeholder="Enter ..."
+                                                                        value="{{ $visimisi->judul }}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <!-- textarea -->
+                                                                <div class="form-group">
+                                                                    <label>Deskripsi</label>
+                                                                    <div class="card-body">
+                                                                        <textarea id="summernote1" rows="3"
+                                                                            name="deskripsi" required>{!! $visimisi->deskripsi !!}
+                                                                        </textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <label>Foto</label>
+                                                                <div class="custom-file">
+                                                                    <input type="file" name="gambar" class="custom-file-input"
+                                                                        id="customFile">
+                                                                    <label class="custom-file-label"
+                                                                        for="customFile">Choose file</label>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="modal-footer">
+
+                                                            <button type="submit"
+                                                                class="btn btn-primary">Simpan</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <!-- /.card-body -->
+                                            </div>
                                         </div>
                                         <div class="tab-pane fade" id="vert-tabs-messages" role="tabpanel"
                                             aria-labelledby="sejarah">

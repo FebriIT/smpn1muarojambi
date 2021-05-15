@@ -36,6 +36,7 @@ $(document).ready(function () {
     // form editor
     // Summernote
     $('#summernote').summernote()
+    $('#summernote1').summernote()
     // CodeMirror
     CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
         mode: "htmlmixed",
