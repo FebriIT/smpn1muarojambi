@@ -49,7 +49,7 @@
                         <img class="d-block w-100" src="https://www.upload.ee/image/13076932/bg1.jpg" alt="First slide">
                         <div class="carousel-caption d-md-block">
                             <div class="slider_title">
-                                <h1>Bepikir Kreaftif &amp; Inovatif</h1>
+                                <h1>Bepikir Kreaftif &amp; Inovatiff</h1>
                                 <h4>Bagi kami kreativitas merupakan gerbang masa depan.<br> kreativitas akan mendorong
                                     inovasi. <br> Itulah yang kami lakukan.</h4>
                                 {{-- <div class="slider-btn">
