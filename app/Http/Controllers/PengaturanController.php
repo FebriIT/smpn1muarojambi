@@ -22,7 +22,20 @@ class PengaturanController extends Controller
         // dd($req->all());
         $judul = $req->judul;
         $deskripsi = $req->deskripsi;
-        $data = Pengaturan::find(1)->update(['judul' => $judul, 'deskripsi' => $deskripsi]);
+        $data = Pengaturan::find(1);
+        $data->update(['judul' => $judul, 'deskripsi' => $deskripsi]);
+        if ($req->has('gambar')) {
+            //   ini untuk update profile
+            if (Storage::exists('public/pengaturan/tentangkami/' . $data->gambar)) {
+                // unlink('images/pengaturan/' . $data->gambar);
+                Storage::delete('public/pengaturan/tentangkami/' . $data->gambar);
+            }
+
+            $req->file('gambar')->move('storage/pengaturan/tentangkami', $req->file('gambar')->getClientOriginalName());
+            $data->gambar = $req->file('gambar')->getClientOriginalName();
+            $data->save();
+        }
+
         return redirect()->back()->with('success', 'Tentang Kami Berhasil Diubah');
     }
     public function visimisi(Request $req)
@@ -37,12 +50,12 @@ class PengaturanController extends Controller
 
         if ($req->has('gambar')) {
             //   ini untuk update profile
-            if (Storage::exists('public/pengaturan/' . $data->gambar)) {
+            if (Storage::exists('public/pengaturan/visimisi/' . $data->gambar)) {
                 // unlink('images/pengaturan/' . $data->gambar);
-                Storage::delete('public/pengaturan/' . $data->gambar);
+                Storage::delete('public/pengaturan/visimisi/' . $data->gambar);
             }
 
-            $req->file('gambar')->move('storage/pengaturan/', $req->file('gambar')->getClientOriginalName());
+            $req->file('gambar')->move('storage/pengaturan/visimisi', $req->file('gambar')->getClientOriginalName());
             $data->gambar = $req->file('gambar')->getClientOriginalName();
             $data->save();
         }

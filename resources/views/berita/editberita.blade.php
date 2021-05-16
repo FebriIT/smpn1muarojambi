@@ -114,8 +114,7 @@
                                         <input type="file" class="custom-file-input"
                                             value="{{ URL::asset('/images/berita/IMG_20210123_100208') }}"
                                             id="exampleInputFile" name="berita_gambar">
-                                        <label class="custom-file-label" for="exampleInputFile">@if
-                                            ($data->berita_gambar){{ $data->berita_gambar }}@else Choose file
+                                        <label class="custom-file-label" for="exampleInputFile">@if($data->berita_gambar){{ $data->berita_gambar }}@else Choose file
                                             @endif</label>
                                     </div>
                                 </div>

@@ -43,7 +43,13 @@ $(document).ready(function () {
         theme: "monokai"
     });
     // end form editor
+
+
 });
+
+
+
+
 
 // var img=document.forms['quickForm']['avatar'];
 $(function () {
@@ -99,12 +105,81 @@ $(function () {
             $(element).removeClass('is-invalid');
         }
     });
+
 });
 
-var uploadField = document.getElementById("avatar");
-uploadField.onchange = function () {
+var tentangkami = document.getElementById("idtentangkami");
+tentangkami.onchange = function () {
     if (this.files[0].size > 400000) {
         alert("File Maximal 400 kb");
         this.value = "";
     };
 };
+
+$(function () {
+    $('#formtentangkami').validate({
+        rules: {
+            gambar: {
+                extension: "jpg,jpeg,png",
+                // required: false,
+            },
+        },
+        messages: {
+            gambar: {
+                extension: "format file harus jpg,jpeg,png",
+            },
+        },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+            error.addClass('invalid-feedback');
+            element.closest('.form-group').append(error);
+        },
+        highlight: function (element, errorClass, validClass) {
+            $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).removeClass('is-invalid');
+        }
+    });
+});
+
+
+$(function () {
+    $('#formvisimisi').validate({
+        rules: {
+            gambar: {
+                extension: "jpg,jpeg,png",
+                // required: false,
+            },
+        },
+        messages: {
+            gambar: {
+                extension: "format file harus jpg,jpeg,png",
+            },
+        },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+            error.addClass('invalid-feedback');
+            element.closest('.form-group').append(error);
+        },
+        highlight: function (element, errorClass, validClass) {
+            $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).removeClass('is-invalid');
+        }
+    });
+
+});
+var visimisi = document.getElementById("idvisimisi");
+visimisi.onchange = function () {
+    if (this.files[0].size > 400000) {
+        alert("File Maximal 400 kb");
+        this.value = "";
+    };
+};
+
+
+
+
+

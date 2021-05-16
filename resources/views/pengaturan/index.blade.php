@@ -41,7 +41,7 @@
                             </h3>
                         </div> --}}
                         <div class="card-body">
-                            <h4>Profile</h4>
+                            <h4>Ubah Halaman Depan</h4>
                             <div class="row">
                                 <div class="col-5 col-sm-3">
                                     <div class="nav flex-column nav-tabs h-100" id="vert-tabs-tab" role="tablist"
@@ -58,6 +58,15 @@
                                         <a class="nav-link" id="sosialmedia" data-toggle="pill"
                                             href="#vert-tabs-settings" role="tab" aria-controls="vert-tabs-settings"
                                             aria-selected="false">Sosial Media</a>
+                                        <a class="nav-link" id="admsklh" data-toggle="pill"
+                                            href="#vert-tabs-settings" role="tab" aria-controls="vert-tabs-settings"
+                                            aria-selected="false">Administrasi Kantor Sekolah</a>
+                                        <a class="nav-link" id="perpustakaan" data-toggle="pill"
+                                            href="#vert-tabs-settings" role="tab" aria-controls="vert-tabs-settings"
+                                            aria-selected="false">Perpustakaan</a>
+                                        <a class="nav-link" id="labkom" data-toggle="pill"
+                                            href="#vert-tabs-settings" role="tab" aria-controls="vert-tabs-settings"
+                                            aria-selected="false">LAB Komputer</a>
                                     </div>
                                 </div>
                                 <div class="col-7 col-sm-9">
@@ -72,7 +81,7 @@
                                                 <!-- /.card-header -->
                                                 <div class="card-body">
                                                     <form action="/admin/pengaturan/tentangkami" method="POST"
-                                                        enctype="multipart/form-data">
+                                                        id="formtentangkami" enctype="multipart/form-data">
                                                         {{ csrf_field() }}
 
                                                         <div class="row">
@@ -97,13 +106,20 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-12">
-                                                                <label>Foto</label>
-                                                                <div class="custom-file">
-                                                                    <input type="file" class="custom-file-input"
-                                                                        id="customFile">
-                                                                    <label class="custom-file-label"
-                                                                        for="customFile">Choose file</label>
+                                                                <div class="form-group">
+                                                                    <label>Foto</label>
+                                                                    <div class="custom-file">
+                                                                        <input type="file" name="gambar"
+                                                                            class="custom-file-input"
+                                                                            id="idtentangkami">
+                                                                        <label class="custom-file-label"
+                                                                            for="idtentangkami">@if($tentangkami->gambar){{ $tentangkami->gambar }}@else
+                                                                            Choose file @endif</label>
+                                                                        <span id="error" class="error invalid-feedback"
+                                                                            style=""></span>
+                                                                    </div>
                                                                 </div>
+
                                                             </div>
 
                                                         </div>
@@ -130,7 +146,7 @@
                                                 <!-- /.card-header -->
                                                 <div class="card-body">
                                                     <form action="/admin/pengaturan/visimisi" method="POST"
-                                                        enctype="multipart/form-data">
+                                                        id="formvisimisi" enctype="multipart/form-data">
                                                         {{ csrf_field() }}
 
                                                         <div class="row">
@@ -155,13 +171,19 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-12">
-                                                                <label>Foto</label>
-                                                                <div class="custom-file">
-                                                                    <input type="file" name="gambar" class="custom-file-input"
-                                                                        id="customFile">
-                                                                    <label class="custom-file-label"
-                                                                        for="customFile">Choose file</label>
+                                                                <div class="form-group">
+                                                                    <label>Foto</label>
+                                                                    <div class="custom-file">
+                                                                        <input type="file" name="gambar"
+                                                                            class="custom-file-input" id="idvisimisi">
+                                                                        <label class="custom-file-label"
+                                                                            for="idvisimisi">@if($visimisi->gambar){{ $visimisi->gambar }}@else
+                                                                            Choose file @endif</label>
+                                                                        <span id="error" class="error invalid-feedback"
+                                                                            style=""></span>
+                                                                    </div>
                                                                 </div>
+
                                                             </div>
 
                                                         </div>
@@ -202,77 +224,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <h4 class="mt-4">Right Sided <small>(nav-tabs-right)</small></h4>
-                            <div class="row">
-                                <div class="col-7 col-sm-9">
-                                    <div class="tab-content" id="vert-tabs-right-tabContent">
-                                        <div class="tab-pane fade show active" id="vert-tabs-right-home" role="tabpanel"
-                                            aria-labelledby="vert-tabs-right-home-tab">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin malesuada
-                                            lacus ullamcorper dui molestie, sit amet congue quam finibus. Etiam
-                                            ultricies nunc non magna feugiat commodo. Etiam odio magna, mollis auctor
-                                            felis vitae, ullamcorper ornare ligula. Proin pellentesque tincidunt nisi,
-                                            vitae ullamcorper felis aliquam id. Pellentesque habitant morbi tristique
-                                            senectus et netus et malesuada fames ac turpis egestas. Proin id orci eu
-                                            lectus blandit suscipit. Phasellus porta, ante et varius ornare, sem enim
-                                            sollicitudin eros, at commodo leo est vitae lacus. Etiam ut porta sem. Proin
-                                            porttitor porta nisl, id tempor risus rhoncus quis. In in quam a nibh cursus
-                                            pulvinar non consequat neque. Mauris lacus elit, condimentum ac condimentum
-                                            at, semper vitae lectus. Cras lacinia erat eget sapien porta consectetur.
-                                        </div>
-                                        <div class="tab-pane fade" id="vert-tabs-right-profile" role="tabpanel"
-                                            aria-labelledby="vert-tabs-right-profile-tab">
-                                            Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris
-                                            pharetra purus ut ligula tempor, et vulputate metus facilisis. Lorem ipsum
-                                            dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in
-                                            faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas
-                                            sollicitudin, nisi a luctus interdum, nisl ligula placerat mi, quis posuere
-                                            purus ligula eu lectus. Donec nunc tellus, elementum sit amet ultricies at,
-                                            posuere nec nunc. Nunc euismod pellentesque diam.
-                                        </div>
-                                        <div class="tab-pane fade" id="vert-tabs-right-messages" role="tabpanel"
-                                            aria-labelledby="vert-tabs-right-messages-tab">
-                                            Morbi turpis dolor, vulputate vitae felis non, tincidunt congue mauris.
-                                            Phasellus volutpat augue id mi placerat mollis. Vivamus faucibus eu massa
-                                            eget condimentum. Fusce nec hendrerit sem, ac tristique nulla. Integer
-                                            vestibulum orci odio. Cras nec augue ipsum. Suspendisse ut velit
-                                            condimentum, mattis urna a, malesuada nunc. Curabitur eleifend facilisis
-                                            velit finibus tristique. Nam vulputate, eros non luctus efficitur, ipsum
-                                            odio volutpat massa, sit amet sollicitudin est libero sed ipsum. Nulla
-                                            lacinia, ex vitae gravida fermentum, lectus ipsum gravida arcu, id fermentum
-                                            metus arcu vel metus. Curabitur eget sem eu risus tincidunt eleifend ac
-                                            ornare magna.
-                                        </div>
-                                        <div class="tab-pane fade" id="vert-tabs-right-settings" role="tabpanel"
-                                            aria-labelledby="vert-tabs-right-settings-tab">
-                                            Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna,
-                                            iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor.
-                                            Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique.
-                                            Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat
-                                            urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at
-                                            consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse
-                                            platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-5 col-sm-3">
-                                    <div class="nav flex-column nav-tabs nav-tabs-right h-100" id="vert-tabs-right-tab"
-                                        role="tablist" aria-orientation="vertical">
-                                        <a class="nav-link active" id="vert-tabs-right-home-tab" data-toggle="pill"
-                                            href="#vert-tabs-right-home" role="tab" aria-controls="vert-tabs-right-home"
-                                            aria-selected="true">Home</a>
-                                        <a class="nav-link" id="vert-tabs-right-profile-tab" data-toggle="pill"
-                                            href="#vert-tabs-right-profile" role="tab"
-                                            aria-controls="vert-tabs-right-profile" aria-selected="false">Profile</a>
-                                        <a class="nav-link" id="vert-tabs-right-messages-tab" data-toggle="pill"
-                                            href="#vert-tabs-right-messages" role="tab"
-                                            aria-controls="vert-tabs-right-messages" aria-selected="false">Messages</a>
-                                        <a class="nav-link" id="vert-tabs-right-settings-tab" data-toggle="pill"
-                                            href="#vert-tabs-right-settings" role="tab"
-                                            aria-controls="vert-tabs-right-settings" aria-selected="false">Settings</a>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                         <!-- /.card -->
                     </div>
