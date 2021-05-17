@@ -3,7 +3,7 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-            <img src="{{asset('template/admin/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2"
+            <img src="{{auth()->user()->guru->getAvatar()}}" class="img-circle elevation-2"
                 alt="User Image">
         </div>
         <div class="info">
@@ -26,6 +26,15 @@
                     <i class="nav-icon fas fa-home"></i>
                     <p>
                         Dashboard
+
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{route('admin/profile')}}" class="{{Request::is('admin/profile')?'active':''}} nav-link ">
+                    <i class="nav-icon fas fa-user"></i>
+                    <p>
+                        Profile
 
                     </p>
                 </a>

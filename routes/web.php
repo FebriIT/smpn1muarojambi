@@ -40,6 +40,9 @@ Route::get('/logout', 'AuthController@logout')->name('logout');
 Route::prefix('admin')->middleware('auth', 'checkRole:admin')->group(function () {
     //data guru admin
     Route::get('/dashboard', 'DashboardController@index')->name('admin/dashboard');
+    Route::get('/profile', 'ProfileController@index')->name('admin/profile');
+    Route::post('/profile/{id}/update', 'ProfileController@update');
+    Route::post('/profile/changepassword', 'ProfileController@changepassword');
 
     Route::get('/pengumuman', 'PengumumanController@index')->name('admin/pengumuman');
     Route::post('/pengumuman/tambah', 'PengumumanController@tambah')->name('admin/tambahpengumuman');

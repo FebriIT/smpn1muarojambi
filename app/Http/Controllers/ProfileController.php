@@ -21,6 +21,11 @@ class ProfileController extends Controller
             $data = Siswa::find($id_siswa);
 
             return view('profile.siswa', compact('data'));
+        } elseif (auth()->user()->role == 'admin') {
+            $id_admin = auth()->user()->guru->id;
+            $data = Guru::find($id_admin);
+
+            return view('profile.admin', compact('data'));
         }
     }
 
