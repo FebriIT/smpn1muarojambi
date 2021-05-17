@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Perpustakaan</title>
+    <title>Visi Dan Misi</title>
     @include('layouts.halamandepan._headcss')
     <style>
     	.sharePopup{
@@ -27,18 +27,16 @@
 <section class="welcome_about">
     <div class="container">
         <div class="row">
-            <div class="col-md-10">
-                <h2>Perpustakaan</h2>
-                <p style="text-align: justify;">
-                    Ruang perpustakaan terletak di sisi sebelah kanan lapangan upacara dengan luasan sekitar 99 m2. 
-                    Lokasi yang berada di tengah sekolah memudahkan seluruh siswa untuk menggunakan fasilitas yang ada 
-                    di perpustakaan sekolah. Koleksi buku yang ada sebagian besar adalah buku-buku penunjang kegiatan belajar-mengajar.  Selain itu ada juga koleksi buku fiksi dan majalah penunjang belajar siswa.
-                </p>
-               
+            <div class="col-md-7">
+                <h2>{{ $data->judul }}</h2>
+
+               {!! $data->deskripsi !!}
+
+
                 </div>
-                {{-- <div class="col-md-5">
-                    <img src="{{ asset('images/bg4.jpeg') }}" class="img-fluid" alt="#">
-                </div>   --}}
+                <div class="col-md-5">
+                    <img src="{{ asset('storage/pengaturan/perpustakaan/'.$data->gambar) }}" class="img-fluid" alt="#">
+                </div>
             </div>
         </div>
 </section>
@@ -63,7 +61,7 @@
                   });
             });
           </script>
-        
+
     </body>
 
 </html>

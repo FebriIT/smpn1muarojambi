@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -27,18 +27,14 @@
 <section class="welcome_about">
     <div class="container">
         <div class="row">
-            <div class="col-md-7">
-                <h2>Sosial Media</h2>
-                <p>
-                    Facebook : 
-                </p>
-                <p>
-                    Instagram :
-                </p>
+            <div class="col-md-12">
+                <h2>{{ $data->judul }}</h2>
+                {!! $data->deskripsi !!}
+
                 </div>
-                <div class="col-md-5">
-                    <img src="{{ asset('images/bg4.jpeg') }}" class="img-fluid" alt="#">
-                </div>  
+                {{-- <div class="col-md-5">
+                    <img src="{{ asset('storage/pengaturan/tentangkami/'.$data->gambar) }}" class="img-fluid" alt="#">
+                </div> --}}
             </div>
         </div>
 </section>
@@ -63,7 +59,7 @@
                   });
             });
           </script>
-        
+
     </body>
 
 </html>

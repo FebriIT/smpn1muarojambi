@@ -50,7 +50,7 @@
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="{{ url('tentangkami') }}">Tentang Kami</a></li>
                                     <li><a class="dropdown-item" href="{{ url('visimisi') }}">Visi Dan Misi</a></li>
-                                    <li><a class="dropdown-item" href="#">Sejarah</a></li>
+                                    <li><a class="dropdown-item" href="{{ url('sejarah') }}">Sejarah</a></li>
                                     <li><a class="dropdown-item" href="{{ url('hubungikami') }}">Hubungi Kami</a></li>
                                     <li><a class="dropdown-item" href="{{ url('sosialmedia') }}">Sosial Media</a></li>
                                 </ul>

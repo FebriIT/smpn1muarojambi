@@ -59,13 +59,13 @@
                                             href="#vert-tabs-settings" role="tab" aria-controls="vert-tabs-settings"
                                             aria-selected="false">Sosial Media</a>
                                         <a class="nav-link" id="admsklh" data-toggle="pill"
-                                            href="#vert-tabs-settings" role="tab" aria-controls="vert-tabs-settings"
+                                            href="#vert-tabs-admsklh" role="tab" aria-controls="vert-tabs-admsklh"
                                             aria-selected="false">Administrasi Kantor Sekolah</a>
                                         <a class="nav-link" id="perpustakaan" data-toggle="pill"
-                                            href="#vert-tabs-settings" role="tab" aria-controls="vert-tabs-settings"
+                                            href="#vert-tabs-perpustakaan" role="tab" aria-controls="vert-tabs-perpustakaan"
                                             aria-selected="false">Perpustakaan</a>
                                         <a class="nav-link" id="labkom" data-toggle="pill"
-                                            href="#vert-tabs-settings" role="tab" aria-controls="vert-tabs-settings"
+                                            href="#vert-tabs-labkom" role="tab" aria-controls="vert-tabs-labkom"
                                             aria-selected="false">LAB Komputer</a>
                                     </div>
                                 </div>
@@ -200,26 +200,266 @@
                                         </div>
                                         <div class="tab-pane fade" id="vert-tabs-messages" role="tabpanel"
                                             aria-labelledby="sejarah">
-                                            Morbi turpis dolor, vulputate vitae felis non, tincidunt congue mauris.
-                                            Phasellus volutpat augue id mi placerat mollis. Vivamus faucibus eu massa
-                                            eget condimentum. Fusce nec hendrerit sem, ac tristique nulla. Integer
-                                            vestibulum orci odio. Cras nec augue ipsum. Suspendisse ut velit
-                                            condimentum, mattis urna a, malesuada nunc. Curabitur eleifend facilisis
-                                            velit finibus tristique. Nam vulputate, eros non luctus efficitur, ipsum
-                                            odio volutpat massa, sit amet sollicitudin est libero sed ipsum. Nulla
-                                            lacinia, ex vitae gravida fermentum, lectus ipsum gravida arcu, id fermentum
-                                            metus arcu vel metus. Curabitur eget sem eu risus tincidunt eleifend ac
-                                            ornare magna.
+                                            <div class="card card-warning">
+                                                <div class="card-header">
+                                                    <h3 class="card-title">Sejarah</h3>
+                                                </div>
+                                                <!-- /.card-header -->
+                                                <div class="card-body">
+                                                    <form action="/admin/pengaturan/sejarah" method="POST"
+                                                        id="sejarah" enctype="multipart/form-data">
+                                                        {{ csrf_field() }}
+
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <!-- text input -->
+                                                                <div class="form-group">
+                                                                    <label>Judul</label>
+                                                                    <input type="text" name="judul" class="form-control"
+                                                                        placeholder="Enter ..."
+                                                                        value="{{ $sejarah->judul }}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <!-- textarea -->
+                                                                <div class="form-group">
+                                                                    <label>Deskripsi</label>
+                                                                    <div class="card-body">
+                                                                        <textarea id="summernote2" rows="3"
+                                                                            name="deskripsi" required>{!! $sejarah->deskripsi !!}
+                                                                        </textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                        </div>
+
+                                                        <div class="modal-footer">
+
+                                                            <button type="submit"
+                                                                class="btn btn-primary">Simpan</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <!-- /.card-body -->
+                                            </div>
                                         </div>
                                         <div class="tab-pane fade" id="vert-tabs-settings" role="tabpanel"
                                             aria-labelledby="sosialmedia">
-                                            Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna,
-                                            iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor.
-                                            Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique.
-                                            Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat
-                                            urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at
-                                            consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse
-                                            platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis.
+                                            <div class="card card-warning">
+                                                <div class="card-header">
+                                                    <h3 class="card-title">Sosial Media</h3>
+                                                </div>
+                                                <!-- /.card-header -->
+                                                <div class="card-body">
+                                                    <form action="/admin/pengaturan/sosialmedia" method="POST"
+                                                        id="sosialmedia" enctype="multipart/form-data">
+                                                        {{ csrf_field() }}
+
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <!-- text input -->
+                                                                <div class="form-group">
+                                                                    <label>Judul</label>
+                                                                    <input type="text" name="judul" class="form-control"
+                                                                        placeholder="Enter ..."
+                                                                        value="{{ $sosialmedia->judul }}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <!-- textarea -->
+                                                                <div class="form-group">
+                                                                    <label>Deskripsi</label>
+                                                                    <div class="card-body">
+                                                                        <textarea id="summernote3" rows="3"
+                                                                            name="deskripsi" required>{!! $sosialmedia->deskripsi !!}
+                                                                        </textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                        </div>
+
+                                                        <div class="modal-footer">
+
+                                                            <button type="submit"
+                                                                class="btn btn-primary">Simpan</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <!-- /.card-body -->
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="vert-tabs-admsklh" role="tabpanel"
+                                            aria-labelledby="admsklh">
+                                            <div class="card card-warning">
+                                                <div class="card-header">
+                                                    <h3 class="card-title">Administrasi Kantor Sekolah</h3>
+                                                </div>
+                                                <!-- /.card-header -->
+                                                <div class="card-body">
+                                                    <form action="/admin/pengaturan/admsklh" method="POST"
+                                                        id="admsklh" enctype="multipart/form-data">
+                                                        {{ csrf_field() }}
+
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <!-- text input -->
+                                                                <div class="form-group">
+                                                                    <label>Judul</label>
+                                                                    <input type="text" name="judul" class="form-control"
+                                                                        placeholder="Enter ..."
+                                                                        value="{{ $admsklh->judul }}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <!-- textarea -->
+                                                                <div class="form-group">
+                                                                    <label>Deskripsi</label>
+                                                                    <div class="card-body">
+                                                                        <textarea id="summernote4" rows="3"
+                                                                            name="deskripsi" required>{!! $admsklh->deskripsi !!}
+                                                                        </textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                        </div>
+
+                                                        <div class="modal-footer">
+
+                                                            <button type="submit"
+                                                                class="btn btn-primary">Simpan</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <!-- /.card-body -->
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="vert-tabs-perpustakaan" role="tabpanel"
+                                            aria-labelledby="perpustakaan">
+                                            <div class="card card-warning">
+                                                <div class="card-header">
+                                                    <h3 class="card-title">Perpustakaan</h3>
+                                                </div>
+                                                <!-- /.card-header -->
+                                                <div class="card-body">
+                                                    <form action="/admin/pengaturan/perpustakaan" method="POST"
+                                                        id="perpustakaan" enctype="multipart/form-data">
+                                                        {{ csrf_field() }}
+
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <!-- text input -->
+                                                                <div class="form-group">
+                                                                    <label>Judul</label>
+                                                                    <input type="text" name="judul" class="form-control"
+                                                                        placeholder="Enter ..."
+                                                                        value="{{ $perpustakaan->judul }}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <!-- textarea -->
+                                                                <div class="form-group">
+                                                                    <label>Deskripsi</label>
+                                                                    <div class="card-body">
+                                                                        <textarea id="summernote5" rows="3"
+                                                                            name="deskripsi" required>{!! $perpustakaan->deskripsi !!}
+                                                                        </textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <div class="form-group">
+                                                                    <label>Foto</label>
+                                                                    <div class="custom-file">
+                                                                        <input type="file" name="gambar"
+                                                                            class="custom-file-input" id="idvisimisi">
+                                                                        <label class="custom-file-label"
+                                                                            for="idvisimisi">@if($perpustakaan->gambar){{ $perpustakaan->gambar }}@else
+                                                                            Choose file @endif</label>
+                                                                        <span id="error" class="error invalid-feedback"
+                                                                            style=""></span>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="modal-footer">
+
+                                                            <button type="submit"
+                                                                class="btn btn-primary">Simpan</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <!-- /.card-body -->
+                                            </div>
+                                        </div>
+                                         <div class="tab-pane fade" id="vert-tabs-labkom" role="tabpanel"
+                                            aria-labelledby="labkom">
+                                            <div class="card card-warning">
+                                                <div class="card-header">
+                                                    <h3 class="card-title">LAB Komputer</h3>
+                                                </div>
+                                                <!-- /.card-header -->
+                                                <div class="card-body">
+                                                    <form action="/admin/pengaturan/labkom" method="POST"
+                                                        id="labkom" enctype="multipart/form-data">
+                                                        {{ csrf_field() }}
+
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <!-- text input -->
+                                                                <div class="form-group">
+                                                                    <label>Judul</label>
+                                                                    <input type="text" name="judul" class="form-control"
+                                                                        placeholder="Enter ..."
+                                                                        value="{{ $labkom->judul }}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <!-- textarea -->
+                                                                <div class="form-group">
+                                                                    <label>Deskripsi</label>
+                                                                    <div class="card-body">
+                                                                        <textarea id="summernote6" rows="3"
+                                                                            name="deskripsi" required>{!! $labkom->deskripsi !!}
+                                                                        </textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <div class="form-group">
+                                                                    <label>Foto</label>
+                                                                    <div class="custom-file">
+                                                                        <input type="file" name="gambar"
+                                                                            class="custom-file-input" id="idvisimisi">
+                                                                        <label class="custom-file-label"
+                                                                            for="idvisimisi">@if($labkom->gambar){{ $labkom->gambar }}@else
+                                                                            Choose file @endif</label>
+                                                                        <span id="error" class="error invalid-feedback"
+                                                                            style=""></span>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="modal-footer">
+
+                                                            <button type="submit"
+                                                                class="btn btn-primary">Simpan</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <!-- /.card-body -->
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

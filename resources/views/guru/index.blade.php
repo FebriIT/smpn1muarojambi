@@ -66,7 +66,10 @@
                                         <td>{{$datas->mapel->mapel_nama}}</td>
                                         <td>{{$datas->jenis_kelamin}}</td>
                                         <td>{{$datas->no_hp}}</td>
+
+
                                         <td>{{$datas->tanggal_lahir->format('d/m/Y')}}</td>
+                                        @if($datas->nama_guru!='admin')
                                         <td class="project-actions text-right">
                                             <div>
 
@@ -86,7 +89,9 @@
 
                                             </div>
                                         </td>
-
+                                        @else
+                                        <td></td>
+                                        @endif
 
                                     </tr>
                                     @endforeach

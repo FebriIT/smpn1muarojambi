@@ -27,6 +27,7 @@ Route::get('/administrasikantorsekolah', 'ProfileDepanController@administrasikan
 Route::get('/perpustakaan', 'ProfileDepanController@perpustakaan');
 Route::get('/labkomputer', 'ProfileDepanController@labkomputer');
 Route::get('/guru', 'ProfileDepanController@guru');
+Route::get('/sejarah', 'ProfileDepanController@sejarah');
 
 
 // Route::post('/register', 'AuthController@postRegister');
@@ -93,6 +94,11 @@ Route::prefix('admin')->middleware('auth', 'checkRole:admin')->group(function ()
     Route::get('/pengaturan', 'PengaturanController@index')->name('admin/pengaturan');
     Route::post('/pengaturan/tentangkami', 'PengaturanController@tentangkami');
     Route::post('/pengaturan/visimisi', 'PengaturanController@visimisi');
+    Route::post('/pengaturan/sejarah', 'PengaturanController@sejarah');
+    Route::post('/pengaturan/sosialmedia', 'PengaturanController@sosialmedia');
+    Route::post('/pengaturan/admsklh', 'PengaturanController@admsklh');
+    Route::post('/pengaturan/perpustakaan', 'PengaturanController@perpustakaan');
+    Route::post('/pengaturan/labkom', 'PengaturanController@labkom');
 });
 
 

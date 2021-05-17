@@ -24,23 +24,32 @@ class ProfileDepanController extends Controller
     }
     public function sosialmedia()
     {
-        return view('profiledepan.sosialmedia');
+        $data = Pengaturan::where('id', 4)->first();
+        return view('profiledepan.sosialmedia', compact('data'));
     }
     public function administrasikantorsekolah()
     {
-        return view('profiledepan.admkantorsekolah');
+        $data = Pengaturan::where('id', 5)->first();
+        return view('profiledepan.admkantorsekolah', compact('data'));
     }
     public function perpustakaan()
     {
-        return view('profiledepan.perpustakaan');
+        $data = Pengaturan::where('id', 6)->first();
+        return view('profiledepan.perpustakaan', compact('data'));
     }
     public function labkomputer()
     {
-        return view('profiledepan.labkomputer');
+        $data = Pengaturan::where('id', 7)->first();
+        return view('profiledepan.labkomputer', compact('data'));
     }
     public function guru()
     {
         $data = Guru::all();
         return view('profiledepan.guru', compact('data'));
+    }
+    public function Sejarah()
+    {
+        $data = Pengaturan::where('id', 3)->first();
+        return view('profiledepan.sejarah', compact('data'));
     }
 }
