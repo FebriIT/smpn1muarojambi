@@ -8,6 +8,7 @@
         </div>
         <div class="info">
             <a href="#" class="d-block">{{auth()->user()->name}}</a>
+            <span class="right badge badge-info">Admin</span>
         </div>
     </div>
 
@@ -189,6 +190,7 @@
         </div>
         <div class="info">
             <a href="#" class="d-block">{{auth()->user()->name}}</a>
+            <span class="right badge badge-info">Guru</span>
         </div>
     </div>
 
@@ -247,7 +249,7 @@
                     </p>
                 </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a href="{{route('guru/tugas')}}" class="{{Request::is('guru/tugas')?'active':''}} nav-link">
                     <i class="nav-icon fas fa-book"></i>
                     <p>
@@ -255,7 +257,7 @@
 
                     </p>
                 </a>
-            </li>
+            </li> --}}
             {{-- <li class="nav-item">
                 <a href="{{route('guru/mapel')}}" class="{{Request::is('guru/mapel')?'active':''}} nav-link">
             <i class="nav-icon fas fa-book"></i>
@@ -291,6 +293,7 @@
         </div>
         <div class="info">
             <a href="#" class="d-block">{{auth()->user()->name}}</a>
+            <span class="right badge badge-info">Siswa</span>
         </div>
     </div>
 
