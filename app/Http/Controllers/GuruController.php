@@ -8,6 +8,7 @@ use App\Mapel;
 use App\User;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class GuruController extends Controller
 {
@@ -55,14 +56,15 @@ class GuruController extends Controller
         $request->request->add(['user_id' => $user->id]);
 
         $guru = \App\Guru::create($request->all());
-        if ($request->has('avatar')) {
-            //   ini untuk update profile
-            // unlink('images/guru/'. $guru->avatar);
 
-            $request->file('avatar')->move('images/guru/', $request->file('avatar')->getClientOriginalName());
+        if ($request->has('avatar')) {
+
+
+            $request->file('avatar')->move('storage/guru/' . $request->email, $request->file('avatar')->getClientOriginalName());
             $guru->avatar = $request->file('avatar')->getClientOriginalName();
             $guru->save();
         }
+
 
         return redirect()->back()->with('success', 'Data Berhasil Dibuat');
     }
@@ -103,9 +105,10 @@ class GuruController extends Controller
     {
 
         $guru = \App\Guru::find($id);
-        $image_path = "images/guru/" . $guru->avatar;  // Value is not URL but directory file path
-        if (File::exists($image_path)) {
-            File::delete($image_path);
+        $image_path = "public/guru/" . $guru->user->email . '/' . $guru->avatar;  // Value is not URL but directory file path
+        if (Storage::exists($image_path)) {
+            // unlink('images/pengaturan/' . $data->gambar);
+            Storage::deleteDirectory("public/guru/" . $guru->user->email);
         }
         $user = \App\User::find($guru->user_id);
         $user->delete();

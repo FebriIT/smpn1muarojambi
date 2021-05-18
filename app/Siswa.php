@@ -16,7 +16,7 @@ class Siswa extends Model
         if (!$this->avatar) {
             return asset('images/default.png');
         }
-        return asset('images/siswa/' . $this->avatar);
+        return asset('storage/siswa/' . $this->avatar);
     }
     public function user()
     {

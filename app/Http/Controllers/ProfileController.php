@@ -32,6 +32,7 @@ class ProfileController extends Controller
     public function update($id, Request $req)
     {
         $data = Guru::find($id);
+
         user::where(['id' => $data->user_id])
             ->update(['name' => $req->nama_guru]);
 
@@ -41,7 +42,7 @@ class ProfileController extends Controller
             if ($req->has('avatar')) {
 
 
-                $req->file('avatar')->move('images/guru/', $req->file('avatar')->getClientOriginalName());
+                $req->file('avatar')->move('storage/guru/' . $data->user->email, $req->file('avatar')->getClientOriginalName());
                 $data->avatar = $req->file('avatar')->getClientOriginalName();
                 $data->save();
             }
@@ -49,9 +50,9 @@ class ProfileController extends Controller
             if ($req->has('avatar')) {
                 //   ini untuk update profile
 
-                unlink('images/guru/' . $data->avatar);
+                unlink('storage/guru/' . $data->user->email . '/' . $data->avatar);
 
-                $req->file('avatar')->move('images/guru/', $req->file('avatar')->getClientOriginalName());
+                $req->file('avatar')->move('storage/guru/' . $data->user->email, $req->file('avatar')->getClientOriginalName());
                 $data->avatar = $req->file('avatar')->getClientOriginalName();
                 $data->save();
             }

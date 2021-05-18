@@ -26,10 +26,11 @@
                 <?php foreach ($data as $row) : ?>
                 <div class="col-xs-12 col-sm-6 col-md-3">
                     <div class="admission_insruction">
-                        <?php if(empty($row->avatar)):?>
-                        <img src="{{ asset('images/default.png') }}" style="height: 250px;width:250px;object-fit:cover;" class="img-fluid" alt="#">
+                        <?php if(Storage::exists('public/guru/'.$row->user->email.'/' . $row->avatar)):?>
+                        <img src="{{ asset('storage/guru/'.$row->user->email.'/'.$row->avatar) }}"  style="height: 250px;width:250px;object-fit:cover;" class="img-fluid" alt="#">
+                        
                         <?php else:?>
-                        <img src="{{ $row->getAvatar() }}"  style="height: 250px;width:250px;object-fit:cover;" class="img-fluid" alt="#">
+                        <img src="{{ asset('images/default.png') }}" style="height: 250px;width:250px;object-fit:cover;" class="img-fluid" alt="#">
                         <?php endif;?>
                         <p class="text-center mt-3"><span>{{ $row->nama_guru }}</span>
                             <br>

@@ -16,7 +16,7 @@ class Guru extends Model
         if (!$this->avatar) {
             return asset('images/default.png');
         }
-        return asset('images/guru/' . $this->avatar);
+        return asset('storage/guru/' . auth()->user()->email . '/' . $this->avatar);
     }
     public function user()
     {
