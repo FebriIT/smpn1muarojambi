@@ -60,7 +60,7 @@ class GuruController extends Controller
         if ($request->has('avatar')) {
 
 
-            $request->file('avatar')->move('storage/guru/' . $request->email, $request->file('avatar')->getClientOriginalName());
+            $request->file('avatar')->move(public_path() . '/storage/guru/' . $request->email, $request->file('avatar')->getClientOriginalName());
             $guru->avatar = $request->file('avatar')->getClientOriginalName();
             $guru->save();
         }
@@ -105,10 +105,11 @@ class GuruController extends Controller
     {
 
         $guru = \App\Guru::find($id);
-        $image_path = "public/guru/" . $guru->user->email . '/' . $guru->avatar;  // Value is not URL but directory file path
+        $image_path = '/public/guru/' . $guru->user->email . '/' . $guru->avatar;
+        // dd($image_path); // Value is not URL but directory file path
         if (Storage::exists($image_path)) {
             // unlink('images/pengaturan/' . $data->gambar);
-            Storage::deleteDirectory("public/guru/" . $guru->user->email);
+            Storage::deleteDirectory('/public/guru/' . $guru->user->email);
         }
         $user = \App\User::find($guru->user_id);
         $user->delete();
