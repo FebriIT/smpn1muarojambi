@@ -42,17 +42,19 @@ class ProfileController extends Controller
             if ($req->has('avatar')) {
 
 
-                $req->file('avatar')->move('storage/guru/' . $data->user->email, $req->file('avatar')->getClientOriginalName());
+                $req->file('avatar')->move(public_path() . '/storage/guru/' . $data->user->email, $req->file('avatar')->getClientOriginalName());
                 $data->avatar = $req->file('avatar')->getClientOriginalName();
                 $data->save();
             }
         } else {
+
             if ($req->has('avatar')) {
                 //   ini untuk update profile
 
-                unlink('storage/guru/' . $data->user->email . '/' . $data->avatar);
+                unlink(public_path() . '/storage/guru/' . $data->user->email . '/' . $data->avatar);
 
-                $req->file('avatar')->move('storage/guru/' . $data->user->email, $req->file('avatar')->getClientOriginalName());
+
+                $req->file('avatar')->move(public_path() . '/storage/guru/' . $data->user->email, $req->file('avatar')->getClientOriginalName());
                 $data->avatar = $req->file('avatar')->getClientOriginalName();
                 $data->save();
             }
