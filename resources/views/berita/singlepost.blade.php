@@ -40,9 +40,9 @@
                     <div class="blog-tiltle_block">
                         <h4><a href="#">{{$post->berita_judul}}</a></h4>
                         <h6> <a href="#"><i class="fa fa-user"
-                                    aria-hidden="true"></i><span>{{$post->berita_author}}</span> </a> | <a href="#"><i
+                                    aria-hidden="true"></i><span>{{$post->author}}</span> </a> | <a href="#"><i
                                     class="fa fa-tags"
-                                    aria-hidden="true"></i><span>{{$post->berita_kategori_nama}}</span> </a> | <a
+                                    aria-hidden="true"></i><span>{{$post->kategori->kategori_nama}}</span> </a> | <a
                                 href="#"><i class="fa fa-eye"
                                     aria-hidden="true"></i><span>{{$post->berita_views}}</span></a></h6>
                         {!!$post->berita_isi!!}

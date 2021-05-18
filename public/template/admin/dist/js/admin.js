@@ -4,7 +4,7 @@ $("#checkall").change(function () {
 $('#calendar').datetimepicker({
     format: 'L',
     inline: true
-})
+});
 $(function () {
     bsCustomFileInput.init();
 });
