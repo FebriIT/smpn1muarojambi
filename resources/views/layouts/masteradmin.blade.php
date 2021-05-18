@@ -148,7 +148,7 @@
     <script src="{{ asset('template/admin/plugins/jquery-validation/additional-methods.min.js') }}"></script>
 
     {{-- custom febri --}}
-    <script src="/template/admin.js"></script>
+    <script src="{{ asset('template/admin.js') }}"></script>
 
 
 </body>
