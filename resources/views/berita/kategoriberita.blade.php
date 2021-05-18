@@ -11,7 +11,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Artikel</title>
+    <title>{{ $kategori_nama }}</title>
     @include('layouts.halamandepan._headcss')
     <style>
         .sharePopup {

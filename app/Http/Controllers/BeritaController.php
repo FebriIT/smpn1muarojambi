@@ -99,7 +99,7 @@ class BeritaController extends Controller
 
 
         // $post=Berita::where('berita_slug','=',$slug)->first();
-        return view('berita.kategoriberita', compact('data', 'datakategori', 'kategori', 'populer'));
+        return view('berita.kategoriberita', compact('data', 'datakategori', 'kategori', 'populer', 'kategori_nama'));
     }
 
     public function halamandepan()
