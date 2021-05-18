@@ -35,7 +35,7 @@ class BeritaController extends Controller
         $data->berita_isi = $request->berita_isi;
         $idkategori = $data->kategori_id = $request->kategori_id;
 
-        $data->user_id = auth()->user()->id;
+        $data->author = auth()->user()->name;
 
         $data->berita_gambar = $request->berita_gambar;
         // dd($data);

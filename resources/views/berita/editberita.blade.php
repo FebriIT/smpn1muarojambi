@@ -32,7 +32,7 @@
     <section class="content">
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
-            <form action="/{{auth()->user()->role}}/berita/update/{{ $data->berita_id }}" method="POST"
+            <form action="/{{auth()->user()->role}}/berita/update/{{ $data->id }}" method="POST"
                 enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="row">

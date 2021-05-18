@@ -62,7 +62,7 @@
                                         <td><img src="{{$datas->getGambar()}}" style="width:90px;"></td>
                                         <td>{{$datas->berita_judul}}</td>
                                         <td>{{$datas->berita_tanggal}}</td>
-                                        <td>{{$datas->user->name}}</td>
+                                        <td>{{$datas->author}}</td>
                                         <td>{{$datas->berita_views}}</td>
                                         <td>{{$datas->kategori->kategori_nama}}</td>
 
