@@ -147,7 +147,7 @@
     <script src="{{ asset('template/admin/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('template/admin/plugins/jquery-validation/additional-methods.min.js') }}"></script>
 
-    {{-- custom febri --}}
+    
     <script src="{{ asset('template/admin.js') }}"></script>
 
 

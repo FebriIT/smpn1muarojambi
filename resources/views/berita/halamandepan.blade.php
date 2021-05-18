@@ -51,7 +51,7 @@
                     <div class="blog-tiltle_block">
                         <h4><a href="{{route('site.single.post',$row->berita_slug)}}"><?php echo $row->berita_judul;?></a></h4>
                         <h6> <a href="#"><i class="fa fa-user" aria-hidden="true"></i><span>{{$row->berita_author}}</span> </a> | <a href="#"><i class="fa fa-tags" aria-hidden="true"></i><span>{{$row->berita_kategori_nama}}</span> </a> | <a href="#"><i class="fa fa-eye" aria-hidden="true"></i><span>{{$row->berita_views}}</span></a></h6>
-                        <?php echo limit_words($row->berita_isi,20).'...';?>
+                        {!! Str::words(strip_tags($row->berita_isi),25, '...') !!}
                         <div class="blog-icons">
                             <div class="blog-share_block">
                                 <a href="/artikel/{{$row->berita_slug}}">Read More</a>
