@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Materi;
 use App\Mapel;
 use App\Kelas;
+use Illuminate\Support\Facades\Storage;
 
 class MateriController extends Controller
 {
@@ -20,13 +21,19 @@ class MateriController extends Controller
 
     public function tambah(Request $request)
     {
-        $data = Materi::create($request->all());
+        $data = new Materi;
+        $data->materi = $request->materi;
+        $data->mapel_id = $request->mapel_id;
+        $data->deskripsi = $request->deskripsi;
+        $data->kelas_id = $request->kelas_id;
+        $data->link_materi = $request->link_materi;
+        $data->author = auth()->user()->name;
+        $email = auth()->user()->email;
         if ($request->has('file_materi')) {
-            //   ini untuk update profile
-            // unlink('images/guru/'. $guru->avatar);
-
-            $request->file('file_materi')->move('file/materi/', $request->file('file_materi')->getClientOriginalName());
+            $request->file('file_materi')->move(public_path() . '/storage/materi/' . $email, $request->file('file_materi')->getClientOriginalName());
             $data->file_materi = $request->file('file_materi')->getClientOriginalName();
+            $data->save();
+        } else {
             $data->save();
         }
         return redirect()->back()->with('success', 'Data Berhasil Ditambah');
@@ -35,6 +42,14 @@ class MateriController extends Controller
     public function hapus($id)
     {
         $data = Materi::find($id);
+        $email = auth()->user()->email;
+        // dd($email);
+        $image_path = '/public/materi/' . $email . '/' . $data->file_materi;
+
+        if (Storage::exists($image_path)) {
+
+            Storage::delete($image_path);
+        }
         $data->delete();
         return redirect()->back()->with('toast_success', 'Data Berhasil Dihapus');
     }

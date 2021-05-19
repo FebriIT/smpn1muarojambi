@@ -126,6 +126,8 @@ Route::prefix('guru')->middleware('auth', 'checkRole:guru')->group(function () {
 Route::prefix('siswa')->middleware('auth', 'checkRole:siswa')->group(function () {
     Route::get('/dashboard', 'DashboardController@index')->name('siswa/dashboard');
     Route::get('/profile', 'ProfileController@index')->name('siswa/profile');
+    Route::post('/profile/{id}/update', 'ProfileController@update');
+    Route::post('/profile/changepassword', 'ProfileController@changepassword');
 
     Route::get('/kelas', 'KelasController@opensiswa')->name('siswa/kelas');
 });

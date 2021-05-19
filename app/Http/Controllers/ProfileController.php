@@ -31,36 +31,56 @@ class ProfileController extends Controller
 
     public function update($id, Request $req)
     {
-        $data = Guru::find($id);
+        if (auth()->user()->role == 'guru') {
+            $data = Guru::find($id);
+            user::where(['id' => $data->user_id])
+                ->update(['name' => $req->nama_guru]);
+            if ($data->avatar == null) {
+                if ($req->has('avatar')) {
+                    $req->file('avatar')->move(public_path() . '/storage/guru/' . $data->user->email, $req->file('avatar')->getClientOriginalName());
+                    $data->avatar = $req->file('avatar')->getClientOriginalName();
+                    $data->save();
+                }
+            } else {
+                if ($req->has('avatar')) {
+                    //   ini untuk update profile
 
-        user::where(['id' => $data->user_id])
-            ->update(['name' => $req->nama_guru]);
+                    unlink(public_path() . '/storage/guru/' . $data->user->email . '/' . $data->avatar);
 
 
-
-        if ($data->avatar == null) {
-            if ($req->has('avatar')) {
-
-
-                $req->file('avatar')->move(public_path() . '/storage/guru/' . $data->user->email, $req->file('avatar')->getClientOriginalName());
-                $data->avatar = $req->file('avatar')->getClientOriginalName();
-                $data->save();
+                    $req->file('avatar')->move(public_path() . '/storage/guru/' . $data->user->email, $req->file('avatar')->getClientOriginalName());
+                    $data->avatar = $req->file('avatar')->getClientOriginalName();
+                    $data->save();
+                }
             }
-        } else {
 
-            if ($req->has('avatar')) {
-                //   ini untuk update profile
+            $data->update(['nip_guru' => $req->nip_guru, 'nama_guru' => $req->nama_guru, 'tanggal_lahir' => $req->tanggal_lahir, 'no_hp' => $req->no_hp]);
+        } elseif (auth()->user()->role == 'siswa') {
+            $data = Siswa::find($id);
+            user::where(['id' => $data->user_id])
+                ->update(['name' => $req->nama_siswa]);
+            if ($data->avatar == null) {
+                if ($req->has('avatar')) {
+                    $req->file('avatar')->move(public_path() . '/storage/siswa/' . $data->user->email, $req->file('avatar')->getClientOriginalName());
+                    $data->avatar = $req->file('avatar')->getClientOriginalName();
+                    $data->save();
+                }
+            } else {
+                if ($req->has('avatar')) {
+                    //   ini untuk update profile
 
-                unlink(public_path() . '/storage/guru/' . $data->user->email . '/' . $data->avatar);
+                    unlink(public_path() . '/storage/siswa/' . $data->user->email . '/' . $data->avatar);
 
 
-                $req->file('avatar')->move(public_path() . '/storage/guru/' . $data->user->email, $req->file('avatar')->getClientOriginalName());
-                $data->avatar = $req->file('avatar')->getClientOriginalName();
-                $data->save();
+                    $req->file('avatar')->move(public_path() . '/storage/siswa/' . $data->user->email, $req->file('avatar')->getClientOriginalName());
+                    $data->avatar = $req->file('avatar')->getClientOriginalName();
+                    $data->save();
+                }
             }
+
+            $data->update(['nisn' => $req->nisn, 'nama_siswa' => $req->nama_siswa, 'tanggal_lahir' => $req->tanggal_lahir]);
         }
 
-        $data->update(['nip_guru' => $req->nip_guru, 'nama_guru' => $req->nama_guru, 'tanggal_lahir' => $req->tanggal_lahir, 'no_hp' => $req->no_hp]);
         return redirect()->back()->with('toast_success', 'Data Berhasil diubah');
     }
 

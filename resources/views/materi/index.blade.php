@@ -54,6 +54,7 @@
                                         <th>Link</th>
                                         <th>Kelas</th>
                                         <th>File Materi</th>
+                                        <th>Author</th>
                                         <th style="width: 17%">Aksi</th>
 
                                     </tr>
@@ -68,6 +69,7 @@
                                         <td>{{$datas->link_materi}}</td>
                                         <td>{{$datas->kelas->nama_kelas}}</td>
                                         <td>{{$datas->file_materi}}</td>
+                                        <td>{{ $datas->author }}</td>
 
                                         <td class="project-actions text-right">
                                             <div>

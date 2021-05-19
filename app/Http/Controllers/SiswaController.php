@@ -9,6 +9,7 @@ use App\Kelas;
 use App\User;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class SiswaController extends Controller
 {
@@ -50,7 +51,7 @@ class SiswaController extends Controller
             //   ini untuk update profile
             // unlink('images/guru/'. $guru->avatar);
 
-            $request->file('avatar')->move('images/siswa/', $request->file('avatar')->getClientOriginalName());
+            $request->file('avatar')->move(public_path() . '/storage/siswa/' . $request->email, $request->file('avatar')->getClientOriginalName());
             $siswa->avatar = $request->file('avatar')->getClientOriginalName();
             $siswa->save();
         }
@@ -60,9 +61,10 @@ class SiswaController extends Controller
     public function hapus($id, Request $request)
     {
         $siswa = \App\Siswa::find($id);
-        $image_path = "images/siswa/" . $siswa->avatar;  // Value is not URL but directory file path
-        if (File::exists($image_path)) {
-            File::delete($image_path);
+        $image_path = '/public/siswa/' . $siswa->user->email . '/' . $siswa->avatar;
+        if (Storage::exists($image_path)) {
+
+            Storage::deleteDirectory('/public/siswa/' . $siswa->user->email);
         }
         $user = \App\User::find($siswa->user_id);
         $user->delete();

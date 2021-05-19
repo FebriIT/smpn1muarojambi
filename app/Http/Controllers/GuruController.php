@@ -28,8 +28,6 @@ class GuruController extends Controller
     }
     public function tambah(Request $request)
     {
-
-
         $this->validate($request, [
             'nip_guru' => 'required|integer|min:5|unique:guru',
             'nama_guru' => 'required|min:2',
@@ -38,8 +36,6 @@ class GuruController extends Controller
             'tanggal_lahir' => 'required',
             'mapel_id' => 'required',
             'avatar' => 'max:500'
-
-
         ]);
         // insert table user
         $user = new \App\User;
@@ -49,8 +45,6 @@ class GuruController extends Controller
         $user->password = bcrypt('guru123');
         $user->remember_token = Str::random(60);
         $user->save();
-
-
 
         // insert table siswa
         $request->request->add(['user_id' => $user->id]);
@@ -89,15 +83,6 @@ class GuruController extends Controller
 
         $guru->update($request->all());
 
-
-
-
-        // insert table siswa
-
-        // $request->request->add(['user_id' => $user->id, 'mapel_nama' => $namamapel]);
-
-
-
         return redirect()->back()->with('toast_success', 'Data Berhasil diubah');
     }
 
@@ -106,9 +91,9 @@ class GuruController extends Controller
 
         $guru = \App\Guru::find($id);
         $image_path = '/public/guru/' . $guru->user->email . '/' . $guru->avatar;
-        // dd($image_path); // Value is not URL but directory file path
+      
         if (Storage::exists($image_path)) {
-            // unlink('images/pengaturan/' . $data->gambar);
+
             Storage::deleteDirectory('/public/guru/' . $guru->user->email);
         }
         $user = \App\User::find($guru->user_id);

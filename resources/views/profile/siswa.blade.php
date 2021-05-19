@@ -79,7 +79,7 @@
                                 <div class="tab-pane" id="changepw">
                                     <!-- The timeline -->
                                     <form class="form-horizontal"
-                                        action="/guru/profile/changepassword" method="POST"
+                                        action="/siswa/profile/changepassword" method="POST"
                                         enctype="multipart/form-data" id="quickForm">
                                         {{ csrf_field() }}
                                         <div class="form-group row">
@@ -109,20 +109,20 @@
 
                                 <div class="tab-pane active" id="settings">
                                     <form class="form-horizontal"
-                                        action="/guru/profile/{{ auth()->user()->siswa->id }}/update" method="POST"
+                                        action="/siswa/profile/{{ auth()->user()->siswa->id }}/update" method="POST"
                                         enctype="multipart/form-data">
                                         {{ csrf_field() }}
                                         <div class="form-group row">
-                                            <label for="nip" class="col-sm-2 col-form-label">NIP</label>
+                                            <label for="nisn" class="col-sm-2 col-form-label">NISN</label>
                                             <div class="col-sm-10">
-                                                <input type="number" name="nip_guru" class="form-control" id="nip"
+                                                <input type="number" name="nisn" class="form-control" id="nisn"
                                                     value="{{ $data->nisn }}" required>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputName2" class="col-sm-2 col-form-label">Nama</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="nama_guru" id="inputName2"
+                                                <input type="text" class="form-control" name="nama_siswa" id="inputName2"
                                                     value="{{ $data->nama_siswa }}" required>
                                             </div>
                                         </div>

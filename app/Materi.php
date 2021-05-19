@@ -9,7 +9,7 @@ class Materi extends Model
 
     protected $table = 'materi';
 
-    protected $fillable = ['materi', 'deskripsi', 'kelas_id', 'mapel_id', 'file_materi', 'link_materi'];
+    protected $fillable = ['materi', 'deskripsi', 'kelas_id', 'mapel_id', 'file_materi', 'link_materi', 'author'];
 
     public function mapel()
     {
