@@ -31,7 +31,7 @@ class ProfileController extends Controller
 
     public function update($id, Request $req)
     {
-        if (auth()->user()->role == 'guru') {
+        if (auth()->user()->role == 'guru' || auth()->user()->role == 'admin') {
             $data = Guru::find($id);
             user::where(['id' => $data->user_id])
                 ->update(['name' => $req->nama_guru]);
