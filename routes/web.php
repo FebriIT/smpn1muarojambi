@@ -118,6 +118,7 @@ Route::prefix('guru')->middleware('auth', 'checkRole:guru')->group(function () {
     Route::get('/materi', 'MateriController@index')->name('guru/materi');
     Route::post('/materi/tambah', 'MateriController@tambah');
     Route::get('/materi/{id}/hapus', 'MateriController@hapus');
+    Route::get('/materi/download/{file_materi}', 'MateriController@getDownload');
 
     Route::get('/tugas', 'TugasController@index')->name('guru/tugas');
 });
@@ -128,6 +129,8 @@ Route::prefix('siswa')->middleware('auth', 'checkRole:siswa')->group(function ()
     Route::get('/profile', 'ProfileController@index')->name('siswa/profile');
     Route::post('/profile/{id}/update', 'ProfileController@update');
     Route::post('/profile/changepassword', 'ProfileController@changepassword');
+
+    Route::get('/materi/download/{file_materi}', 'MateriController@getDownload');
 
     Route::get('/kelas', 'KelasController@opensiswa')->name('siswa/kelas');
 });

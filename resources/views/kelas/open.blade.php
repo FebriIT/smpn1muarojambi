@@ -88,7 +88,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="datamateri" class="table table-bordered table-striped table1"
+                            <table id="datamateri" class="table table-bordered table-striped"
                                 style="font-size: 14px">
                                 <thead>
                                     <tr>
@@ -109,7 +109,7 @@
                                         <td class="project-actions text-right">
                                             <div>
 
-                                                <a class="btn btn-primary btn-sm" href="">
+                                                <a class="btn btn-primary btn-sm" href="{{ url('siswa/materi/download/'.$materi->file_materi) }}">
 
                                                     download
                                                 </a>
@@ -167,11 +167,4 @@
 </section>
 </div>
 
-<style>
-    .table1 {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-</style>
 @stop

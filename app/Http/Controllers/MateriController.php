@@ -28,9 +28,9 @@ class MateriController extends Controller
         $data->kelas_id = $request->kelas_id;
         $data->link_materi = $request->link_materi;
         $data->author = auth()->user()->name;
-        $email = auth()->user()->email;
+        // $email = auth()->user()->email;
         if ($request->has('file_materi')) {
-            $request->file('file_materi')->move(public_path() . '/storage/materi/' . $email, $request->file('file_materi')->getClientOriginalName());
+            $request->file('file_materi')->move(public_path() . '/storage/materi', $request->file('file_materi')->getClientOriginalName());
             $data->file_materi = $request->file('file_materi')->getClientOriginalName();
             $data->save();
         } else {
@@ -42,9 +42,9 @@ class MateriController extends Controller
     public function hapus($id)
     {
         $data = Materi::find($id);
-        $email = auth()->user()->email;
+        // $email = auth()->user()->email;
         // dd($email);
-        $image_path = '/public/materi/' . $email . '/' . $data->file_materi;
+        $image_path = '/public/materi/' . $data->file_materi;
 
         if (Storage::exists($image_path)) {
 
@@ -52,5 +52,12 @@ class MateriController extends Controller
         }
         $data->delete();
         return redirect()->back()->with('toast_success', 'Data Berhasil Dihapus');
+    }
+
+    public function getDownload($file_materi)
+    {
+
+
+        return  response()->download(public_path() . '/storage/materi/' . $file_materi);
     }
 }

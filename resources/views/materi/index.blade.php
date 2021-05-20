@@ -74,7 +74,11 @@
                                         <td class="project-actions text-right">
                                             <div>
 
-
+                                                <a class="btn btn-primary btn-sm" href="{{ url('guru/materi/download/'.$datas->file_materi) }}">
+                                                    <i class="fas fa-download">
+                                                    </i>
+                                                    download
+                                                </a>
                                                 <a class="btn btn-danger btn-sm"
                                                     href="/{{auth()->user()->role}}/materi/{{$datas->id}}/hapus"
                                                     onclick="return confirm('Apakah Anda Yakin Inggin Dihapus ?')">
