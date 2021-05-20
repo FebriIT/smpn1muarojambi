@@ -35,7 +35,7 @@
 
                 </div>
                 <div class="col-md-5">
-                    <img src="{{ asset('storage/pengaturan/'.$data->gambar) }}" class="img-fluid" alt="#">
+                    <img src="{{ asset('storage/pengaturan/visimisi/'.$data->gambar) }}" class="img-fluid" alt="#">
                 </div>
             </div>
         </div>
