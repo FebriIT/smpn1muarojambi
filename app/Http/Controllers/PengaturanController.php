@@ -31,12 +31,13 @@ class PengaturanController extends Controller
         $data->update(['judul' => $judul, 'deskripsi' => $deskripsi]);
         if ($req->has('gambar')) {
             //   ini untuk update profile
-            if (Storage::exists('public/pengaturan/tentangkami/' . $data->gambar)) {
+            // dd();
+            if (file_exists(str_replace('\\', '/', public_path()) . '/storage/pengaturan/tentangkami/' . $data->gambar)) {
                 // unlink('images/pengaturan/' . $data->gambar);
-                Storage::delete('public/pengaturan/tentangkami/' . $data->gambar);
+                Storage::delete(public_path() . '/storage/pengaturan/tentangkami/' . $data->gambar);
             }
 
-            $req->file('gambar')->move('storage/pengaturan/tentangkami', $req->file('gambar')->getClientOriginalName());
+            $req->file('gambar')->move(public_path() . '/storage/pengaturan/tentangkami', $req->file('gambar')->getClientOriginalName());
             $data->gambar = $req->file('gambar')->getClientOriginalName();
             $data->save();
         }

@@ -12,8 +12,8 @@ class Pengaturan extends Model
     public function getGambar()
     {
         if (!$this->gambar) {
-            return asset('images/pengaturan/default.jpg');
+            return asset(public_path() . '/public/pengaturan/default.jpg');
         }
-        return asset('images/pengaturan/' . $this->gambar);
+        return asset(public_path() . '/storage/pengaturan/visimisi/' . $this->gambar);
     }
 }
