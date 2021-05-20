@@ -55,12 +55,11 @@ class PengaturanController extends Controller
 
         if ($req->has('gambar')) {
             //   ini untuk update profile
-            if (Storage::exists('public/pengaturan/visimisi/' . $data->gambar)) {
-                // unlink('images/pengaturan/' . $data->gambar);
-                Storage::delete('public/pengaturan/visimisi/' . $data->gambar);
+            if (file_exists(str_replace('\\', '/', public_path()) . '/storage/pengaturan/visimisi/' . $data->gambar)) {
+                unlink(public_path() . '/storage/pengaturan/visimisi/' . $data->gambar);
             }
 
-            $req->file('gambar')->move('storage/pengaturan/visimisi', $req->file('gambar')->getClientOriginalName());
+            $req->file('gambar')->move(public_path() . '/storage/pengaturan/visimisi', $req->file('gambar')->getClientOriginalName());
             $data->gambar = $req->file('gambar')->getClientOriginalName();
             $data->save();
         }
@@ -74,20 +73,7 @@ class PengaturanController extends Controller
         $deskripsi = $req->deskripsi;
         $data = Pengaturan::find(3);
         $data->update(['judul' => $judul, 'deskripsi' => $deskripsi]);
-        // $exists = Storage::disk('s3')->exists('file.jpg');
-        // dd(Storage::exists('public/pengaturan/bg5.jpeg'));
 
-        // if ($req->has('gambar')) {
-        //     //   ini untuk update profile
-        //     if (Storage::exists('public/pengaturan/sejarah/' . $data->gambar)) {
-        //         // unlink('images/pengaturan/' . $data->gambar);
-        //         Storage::delete('public/pengaturan/sejarah/' . $data->gambar);
-        //     }
-
-        //     $req->file('gambar')->move('storage/pengaturan/sejarah', $req->file('gambar')->getClientOriginalName());
-        //     $data->gambar = $req->file('gambar')->getClientOriginalName();
-        //     $data->save();
-        // }
         return redirect()->back()->with('success', 'Tentang Kami Berhasil Diubah');
     }
 
@@ -124,12 +110,11 @@ class PengaturanController extends Controller
 
         if ($req->has('gambar')) {
             //   ini untuk update profile
-            if (Storage::exists('public/pengaturan/perpustakaan/' . $data->gambar)) {
-                // unlink('images/pengaturan/' . $data->gambar);
-                Storage::delete('public/pengaturan/perpustakaan/' . $data->gambar);
+            if (file_exists(str_replace('\\', '/', public_path()) . '/storage/pengaturan/perpustakaan/' . $data->gambar)) {
+                unlink(public_path() . '/storage/pengaturan/perpustakaan/' . $data->gambar);
             }
 
-            $req->file('gambar')->move('storage/pengaturan/perpustakaan', $req->file('gambar')->getClientOriginalName());
+            $req->file('gambar')->move(public_path() . '/storage/pengaturan/perpustakaan', $req->file('gambar')->getClientOriginalName());
             $data->gambar = $req->file('gambar')->getClientOriginalName();
             $data->save();
         }
@@ -148,12 +133,11 @@ class PengaturanController extends Controller
 
         if ($req->has('gambar')) {
             //   ini untuk update profile
-            if (Storage::exists('public/pengaturan/labkom/' . $data->gambar)) {
-                // unlink('images/pengaturan/' . $data->gambar);
-                Storage::delete('public/pengaturan/labkom/' . $data->gambar);
+            if (file_exists(str_replace('\\', '/', public_path()) . '/storage/pengaturan/labkom/' . $data->gambar)) {
+                unlink(public_path() . '/storage/pengaturan/labkom/' . $data->gambar);
             }
 
-            $req->file('gambar')->move('storage/pengaturan/labkom', $req->file('gambar')->getClientOriginalName());
+            $req->file('gambar')->move(public_path() . '/storage/pengaturan/labkom', $req->file('gambar')->getClientOriginalName());
             $data->gambar = $req->file('gambar')->getClientOriginalName();
             $data->save();
         }
