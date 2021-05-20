@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <!-- Required meta tags -->
@@ -8,29 +9,30 @@
     <title>LAB Komputer</title>
     @include('layouts.halamandepan._headcss')
     <style>
-    	.sharePopup{
-    		font-size: 11px;
-    	}
-      .sharePopup a{
-    		font-size: 11px;
-        color: #fff;
-        text-decoration: none;
-    	}
+        .sharePopup {
+            font-size: 11px;
+        }
+
+        .sharePopup a {
+            font-size: 11px;
+            color: #fff;
+            text-decoration: none;
+        }
     </style>
 
 </head>
 
 <body>
-  <!--============================= HEADER =============================-->
- @include('layouts.halamandepan._header')
-<!--//END HEADER -->
-<section class="welcome_about">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-7">
-                <h2>{{ $data->judul }}</h2>
+    <!--============================= HEADER =============================-->
+    @include('layouts.halamandepan._header')
+    <!--//END HEADER -->
+    <section class="welcome_about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+                    <h2>{{ $data->judul }}</h2>
 
-               {!! $data->deskripsi !!}
+                    {!! $data->deskripsi !!}
 
 
                 </div>
@@ -39,29 +41,44 @@
                 </div>
             </div>
         </div>
-</section>
-<!--============================= FOOTER =============================-->
-@include('layouts.halamandepan._footer')
-        <!--//END FOOTER -->
-        @include('layouts.halamandepan._javascript')
+    </section>
+    <!--============================= FOOTER =============================-->
+    @include('layouts.halamandepan._footer')
+    <!--//END FOOTER -->
+    @include('layouts.halamandepan._javascript')
 
-        <script>
-            $(document).ready(function(){
-              $(".sharePopup").jsSocials({
-                    showCount: true,
-                          showLabel: true,
-                          shareIn: "popup",
-                          shares: [
-                          { share: "twitter", label: "Twitter" },
-                          { share: "facebook", label: "Facebook" },
-                          { share: "googleplus", label: "Google+" },
-                          { share: "linkedin", label: "Linked In" },
-                    { share: "pinterest", label: "Pinterest" }
-                          ]
-                  });
+    <script>
+        $(document).ready(function () {
+            $(".sharePopup").jsSocials({
+                showCount: true,
+                showLabel: true,
+                shareIn: "popup",
+                shares: [{
+                        share: "twitter",
+                        label: "Twitter"
+                    },
+                    {
+                        share: "facebook",
+                        label: "Facebook"
+                    },
+                    {
+                        share: "googleplus",
+                        label: "Google+"
+                    },
+                    {
+                        share: "linkedin",
+                        label: "Linked In"
+                    },
+                    {
+                        share: "pinterest",
+                        label: "Pinterest"
+                    }
+                ]
             });
-          </script>
+        });
+    </script>
 
-    </body>
+</body>
 
 </html>
+

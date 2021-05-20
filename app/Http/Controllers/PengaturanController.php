@@ -33,8 +33,7 @@ class PengaturanController extends Controller
             //   ini untuk update profile
             // dd();
             if (file_exists(str_replace('\\', '/', public_path()) . '/storage/pengaturan/tentangkami/' . $data->gambar)) {
-                // unlink('images/pengaturan/' . $data->gambar);
-                Storage::delete(public_path() . '/storage/pengaturan/tentangkami/' . $data->gambar);
+                unlink(public_path() . '/storage/pengaturan/tentangkami/' . $data->gambar);
             }
 
             $req->file('gambar')->move(public_path() . '/storage/pengaturan/tentangkami', $req->file('gambar')->getClientOriginalName());
