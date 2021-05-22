@@ -93,19 +93,18 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Kategori</label>
-                                    <select name="berita_kategori_id" class="form-control select2" style="width: 100%;"
+                                    <select name="kategori_id" class="form-control select2" style="width: 100%;"
                                         required>
                                         <option value="">-pilih-</option>
                                         @foreach ($kategori as $item)
-                                        <option value="{{$item->kategori_id}}" @if($data->
-                                            berita_kategori_id==$item->kategori_id) selected
+                                        <option value="{{$item->id}}" @if($data->kategori_id==$item->id) selected
                                             @endif>{{$item->kategori_nama}}</option>
                                         @endforeach
 
                                     </select>
-                                    @if ($errors->any('berita_kategori_id'))
+                                    @if ($errors->any('kategori_id'))
                                     <p style="color: #dc3545; font-size:13px">
-                                        <i>*{{$errors->first('berita_kategori_id')}}</i></p>
+                                        <i>*{{$errors->first('kategori_id')}}</i></p>
                                     @endif
                                 </div>
                                 <div class="form-group">

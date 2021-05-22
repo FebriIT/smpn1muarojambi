@@ -7,6 +7,7 @@ use App\Berita;
 use App\Kategori;
 use App\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
 
@@ -39,11 +40,13 @@ class BeritaController extends Controller
 
         $data->berita_gambar = $request->berita_gambar;
         // dd($data);
+
         $data->save();
         // $datas = \App\Berita::create($request->all());
         if ($request->has('berita_gambar')) {
 
-            $request->file('berita_gambar')->move(public_path() . '/storage/berita', $request->file('berita_gambar')->getClientOriginalName());
+            $kategori = Kategori::find($request->kategori_id);
+            $request->file('berita_gambar')->move(public_path() . '/storage/berita/' . $kategori->kategori_nama, $request->file('berita_gambar')->getClientOriginalName());
             $data->berita_gambar = $request->file('berita_gambar')->getClientOriginalName();
             $data->save();
         }
@@ -58,13 +61,16 @@ class BeritaController extends Controller
     public function update(Request $request, $id)
     {
         $data = Berita::find($id);
-        $data->update($request->all());
+        $kategori = Kategori::find($data->kategori_id)->kategori_nama;
+        // dd($kategori);
+        // dd('storage/berita/' . $kategori . '/' . $data->berita_gambar);
+        $data->update(['berita_judul' => $request->berita_judul, 'berita_isi' => $request->berita_isi, 'kategori_id' => $request->kategori_id]);
         if ($request->has('berita_gambar')) {
-            //   ini untuk update profile
-            unlink('images/berita/' . $data->berita_gambar);
 
-            $request->file('berita_gambar')->move('images/berita/', $request->file('berita_gambar')->getClientOriginalName());
-            $data->avatar = $request->file('berita_gambar')->getClientOriginalName();
+            Storage::delete('public/berita/' . $kategori . '/' . $data->berita_gambar);
+
+            $request->file('berita_gambar')->move(public_path() . '/storage/berita/' . $kategori . '/', $request->file('berita_gambar')->getClientOriginalName());
+            $data->berita_gambar = $request->file('berita_gambar')->getClientOriginalName();
             $data->save();
         }
         return redirect('admin/listberita')->with('toast_success', 'Data Berhasil Diupdate');
@@ -77,8 +83,10 @@ class BeritaController extends Controller
         $post = Berita::where('berita_slug', '=', $slug)->first();
         $idberita = $post->id;
         Berita::find($idberita)->increment('berita_views');
+        $kategorinama = Berita::find($idberita)->kategori->kategori_nama;
 
-        return view('berita.singlepost', compact('post', 'kategori', 'populer'));
+
+        return view('berita.singlepost', compact('post', 'kategori', 'populer', 'kategorinama'));
         // dd($post);
     }
 
@@ -113,8 +121,10 @@ class BeritaController extends Controller
     public function hapus($id)
     {
         $data = Berita::find($id);
-
-        $image_path = "images/berita/" . $data->berita_gambar;  // Value is not URL but directory file path
+        $kategori = Kategori::find($data->kategori_id)->kategori_nama;
+        // dd($kategori);
+        $image_path = "storage/berita/" . $kategori . '/' . $data->berita_gambar;
+        // dd(File::exists($image_path)); // Value is not URL but directory file path
         if (File::exists($image_path)) {
             File::delete($image_path);
         } else {

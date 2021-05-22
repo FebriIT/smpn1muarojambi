@@ -14,7 +14,7 @@
         <h3>Populer</h3>
         <?php foreach ($populer as $row) :?>
         <div class="blog-featured-img_block">
-            <img width="35%" src="{{asset('storage/berita/'.$row->berita_gambar)}}" class="img-fluid"
+            <img width="35%" src="{{asset('storage/berita/'.$row->kategori->kategori_nama.'/'.$row->berita_gambar)}}" class="img-fluid"
                 alt="blog-featured-img">
             <h5><a href="{{route('site.single.post',$row->berita_slug)}}">{{ Str::words($row->berita_judul, 5, '...') }}</a></h5>
 

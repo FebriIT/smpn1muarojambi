@@ -32,7 +32,7 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="blog-img_block">
-                        <img src="{{asset('storage/berita/'.$post->berita_gambar)}}" class="img-fluid" alt="blog-img">
+                        <img src="{{asset('storage/berita/'.$kategorinama.'/'.$post->berita_gambar)}}" class="img-fluid" alt="blog-img">
                         <div class="blog-date">
                             <span>{{$post->berita_tanggal->format('d M Y')}}</span>
                         </div>

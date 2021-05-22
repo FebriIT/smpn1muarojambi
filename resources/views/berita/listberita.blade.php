@@ -59,7 +59,7 @@
 
                                     @foreach ( $data as $datas )
                                     <tr>
-                                        <td><img src="{{$datas->getGambar()}}" style="width:90px;"></td>
+                                        <td><img src="{{ asset('storage/berita/'.$datas->kategori->kategori_nama.'/'.$datas->berita_gambar) }}" style="width:90px;"></td>
                                         <td>{{$datas->berita_judul}}</td>
                                         <td>{{$datas->berita_tanggal}}</td>
                                         <td>{{$datas->author}}</td>
