@@ -44,7 +44,7 @@ class Berita extends Model
         if (!$this->berita_gambar) {
             return asset('images/berita/default.jpg');
         }
-        return asset('images/berita/' . $this->berita_gambar);
+        return asset('storage/berita/' . $this->berita_gambar);
     }
 
     public function kategori()

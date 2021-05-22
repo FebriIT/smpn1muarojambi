@@ -40,7 +40,7 @@
                     <?php foreach ($data as $row) : ?>
                     <div class="blog-single-item">
                         <div class="blog-img_block">
-                            <img src="{{asset('images/berita/'.$row->berita_gambar)}}" class="img-fluid" alt="blog-img">
+                            <img src="{{asset('storage/berita/'.$row->berita_gambar)}}" class="img-fluid" alt="blog-img">
                             <div class="blog-date">
                                 <span><?php
 

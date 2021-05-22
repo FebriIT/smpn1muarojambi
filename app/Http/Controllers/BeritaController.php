@@ -43,7 +43,7 @@ class BeritaController extends Controller
         // $datas = \App\Berita::create($request->all());
         if ($request->has('berita_gambar')) {
 
-            $request->file('berita_gambar')->move('images/berita/', $request->file('berita_gambar')->getClientOriginalName());
+            $request->file('berita_gambar')->move(public_path() . '/storage/berita', $request->file('berita_gambar')->getClientOriginalName());
             $data->berita_gambar = $request->file('berita_gambar')->getClientOriginalName();
             $data->save();
         }
