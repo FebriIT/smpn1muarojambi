@@ -150,6 +150,8 @@
     
     <script src="{{ asset('template/admin.js') }}"></script>
 
+    @yield('footer')
+
 
 </body>
 

@@ -84,34 +84,7 @@ $(function () {
         }
     });
 });
-$(function () {
-    $('#formberita').validate({
-        rules: {
-            berita_gambar: {
-                extension: "jpg,jpeg,png",
-                required: false,
-            },
-        },
-        messages: {
-            berita_gambar: {
-                extension: "format file harus jpg,jpeg,png",
 
-            },
-        },
-        errorElement: 'span',
-        errorPlacement: function (error, element) {
-            error.addClass('invalid-feedback');
-            element.closest('.form-group').append(error);
-        },
-        highlight: function (element, errorClass, validClass) {
-            $(element).addClass('is-invalid');
-        },
-        unhighlight: function (element, errorClass, validClass) {
-            $(element).removeClass('is-invalid');
-        }
-    });
-
-});
 
 var tentangkami = document.getElementById("idtentangkami");
 tentangkami.onchange = function () {
