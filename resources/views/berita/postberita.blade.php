@@ -137,7 +137,7 @@ $(function () {
         rules: {
             berita_gambar: {
                 extension: "jpg,jpeg,png",
-                required: false,
+                
             },
         },
         messages: {
