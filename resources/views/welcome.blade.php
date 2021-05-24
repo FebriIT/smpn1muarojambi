@@ -138,7 +138,7 @@
                         </div>
                         <!-- // end .course-img-wrap -->
                         <a href="{{ url('artikel/'.$row->berita_slug) }}" class="course-box-content">
-                            <h3 style="text-align:center;">{{ $row->berita_judul }}</h3>
+                            <h3 style="text-align:center;">{{ Str::words($row->berita_judul, 6, '...') }}</h3>
                         </a>
                     </div>
                 </div>
