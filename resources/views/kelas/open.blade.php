@@ -44,7 +44,7 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table id="datapengumuman" class="table table-bordered table-striped"
-                                style="font-size: 14px">
+                                style="font-size: 14px;width: 100%">
                                 <thead>
                                     <tr>
                                         <th style="width: 5%">No</th>
@@ -89,7 +89,7 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table id="datamateri" class="table table-bordered table-striped"
-                                style="font-size: 14px">
+                                style="font-size: 14px;width: 100%">
                                 <thead>
                                     <tr>
                                         <th style="width: 5%">No</th>
