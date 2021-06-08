@@ -58,15 +58,16 @@
                                         <a class="nav-link" id="sosialmedia" data-toggle="pill"
                                             href="#vert-tabs-settings" role="tab" aria-controls="vert-tabs-settings"
                                             aria-selected="false">Sosial Media</a>
-                                        <a class="nav-link" id="admsklh" data-toggle="pill"
-                                            href="#vert-tabs-admsklh" role="tab" aria-controls="vert-tabs-admsklh"
+                                        <a class="nav-link" id="admsklh" data-toggle="pill" href="#vert-tabs-admsklh"
+                                            role="tab" aria-controls="vert-tabs-admsklh"
                                             aria-selected="false">Administrasi Kantor Sekolah</a>
                                         <a class="nav-link" id="perpustakaan" data-toggle="pill"
-                                            href="#vert-tabs-perpustakaan" role="tab" aria-controls="vert-tabs-perpustakaan"
+                                            href="#vert-tabs-perpustakaan" role="tab"
+                                            aria-controls="vert-tabs-perpustakaan"
                                             aria-selected="false">Perpustakaan</a>
-                                        <a class="nav-link" id="labkom" data-toggle="pill"
-                                            href="#vert-tabs-labkom" role="tab" aria-controls="vert-tabs-labkom"
-                                            aria-selected="false">LAB Komputer</a>
+                                        <a class="nav-link" id="labkom" data-toggle="pill" href="#vert-tabs-labkom"
+                                            role="tab" aria-controls="vert-tabs-labkom" aria-selected="false">LAB
+                                            Komputer</a>
                                     </div>
                                 </div>
                                 <div class="col-7 col-sm-9">
@@ -206,8 +207,8 @@
                                                 </div>
                                                 <!-- /.card-header -->
                                                 <div class="card-body">
-                                                    <form action="/admin/pengaturan/sejarah" method="POST"
-                                                        id="sejarah" enctype="multipart/form-data">
+                                                    <form action="/admin/pengaturan/sejarah" method="POST" id="sejarah"
+                                                        enctype="multipart/form-data">
                                                         {{ csrf_field() }}
 
                                                         <div class="row">
@@ -300,8 +301,8 @@
                                                 </div>
                                                 <!-- /.card-header -->
                                                 <div class="card-body">
-                                                    <form action="/admin/pengaturan/admsklh" method="POST"
-                                                        id="admsklh" enctype="multipart/form-data">
+                                                    <form action="/admin/pengaturan/admsklh" method="POST" id="admsklh"
+                                                        enctype="multipart/form-data">
                                                         {{ csrf_field() }}
 
                                                         <div class="row">
@@ -348,7 +349,7 @@
                                                 <!-- /.card-header -->
                                                 <div class="card-body">
                                                     <form action="/admin/pengaturan/perpustakaan" method="POST"
-                                                        id="perpustakaan" enctype="multipart/form-data">
+                                                        id="formperpustakaan" enctype="multipart/form-data">
                                                         {{ csrf_field() }}
 
                                                         <div class="row">
@@ -377,9 +378,9 @@
                                                                     <label>Foto</label>
                                                                     <div class="custom-file">
                                                                         <input type="file" name="gambar"
-                                                                            class="custom-file-input" id="idvisimisi">
+                                                                            class="custom-file-input" id="idperpustakaan">
                                                                         <label class="custom-file-label"
-                                                                            for="idvisimisi">@if($perpustakaan->gambar){{ $perpustakaan->gambar }}@else
+                                                                            for="idperpustakaan">@if($perpustakaan->gambar){{ $perpustakaan->gambar }}@else
                                                                             Choose file @endif</label>
                                                                         <span id="error" class="error invalid-feedback"
                                                                             style=""></span>
@@ -400,7 +401,7 @@
                                                 <!-- /.card-body -->
                                             </div>
                                         </div>
-                                         <div class="tab-pane fade" id="vert-tabs-labkom" role="tabpanel"
+                                        <div class="tab-pane fade" id="vert-tabs-labkom" role="tabpanel"
                                             aria-labelledby="labkom">
                                             <div class="card card-warning">
                                                 <div class="card-header">
@@ -408,8 +409,8 @@
                                                 </div>
                                                 <!-- /.card-header -->
                                                 <div class="card-body">
-                                                    <form action="/admin/pengaturan/labkom" method="POST"
-                                                        id="labkom" enctype="multipart/form-data">
+                                                    <form action="/admin/pengaturan/labkom" method="POST" id="formlabkom"
+                                                        enctype="multipart/form-data">
                                                         {{ csrf_field() }}
 
                                                         <div class="row">
@@ -438,9 +439,9 @@
                                                                     <label>Foto</label>
                                                                     <div class="custom-file">
                                                                         <input type="file" name="gambar"
-                                                                            class="custom-file-input" id="idvisimisi">
+                                                                            class="custom-file-input" id="idlabkom">
                                                                         <label class="custom-file-label"
-                                                                            for="idvisimisi">@if($labkom->gambar){{ $labkom->gambar }}@else
+                                                                            for="idlabkom">@if($labkom->gambar){{ $labkom->gambar }}@else
                                                                             Choose file @endif</label>
                                                                         <span id="error" class="error invalid-feedback"
                                                                             style=""></span>
@@ -481,3 +482,77 @@
 
 
 @stop
+
+@section('footer')
+<script>
+$(function () {
+    $('#formperpustakaan').validate({
+        rules: {
+            gambar: {
+                extension: "jpg,jpeg,png",
+                // required: false,
+            },
+        },
+        messages: {
+            gambar: {
+                extension: "format file harus jpg,jpeg,png",
+            },
+        },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+            error.addClass('invalid-feedback');
+            element.closest('.form-group').append(error);
+        },
+        highlight: function (element, errorClass, validClass) {
+            $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).removeClass('is-invalid');
+        }
+    });
+
+});
+var perpustakaan = document.getElementById("idperpustakaan");
+perpustakaan.onchange = function () {
+    if (this.files[0].size > 400000) {
+        alert("File Maximal 400 kb");
+        this.value = "";
+    };
+};
+
+$(function () {
+    $('#formlabkom').validate({
+        rules: {
+            gambar: {
+                extension: "jpg,jpeg,png",
+                // required: false,
+            },
+        },
+        messages: {
+            gambar: {
+                extension: "format file harus jpg,jpeg,png",
+            },
+        },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+            error.addClass('invalid-feedback');
+            element.closest('.form-group').append(error);
+        },
+        highlight: function (element, errorClass, validClass) {
+            $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).removeClass('is-invalid');
+        }
+    });
+
+});
+var labkom = document.getElementById("idlabkom");
+labkom.onchange = function () {
+    if (this.files[0].size > 400000) {
+        alert("File Maximal 400 kb");
+        this.value = "";
+    };
+};
+</script>
+@endsection

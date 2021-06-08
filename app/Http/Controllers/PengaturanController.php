@@ -63,7 +63,7 @@ class PengaturanController extends Controller
             $data->gambar = $req->file('gambar')->getClientOriginalName();
             $data->save();
         }
-        return redirect()->back()->with('success', 'Tentang Kami Berhasil Diubah');
+        return redirect()->back()->with('success', 'Visi & Misi Berhasil Diubah');
     }
 
     public function sejarah(Request $req)
@@ -74,7 +74,7 @@ class PengaturanController extends Controller
         $data = Pengaturan::find(3);
         $data->update(['judul' => $judul, 'deskripsi' => $deskripsi]);
 
-        return redirect()->back()->with('success', 'Tentang Kami Berhasil Diubah');
+        return redirect()->back()->with('success', 'Sejarah Berhasil Diubah');
     }
 
     public function sosialmedia(Request $req)
@@ -85,7 +85,7 @@ class PengaturanController extends Controller
         $data = Pengaturan::find(4);
         $data->update(['judul' => $judul, 'deskripsi' => $deskripsi]);
 
-        return redirect()->back()->with('success', 'Tentang Kami Berhasil Diubah');
+        return redirect()->back()->with('success', 'Sosial Media Berhasil Diubah');
     }
     public function admsklh(Request $req)
     {
@@ -95,7 +95,7 @@ class PengaturanController extends Controller
         $data = Pengaturan::find(5);
         $data->update(['judul' => $judul, 'deskripsi' => $deskripsi]);
 
-        return redirect()->back()->with('success', 'Tentang Kami Berhasil Diubah');
+        return redirect()->back()->with('success', 'Administrasi Sekolah Berhasil Diubah');
     }
 
     public function perpustakaan(Request $req)
@@ -118,7 +118,7 @@ class PengaturanController extends Controller
             $data->gambar = $req->file('gambar')->getClientOriginalName();
             $data->save();
         }
-        return redirect()->back()->with('success', 'Tentang Kami Berhasil Diubah');
+        return redirect()->back()->with('success', 'Perpustakaan Berhasil Diubah');
     }
 
     public function labkom(Request $req)
@@ -141,6 +141,6 @@ class PengaturanController extends Controller
             $data->gambar = $req->file('gambar')->getClientOriginalName();
             $data->save();
         }
-        return redirect()->back()->with('success', 'Tentang Kami Berhasil Diubah');
+        return redirect()->back()->with('success', 'LAB Komputer Berhasil Diubah');
     }
 }

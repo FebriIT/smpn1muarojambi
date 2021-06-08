@@ -172,7 +172,7 @@
                         Pengaturan
 
                     </p>
-                    <span class="right badge badge-danger">New</span>
+                    {{-- <span class="right badge badge-danger">New</span> --}}
                 </a>
             </li>
             <li class="nav-item">
