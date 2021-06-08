@@ -149,12 +149,12 @@
                 <form action="/{{auth()->user()->role}}/materi/tambah" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-group">
-                        <label for="materi">Nama Materi</label>
+                        <label for="materi">Nama Materi *</label>
                         <input type="text" name="materi" value="{{ old('materi')}}" class="form-control" id="materi"
                             placeholder="Nama Materi" required>
                     </div>
                     <div class="form-group {{ $errors->has('mapel')?' has-error':'' }}">
-                        <label for="mapel">Mapel</label>
+                        <label for="mapel">Mapel *</label>
                         <select name="mapel_id" class="form-control" id="mapel" required>
                             <option value="">-pilih-</option>
                             @foreach ($mapel as $row)
@@ -165,10 +165,10 @@
                     <div class="form-group">
                         <label for="deskripsi">Deskripsi</label>
                         <input type="text" name="deskripsi" value="{{ old('deskripsi')}}" class="form-control"
-                            id="deskripsi" placeholder="Deskripsi" required>
+                            id="deskripsi" placeholder="Deskripsi">
                     </div>
                     <div class="form-group {{ $errors->has('kelas')?' has-error':'' }}">
-                        <label for="kelas">Kelas</label>
+                        <label for="kelas">Kelas *</label>
                         <select name="kelas_id" class="form-control" id="kelas" required>
                             <option value="">-pilih-</option>
                             @foreach ($kelas as $row)
