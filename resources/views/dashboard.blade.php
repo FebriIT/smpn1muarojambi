@@ -102,7 +102,8 @@
                         <div class="icon">
                             <i class="fas fa-users"></i>
                         </div>
-                        <a href="/admin/guru" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="/admin/guru" class="small-box-footer">More info <i
+                                class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-6">
@@ -116,7 +117,8 @@
                         <div class="icon">
                             <i class="fas fa-users"></i>
                         </div>
-                        <a href="/admin/siswa" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="/admin/siswa" class="small-box-footer">More info <i
+                                class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-6">
@@ -130,7 +132,8 @@
                         <div class="icon">
                             <i class="fas fa-book"></i>
                         </div>
-                        <a href="/admin/mapel" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="/admin/mapel" class="small-box-footer">More info <i
+                                class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-6">
@@ -144,7 +147,23 @@
                         <div class="icon">
                             <i class="fas fa-database"></i>
                         </div>
-                        <a href="/admin/kelas" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="/admin/kelas" class="small-box-footer">More info <i
+                                class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3>{{ $materi }}</h3>
+
+                            <p>Jumlah Materi</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <a href="/admin/materi" class="small-box-footer">More info <i
+                                class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -155,7 +174,58 @@
                 <!-- Left col -->
                 <section class="col-lg-7 connectedSortable">
 
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <div class="card-title">Update Fitur</div>
+                            <button type="button" class="btn-sm btn-primary float-right" data-toggle="modal"
+                                data-target="#modaltambah"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div class="card-body">
+                            <div class="timeline">
+                                @foreach ($timeline as $item)
 
+
+                                <!-- timeline time label -->
+
+                                {{-- <div class="time-label">
+                                    <span class="bg-red">{{ $item->created_at->format('d M Y') }}</span>
+                                </div> --}}
+
+
+
+
+                                <!-- /.timeline-label -->
+                                <!-- timeline item -->
+
+                                <!-- END timeline item -->
+                                <!-- timeline item -->
+                                <div>
+                                    <i class="fas fa-cog bg-red"></i>
+                                    <div class="timeline-item">
+                                        <span class="time"><i class="fas fa-clock"></i> {{$item->created_at->diffForHumans() }}</span>
+                                        <h3 class="timeline-header no-border"><a href="#">{{ $item->author }}</a> {!! $item->message !!}</h3>
+                                    </div>
+                                </div>
+                                <!-- END timeline item -->
+                                <!-- timeline item -->
+
+                                <!-- END timeline item -->
+                                <!-- timeline time label -->
+                                {{-- <div class="time-label">
+                                    <span class="bg-green">3 Jan. 2014</span>
+                                </div> --}}
+                                <!-- /.timeline-label -->
+                                <!-- timeline item -->
+
+                                <!-- END timeline item -->
+
+                                @endforeach
+                                <div>
+                                    <i class="fas fa-clock bg-gray"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- /.card -->
                 </section>
                 <!-- /.Left col -->
@@ -206,6 +276,38 @@
         </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+</div>
+
+<div class="modal fade" id="modaltambah">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Tambah</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/admin/fitur/tambah" method="POST" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                        <label for="summernote">Pesan</label>
+                        <textarea id="summernote" rows="3" name="message" required></textarea>
+                    </div>
+
+
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
 </div>
 
 @elseif (auth()->user()->role=='guru')
@@ -259,7 +361,8 @@
                         <div class="icon">
                             <i class="fas fa-book"></i>
                         </div>
-                        <a href="/guru/materi" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="/guru/materi" class="small-box-footer">More info <i
+                                class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 
@@ -274,7 +377,8 @@
                         <div class="icon">
                             <i class="fas fa-book"></i>
                         </div>
-                        <a href="/guru/mapel" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="/guru/mapel" class="small-box-footer">More info <i
+                                class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-6">
@@ -288,7 +392,8 @@
                         <div class="icon">
                             <i class="fas fa-database"></i>
                         </div>
-                        <a href="/guru/kelas" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="/guru/kelas" class="small-box-footer">More info <i
+                                class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -351,6 +456,7 @@
     </section>
     <!-- /.content -->
 </div>
+
 
 @elseif (auth()->user()->role=='siswa')
 <div class="content-wrapper">
@@ -432,7 +538,8 @@
                         <div class="icon">
                             <i class="fas fa-database"></i>
                         </div>
-                        <a href="/siswa/kelas" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="/siswa/kelas" class="small-box-footer">More info <i
+                                class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->

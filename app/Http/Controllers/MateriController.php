@@ -12,7 +12,12 @@ class MateriController extends Controller
 {
     public function index()
     {
-        $data = Materi::where('user_id', auth()->user()->id)->orderBy('id', 'desc')->get();
+        if (auth()->user()->role == 'admin') {
+            $data = Materi::orderBy('id', 'desc')->get();
+        } else {
+
+            $data = Materi::where('user_id', auth()->user()->id)->orderBy('id', 'desc')->get();
+        }
         $mapel = Mapel::all();
         $kelas = Kelas::all();
 

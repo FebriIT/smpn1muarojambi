@@ -12,6 +12,9 @@
 */
 
 use Illuminate\Support\Facades\Route;
+
+use Illuminate\Http\Request;
+
 use Whoops\Run;
 
 Route::get('/', 'WelcomeController@index');
@@ -90,6 +93,19 @@ Route::prefix('admin')->middleware('auth', 'checkRole:admin')->group(function ()
     Route::post('/mapel/tambah', 'MapelController@tambah');
     Route::post('/mapel/{id}/edit', 'MapelController@edit');
     Route::get('/mapel/{id}/hapus', 'MapelController@hapus');
+
+    Route::get('/materi', 'MateriController@index')->name('admin/materi');
+    Route::post('/materi/tambah', 'MateriController@tambah');
+    Route::get('/materi/{id}/hapus', 'MateriController@hapus');
+    Route::get('/materi/download/{file_materi}', 'MateriController@getDownload');
+
+    Route::post('/fitur/tambah', function (Request $req) {
+        $data = new App\Timeline;
+        $data->author = auth()->user()->name;
+        $data->message = $req->message;
+        $data->save();
+        return redirect()->back();
+    });
 
     Route::get('/pengaturan', 'PengaturanController@index')->name('admin/pengaturan');
     Route::post('/pengaturan/tentangkami', 'PengaturanController@tentangkami');

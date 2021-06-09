@@ -13,13 +13,19 @@ use App\Mapel;
 use App\Kelas;
 use App\Materi;
 use App\Tugas;
+use App\Timeline;
 
 class DashboardController extends Controller
 {
     public function index()
     {
         $tugas = Tugas::all()->count();
-        $materi = Materi::where('user_id', auth()->user()->id)->count();
+        if (auth()->user()->role == 'admin') {
+            $materi = Materi::orderBy('id', 'desc')->count();
+        } else {
+
+            $materi = Materi::where('user_id', auth()->user()->id)->count();
+        }
         $guru = Guru::all()->count();
         $siswa = Siswa::all()->count();
         $mapel = Mapel::all()->count();
@@ -29,6 +35,7 @@ class DashboardController extends Controller
         $countberita = Berita::all()->count();
         $countuser = User::all()->count();
         $lastuser = User::orderBy('created_at', 'desc')->paginate(8);
-        return view('dashboard', compact('countpengumuman', 'countagenda', 'countberita', 'lastuser', 'countuser', 'guru', 'siswa', 'mapel', 'kelas', 'materi', 'tugas'));
+        $timeline = Timeline::orderBy('id', 'desc')->get();
+        return view('dashboard', compact('timeline', 'countpengumuman', 'countagenda', 'countberita', 'lastuser', 'countuser', 'guru', 'siswa', 'mapel', 'kelas', 'materi', 'tugas'));
     }
 }

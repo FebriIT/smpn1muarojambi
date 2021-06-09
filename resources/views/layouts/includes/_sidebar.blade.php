@@ -27,6 +27,7 @@
                     <p>
                         Dashboard
                     </p>
+                    <span class="right badge badge-primary">New</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -96,6 +97,16 @@
                         Matapelajaran
 
                     </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{route('admin/materi')}}" class="{{Request::is('admin/materi')?'active':''}} nav-link">
+                    <i class="nav-icon fas fa-book"></i>
+                    <p>
+                        Materi
+
+                    </p>
+                    <span class="right badge badge-primary">New</span>
                 </a>
             </li>
 
@@ -217,6 +228,7 @@
                         Dashboard
 
                     </p>
+                    <span class="right badge badge-primary">New</span>
                 </a>
             </li>
             <li class="nav-item">
