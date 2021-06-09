@@ -19,7 +19,7 @@ class DashboardController extends Controller
     public function index()
     {
         $tugas = Tugas::all()->count();
-        $materi = Materi::all()->count();
+        $materi = Materi::where('user_id', auth()->user()->id)->count();
         $guru = Guru::all()->count();
         $siswa = Siswa::all()->count();
         $mapel = Mapel::all()->count();
