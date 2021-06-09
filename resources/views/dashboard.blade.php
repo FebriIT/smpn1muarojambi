@@ -177,8 +177,11 @@
                     <div class="card card-info">
                         <div class="card-header">
                             <div class="card-title">Update Fitur</div>
+                            @if (auth()->user()->name=='admin')
+
                             <button type="button" class="btn-sm btn-primary float-right" data-toggle="modal"
-                                data-target="#modaltambah"><i class="fas fa-plus"></i></button>
+                            data-target="#modaltambah"><i class="fas fa-plus"></i></button>
+                            @endif
                         </div>
                         <div class="card-body">
                             <div class="timeline">

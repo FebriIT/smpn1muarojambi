@@ -145,6 +145,7 @@
                                             <label for="avatar" class="col-sm-2 col-form-label">Avatar</label>
                                             <div class="col-sm-10">
                                                 <input type="file" name="avatar" class="form-control" id="avatar">
+                                                <span style="color: red;"><i>* Gunakan Foto Profile Formal</i></span>
                                             </div>
                                             <span id="password-error" class="error invalid-feedback"></span>
                                         </div>
