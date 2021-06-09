@@ -9,7 +9,7 @@ class Materi extends Model
 
     protected $table = 'materi';
 
-    protected $fillable = ['materi', 'deskripsi', 'kelas_id', 'mapel_id', 'file_materi', 'link_materi', 'author'];
+    protected $fillable = ['materi', 'deskripsi', 'kelas_id', 'mapel_id', 'file_materi', 'link_materi', 'user_id'];
 
     public function mapel()
     {
@@ -18,5 +18,9 @@ class Materi extends Model
     public function kelas()
     {
         return $this->belongsTo(Kelas::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

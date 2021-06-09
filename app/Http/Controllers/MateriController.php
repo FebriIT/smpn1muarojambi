@@ -12,7 +12,7 @@ class MateriController extends Controller
 {
     public function index()
     {
-        $data = Materi::all();
+        $data = Materi::where('user_id', auth()->user()->id)->orderBy('id', 'desc')->get();
         $mapel = Mapel::all();
         $kelas = Kelas::all();
 
@@ -27,11 +27,17 @@ class MateriController extends Controller
         $data->deskripsi = $request->deskripsi;
         $data->kelas_id = $request->kelas_id;
         $data->link_materi = $request->link_materi;
-        $data->author = auth()->user()->name;
+        $data->user_id = auth()->user()->id;
+        $nmkelas = Kelas::find($request->kelas_id)->nama_kelas;
+
         // $email = auth()->user()->email;
+        // folder materi sesuai nama
+        // delete guru hapus folder materi
         if ($request->has('file_materi')) {
-            $request->file('file_materi')->move(public_path() . '/storage/materi', $request->file('file_materi')->getClientOriginalName());
-            $data->file_materi = $request->file('file_materi')->getClientOriginalName();
+            $file = $request->file('file_materi');
+            $filename = $file->getClientOriginalName() . '-' . time() . '.' . $file->extension();
+            $request->file('file_materi')->move(public_path() . '/storage/materi/' . auth()->user()->name . '/' . $nmkelas, $filename);
+            $data->file_materi = $filename;
             $data->save();
         } else {
             $data->save();
@@ -44,7 +50,9 @@ class MateriController extends Controller
         $data = Materi::find($id);
         // $email = auth()->user()->email;
         // dd($email);
-        $image_path = '/public/materi/' . $data->file_materi;
+        $nmkelas = Kelas::find($data->kelas_id)->nama_kelas;
+
+        $image_path = '/public/materi/' . $data->user->name . '/' . $nmkelas . '/' . $data->file_materi;
 
         if (Storage::exists($image_path)) {
 
@@ -57,7 +65,9 @@ class MateriController extends Controller
     public function getDownload($file_materi)
     {
 
-
-        return  response()->download(public_path() . '/storage/materi/' . $file_materi);
+        $data = Materi::where('file_materi', $file_materi)->first();
+        $nmuser = $data->user->name;
+        $nmkelas = $data->kelas->nama_kelas;
+        return  response()->download(public_path() . '/storage/materi/' . $nmuser . '/' . $nmkelas . '/' . $file_materi);
     }
 }

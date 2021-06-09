@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Guru;
 use App\Mapel;
 use App\User;
+use App\Kelas;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -91,12 +92,23 @@ class GuruController extends Controller
 
         $guru = \App\Guru::find($id);
         $image_path = '/public/guru/' . $guru->user->email . '/' . $guru->avatar;
-      
+
         if (Storage::exists($image_path)) {
 
             Storage::deleteDirectory('/public/guru/' . $guru->user->email);
         }
         $user = \App\User::find($guru->user_id);
+        $materi = \App\Materi::where('user_id', $guru->user_id)->first();
+        $nmkelas = Kelas::find($materi->kelas_id)->nama_kelas;
+
+
+        $image_path = '/public/materi/' . $materi->user->name . '/' . $nmkelas . '/' . $materi->file_materi;
+
+        if (Storage::exists($image_path)) {
+
+            Storage::deleteDirectory('/public/materi/' . $materi->user->name);
+        }
+        $materi->delete();
         $user->delete();
         $guru->delete();
         return redirect()->back()->with('toast_success', 'Data Berhasil Dihapus');

@@ -70,9 +70,9 @@
          <footer class="main-footer">
             <strong>Copyright &copy; 2021 <a href="https://www.instagram.com/febri.it/">Febri</a>.</strong>
             All rights reserved.
-            <div class="float-right d-none d-sm-inline-block">
+            {{-- <div class="float-right d-none d-sm-inline-block">
                 <b>Version</b> 0.1
-            </div>
+            </div> --}}
         </footer>
 
         <!-- Control Sidebar -->
@@ -147,7 +147,7 @@
     <script src="{{ asset('template/admin/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('template/admin/plugins/jquery-validation/additional-methods.min.js') }}"></script>
 
-    
+
     <script src="{{ asset('template/admin.js') }}"></script>
 
     @yield('footer')

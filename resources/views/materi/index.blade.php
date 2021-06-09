@@ -45,7 +45,7 @@
                         <div class="card-body">
 
                             <table id="datapengumuman" class="table table-bordered table-striped"
-                                style="font-size: 14px;width: 100%">
+                                style="font-size: 14px;width: 100%;">
                                 <thead>
                                     <tr>
                                         <th style="width: 5%">No</th>
@@ -78,7 +78,7 @@
                                         </td>
                                         <td>{{$datas->kelas->nama_kelas}}</td>
                                         <td>{{$datas->file_materi}}</td>
-                                        <td>{{ $datas->author }}</td>
+                                        <td>{{ $datas->user->name }}</td>
 
                                         <td class="project-actions text-right">
                                             <div>
@@ -158,7 +158,9 @@
                         <select name="mapel_id" class="form-control" id="mapel" required>
                             <option value="">-pilih-</option>
                             @foreach ($mapel as $row)
-                            <option value="{{ $row->id }}">{{ $row->mapel_nama }}</option>
+                            <option value="{{ $row->id }}"@if (auth()->user()->guru->mapel_id==$row->id) selected
+
+                            @endif>{{ $row->mapel_nama }}</option>
                             @endforeach
                         </select>
                     </div>
