@@ -46,7 +46,8 @@
                         <li><a href="https://web.facebook.com/smpnsatmajambi.smpnsatmajambi" target="_blink"><i
                                     class="fa fa-facebook fa-fb" aria-hidden="true"></i></a></li>
                         <li><a href="#"><i class="fa fa-instagram fa-in" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-envelope fa-tw" aria-hidden="true"></i></a></li>
+                        {{-- <li><a href="#"><i class="fa fa-envelope fa-tw" aria-hidden="true"></i></a></li> --}}
+                        <li><a href="#"><i class="fa fa-twitter fa-tw" aria-hidden="true"></i></a></li>
                     </ul>
                 </div>
             </div>

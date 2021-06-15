@@ -154,6 +154,22 @@ Route::prefix('guru')->middleware('auth', 'checkRole:guru')->group(function () {
     // Route::get('/tugas/hasilsiswa/{id}/{tugas_id}', 'TugasController@hasilsiswa');
     // Route::post('/tugas/hasilsiswa/{id}/tambah', 'TugasController@tambahnilai');
     // Route::get('/tugas/hasil/{id}/hapus', 'TugasController@hapushasil');
+
+    Route::get('/kategori', 'KategoriController@index')->name('guru/kategori');
+    Route::post('/kategori/tambah', 'KategoriController@tambah');
+    Route::get('/kategori/{id}/hapus', 'KategoriController@hapus');
+    Route::post('/kategori/{id}/edit', 'KategoriController@edit');
+
+    Route::get('listberita', 'BeritaController@index')->name('guru/listberita');
+    Route::get('postberita', 'BeritaController@postberita')->name('guru/postberita');
+    Route::post('postberita/tambah', [
+        'uses' => 'BeritaController@tambah',
+        'as' => 'berita.tambah'
+    ]);
+    // Route::post('postberita/tambah', 'BeritaController@tambah');
+    Route::get('/berita/{id}/hapus', 'BeritaController@hapus');
+    Route::get('/berita/edit/{id}', 'BeritaController@edit');
+    Route::post('/berita/update/{id}', 'BeritaController@update');
 });
 
 //route siswa

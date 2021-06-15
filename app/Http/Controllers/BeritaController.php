@@ -16,7 +16,7 @@ class BeritaController extends Controller
     public function index()
     {
 
-        $data = Berita::orderBy('id', 'desc')->get();
+        $data = Berita::where('author', auth()->user()->name)->orderBy('id', 'desc')->get();
 
         return view('berita.listberita', compact('data'));
     }
@@ -41,25 +41,31 @@ class BeritaController extends Controller
         $data->berita_gambar = $request->berita_gambar;
         // dd($data);
 
-        
+
         $kategori = Kategori::find($request->kategori_id);
-        
-        if(File::exists(public_path() . '/storage/berita/' . $kategori->kategori_nama.'/'.$request->file('berita_gambar')->getClientOriginalName())){
-            return redirect('admin/listberita')->with('toast_error', 'Nama File Sudah ada');
-        }else{
-            
+
+        if (File::exists(public_path() . '/storage/berita/' . $kategori->kategori_nama . '/' . $request->file('berita_gambar')->getClientOriginalName())) {
+            if (auth()->user()->role == 'admin') {
+
+                return redirect('admin/listberita')->with('toast_error', 'Nama File Sudah ada');
+            }
+        } else {
+
             if ($request->has('berita_gambar')) {
-                $file=$request->file('berita_gambar');
-                $filename = $file->getClientOriginalName() . '-' . time() .'.'. $file->extension();
+                $file = $request->file('berita_gambar');
+                $filename = $file->getClientOriginalName() . '-' . time() . '.' . $file->extension();
                 // dd($filename);
                 $request->file('berita_gambar')->move(public_path() . '/storage/berita/' . $kategori->kategori_nama, $filename);
                 $data->berita_gambar = $filename;
                 $data->save();
-                
             }
-            return redirect('admin/listberita')->with('success', 'Berita Berhasil Dipublish');
+            if (auth()->user()->role == 'admin') {
+
+                return redirect('admin/listberita')->with('success', 'Berita Berhasil Dipublish');
+            } elseif (auth()->user()->role == 'guru') {
+                return redirect('guru/listberita')->with('success', 'Berita Berhasil Dipublish');
+            }
         }
-        
     }
     public function edit($id)
     {
@@ -77,13 +83,18 @@ class BeritaController extends Controller
         if ($request->has('berita_gambar')) {
 
             Storage::delete('public/berita/' . $kategori . '/' . $data->berita_gambar);
-            $file=$request->file('berita_gambar');
-            $filename = $file->getClientOriginalName() . '-' . time() .'.'. $file->extension();
+            $file = $request->file('berita_gambar');
+            $filename = $file->getClientOriginalName() . '-' . time() . '.' . $file->extension();
             $request->file('berita_gambar')->move(public_path() . '/storage/berita/' . $kategori . '/', $filename);
             $data->berita_gambar = $filename;
             $data->save();
         }
-        return redirect('admin/listberita')->with('toast_success', 'Data Berhasil Diupdate');
+        if (auth()->user()->role == 'admin') {
+            return redirect('admin/listberita')->with('toast_success', 'Data Berhasil Diupdate');
+        } elseif (auth()->user()->role == 'guru') {
+
+            return redirect('guru/listberita')->with('toast_success', 'Data Berhasil Diupdate');
+        }
     }
 
     public function singlepost($slug)

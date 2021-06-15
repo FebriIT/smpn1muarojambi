@@ -130,21 +130,21 @@
                 </a>
             </li>
             <li class="nav-item
-          @if (Request::is('admin/kategori'))
-          {{Request::is('admin/kategori')?'menu-open':''}}
-          @elseif(Request::is('admin/postberita'))
-          {{Request::is('admin/postberita')?'menu-open':''}}
-          @elseif(Request::is('admin/listberita'))
-          {{Request::is('admin/listberita')?'menu-open':''}}
-          @endif ">
+                @if (Request::is('admin/kategori'))
+                {{Request::is('admin/kategori')?'menu-open':''}}
+                @elseif(Request::is('admin/postberita'))
+                {{Request::is('admin/postberita')?'menu-open':''}}
+                @elseif(Request::is('admin/listberita'))
+                {{Request::is('admin/listberita')?'menu-open':''}}
+                @endif ">
                 <a href="#" class="nav-link
-          @if (Request::is('admin/kategori'))
-          {{Request::is('admin/kategori')?'active':''}}
-          @elseif(Request::is('admin/postberita'))
-          {{Request::is('admin/postberita')?'active':''}}
-          @elseif(Request::is('admin/listberita'))
-          {{Request::is('admin/listberita')?'active':''}}
-          @endif ">
+                    @if (Request::is('admin/kategori'))
+                    {{Request::is('admin/kategori')?'active':''}}
+                    @elseif(Request::is('admin/postberita'))
+                    {{Request::is('admin/postberita')?'active':''}}
+                    @elseif(Request::is('admin/listberita'))
+                    {{Request::is('admin/listberita')?'active':''}}
+                    @endif ">
                     <i class="nav-icon far fa-newspaper"></i>
                     <p>
                         Berita
@@ -288,7 +288,53 @@
             </a>
             </li> --}}
 
+            <li class="nav-item
+                @if (Request::is('guru/kategori'))
+                {{Request::is('guru/kategori')?'menu-open':''}}
+                @elseif(Request::is('guru/postberita'))
+                {{Request::is('guru/postberita')?'menu-open':''}}
+                @elseif(Request::is('guru/listberita'))
+                {{Request::is('guru/listberita')?'menu-open':''}}
+                @endif ">
+                <a href="#" class="nav-link
+                    @if (Request::is('guru/kategori'))
+                    {{Request::is('guru/kategori')?'active':''}}
+                    @elseif(Request::is('guru/postberita'))
+                    {{Request::is('guru/postberita')?'active':''}}
+                    @elseif(Request::is('guru/listberita'))
+                    {{Request::is('guru/listberita')?'active':''}}
+                    @endif ">
+                    <i class="nav-icon far fa-newspaper"></i>
+                    <p>
+                        Berita
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview" style="display: none;">
+                    <li class="nav-item">
+                        <a href="{{route('guru/listberita')}}"
+                            class="nav-link {{Request::is('guru/listberita')?'active':''}}">
+                            <i class="fas fa-list nav-icon"></i>
+                            <p>List Berita</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('guru/postberita')}}"
+                            class="nav-link {{Request::is('guru/postberita')?'active':''}}">
+                            <i class="fas fa-pencil-alt nav-icon"></i>
+                            <p>Post Berita</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('guru/kategori')}}"
+                            class="nav-link {{Request::is('guru/kategori')?'active':''}}">
+                            <i class="fas fa-thumbtack nav-icon"></i>
+                            <p>Kategori</p>
+                        </a>
+                    </li>
 
+                </ul>
+            </li>
 
             <li class="nav-item">
                 <a href="/logout" class="nav-link">
