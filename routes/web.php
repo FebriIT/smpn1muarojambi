@@ -137,6 +137,23 @@ Route::prefix('guru')->middleware('auth', 'checkRole:guru')->group(function () {
     Route::get('/materi/download/{file_materi}', 'MateriController@getDownload');
 
     Route::get('/tugas', 'TugasController@index')->name('guru/tugas');
+    Route::post('/tugas/tambah', 'TugasController@tambah');
+    Route::get('/tugas/{id}/hapus', 'TugasController@hapus');
+
+    Route::get('/tugas/{id}', 'TugasController@open');
+    Route::post('/tugas/{id}/tambahpilgan', 'TugasController@tambahpilgan');
+    Route::post('/tugas/{id}/tambahessay', 'TugasController@tambahessay');
+    Route::get('/tugas/{id}/hapus-soal-pilgan', 'TugasController@hapuspilgan');
+    Route::get('/tugas/{id}/hapus-soal-essay', 'TugasController@hapusessay');
+    // Route::get('/tugas/{id}/hasil', 'TugasController@hasil');
+    // Route::post('/tugas/{id}/edit', 'TugasController@edit');
+    // Route::post('/tugas/{id}/createpilihanganda', 'TugasController@createpilihanganda');
+    // Route::post('/tugas/{id}/createessay', 'TugasController@createesay');
+    // Route::get('/tugas/download/{jawaban}', 'TugasController@getDownload');
+    // Route::get('/tugas/{id}/view', 'TugasController@view');
+    // Route::get('/tugas/hasilsiswa/{id}/{tugas_id}', 'TugasController@hasilsiswa');
+    // Route::post('/tugas/hasilsiswa/{id}/tambah', 'TugasController@tambahnilai');
+    // Route::get('/tugas/hasil/{id}/hapus', 'TugasController@hapushasil');
 });
 
 //route siswa

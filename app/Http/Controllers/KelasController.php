@@ -51,7 +51,8 @@ class KelasController extends Controller
         $id = auth()->user()->siswa->kelas_id;
         $data = Kelas::find($id);
         $datasiswa = $data->siswa;
+        $datatugas = $data->tugas;
         $materi = Materi::where('kelas_id', $id)->orderBy('id', 'desc')->get();
-        return view('kelas.open', compact('datasiswa', 'materi'));
+        return view('kelas.open', compact('datasiswa', 'materi', 'datatugas'));
     }
 }

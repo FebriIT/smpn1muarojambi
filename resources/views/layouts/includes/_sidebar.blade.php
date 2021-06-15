@@ -27,7 +27,7 @@
                     <p>
                         Dashboard
                     </p>
-                    <span class="right badge badge-primary">New</span>
+                    {{-- <span class="right badge badge-primary">New</span> --}}
                 </a>
             </li>
             <li class="nav-item">
@@ -106,7 +106,7 @@
                         Materi
 
                     </p>
-                    <span class="right badge badge-primary">New</span>
+                    {{-- <span class="right badge badge-primary">New</span> --}}
                 </a>
             </li>
 
@@ -228,7 +228,7 @@
                         Dashboard
 
                     </p>
-                    <span class="right badge badge-primary">New</span>
+                    {{-- <span class="right badge badge-primary">New</span> --}}
                 </a>
             </li>
             <li class="nav-item">
@@ -273,9 +273,9 @@
                 <a href="{{route('guru/tugas')}}" class="{{Request::is('guru/tugas')?'active':''}} nav-link">
                     <i class="nav-icon fas fa-book"></i>
                     <p>
-                        Manajement Tugas/Quiz
-
+                        Tugas/Quiz
                     </p>
+
                 </a>
             </li> --}}
             {{-- <li class="nav-item">

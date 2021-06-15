@@ -40,7 +40,7 @@
     <link rel="stylesheet" href="{{asset('template/admin/plugins/codemirror/theme/monokai.css')}}">
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="sidebar-mini layout-fixed sidebar-collapse">
     <div class="wrapper">
 
         <!-- Navbar -->

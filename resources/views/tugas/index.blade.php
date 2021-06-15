@@ -9,12 +9,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Kelas</h1>
+                    <h1 class="m-0">Kelola Tugas</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/{{auth()->user()->role}}/dashboard">Home</a></li>
-                        <li class="breadcrumb-item active">Kelas</li>
+                        <li class="breadcrumb-item active">Tugas</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -36,7 +36,7 @@
                     <div class="card">
 
                         <div class="card-header">
-                            <h3 class="card-title">Manajement Tugas/Quiz</h3>
+                            <h3 class="card-title"></h3>
                             <button type="button" class="btn-sm btn-primary float-right" data-toggle="modal"
                                 data-target="#modaltambah"><i class="fas fa-plus"></i> Tambah Data</button>
                         </div>
@@ -44,11 +44,11 @@
                         <!-- /.card-header -->
                         <div class="card-body">
 
-                            <table id="datapengumuman" class="table table-bordered table-striped"
-                                style="font-size: 14px">
+                            <table id="datapengumuman" class="table table-bordered table-striped text-center"
+                                style="font-size: 14px;width:100%;">
                                 <thead>
                                     <tr>
-                                        <th>ID Tugas</th>
+                                        <th>No</th>
                                         <th>Nama Paket</th>
                                         <th>Dibuat Oleh</th>
                                         <th style="font-weight: bold">Mapel</th>
@@ -59,28 +59,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($data as $tugas)
+                                    @foreach($data as $key=>$tugas)
                                     <tr>
-                                        <td>{{$tugas->id}}</td>
+                                        <td>{{++$key}}</td>
                                         <td>{{$tugas->judul}}</td>
-                                        <td>{{ $tugas->pembuat }}</td>
-                                        <td style="font-weight: bold"><i>{{ $tugas->mapel->nama }}</i></td>
+                                        <td>{{ $tugas->guru->nama_guru }}</td>
+                                        <td style="font-weight: bold"><i>{{ $tugas->mapel->mapel_nama }}</i></td>
                                         <td>
-                                            @foreach ($tugas->kelas as $kelas)
-                                            <div class="badge">{{ $kelas->nama }}</div>
+                                            @foreach ($tugas->kelas as $kls)
+                                            <div class="badge">{{ $kls->nama_kelas }}</div>
                                             @endforeach
                                         </td>
 
-                                        @if ($tugas->jenis_tugas=='Ujian')
-                                        <td class="text-center">
-                                            <span class="label"
-                                                style="background-color: blue;">{{ $tugas->jenis_tugas }}</span>
+                                        <td>
+                                            @if ($tugas->jenis_tugas=='Ujian')
+                                            <span class="right badge badge-danger">{{ $tugas->jenis_tugas }}</span>
+                                            @else
+                                            <span class="right badge badge-info">{{ $tugas->jenis_tugas }}</span>
+                                            @endif
                                         </td>
-                                        @else
-                                        <td class="text-center">
-                                            <span class="label label-success">{{ $tugas->jenis_tugas }}</span>
-                                        </td>
-                                        @endif
 
                                         <td>{{ $tugas->waktu }} Menit</td>
                                         @if(auth()->user()->role=='admin')
@@ -103,7 +100,7 @@
                                                 <i class="fa fa-trash-o"></i> Hapus</a>
                                         </td>
                                         @elseif(auth()->user()->role=='siswa')
-                                        <td><a href="/admin/tugas/{{ $tugas->id }}/takesoal"
+                                        <td><a href="/admin/tugas/{{ $tugas->id }}/take-soal"
                                                 class="btn btn-primary btn-sm">Take {{ $tugas->jenis_tugas }}</a></td>
                                         @endif
                                     </tr>
@@ -134,13 +131,13 @@
     <div class="modal-dialog ">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Tambah Kelas</h4>
+                <h4 class="modal-title">Tambah Tugas</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="/{{auth()->user()->role}}/kelas/tambah" method="POST" enctype="multipart/form-data">
+                <form action="/{{auth()->user()->role}}/tugas/tambah" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="nama">Nama Paket</label>
@@ -163,7 +160,7 @@
                         </select>
                     </div>
                     <div class="row">
-                        <div class="card card-default">
+                        <div class="card card-default"  style="width: 100%">
                             <div class="card-header">
                                 <div class="">
                                     <input
@@ -177,6 +174,8 @@
                                 <div class="form-group">
 
                                     @foreach ($kelas as $row )
+
+                                    {{-- {{ $row->nama_kelas }} --}}
                                     <div class="text-sm custom-checkbox custom-control-inline">
                                         <input
                                             class="custom-control-input custom-control-input-danger custom-control-input-outline checkitem"
@@ -186,16 +185,15 @@
                                             class="custom-control-label">{{ $row->nama_kelas }}</label>
                                     </div>
                                     @endforeach
-                                    @foreach ($kelas as $row )
-                                    <div class="text-sm custom-checkbox custom-control-inline">
-                                        <input
-                                            class="custom-control-input custom-control-input-danger custom-control-input-outline checkitem"
-                                            style="position: relative;" name="kelas[]" value="{{ $row->id }}"
-                                            type="checkbox" id="pilih-{{ $row->id }}">
-                                        <label for="pilih-{{ $row->id }}"
-                                            class="custom-control-label">{{ $row->nama_kelas }}</label>
-                                    </div>
-                                    @endforeach
+                                   {{-- @foreach ($kelas as $kelas)
+
+								<th class="text-center" >
+									<label class="fancy-checkbox">
+										<input type="checkbox" name="kelas[]" value="{{ $kelas->id }}">
+										<span>{{ $kelas->nama }}</span>
+									</label>
+								</th>
+								@endforeach --}}
 
                                 </div>
                             </div>

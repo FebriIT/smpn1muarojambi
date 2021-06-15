@@ -20,7 +20,20 @@ $(document).ready(function () {
     $('#datamateri').DataTable({
         "scrollX": true
     });
-
+    $('#tablepilgan').DataTable({
+        "scrollX": true,
+        "paging":   false,
+        "ordering": false,
+        "info":     false,
+        "searching": false
+    });
+    $('#tableessay').DataTable({
+        "scrollX": true,
+        "paging":   false,
+        "ordering": false,
+        "info":     false,
+        "searching": false
+    });
     // end datatables
 
 

@@ -7,6 +7,9 @@ use App\Guru;
 use App\Mapel;
 use App\User;
 use App\Kelas;
+use App\Tugas;
+use App\SoalEssay;
+use App\SoalPilihanGanda;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -98,18 +101,36 @@ class GuruController extends Controller
             Storage::deleteDirectory('/public/guru/' . $guru->user->email);
         }
         $user = \App\User::find($guru->user_id);
+        // materi
         $materi = \App\Materi::where('user_id', $guru->user_id)->first();
-        $nmkelas = Kelas::find($materi->kelas_id)->nama_kelas;
+        if ($materi != null) {
+            $nmkelas = Kelas::find($materi->kelas_id)->nama_kelas;
+            $image_path = '/public/materi/' . $materi->user->name . '/' . $nmkelas . '/' . $materi->file_materi;
+            if (Storage::exists($image_path)) {
 
-
-        $image_path = '/public/materi/' . $materi->user->name . '/' . $nmkelas . '/' . $materi->file_materi;
-
-        if (Storage::exists($image_path)) {
-
-            Storage::deleteDirectory('/public/materi/' . $materi->user->name);
+                Storage::deleteDirectory('/public/materi/' . $materi->user->name);
+            }
+            $materi->delete();
         }
-        $materi->delete();
+
+        // // end materi
+
         $user->delete();
+        // // hapus tugas
+        $tugas = Tugas::where('guru_id', $id)->get();
+
+        // // dd($tugas);
+        if ($tugas != null) {
+            foreach ($tugas as $row) {
+                $row->kelas()->detach();
+                $soalpilgan = SoalPilihanGanda::where('tugas_id', $row->id)->delete();
+                $soalessay = SoalEssay::where('tugas_id', $row->id)->delete();
+                $row->delete();
+            }
+        }
+
+
+        // end hapus tugas
         $guru->delete();
         return redirect()->back()->with('toast_success', 'Data Berhasil Dihapus');
     }

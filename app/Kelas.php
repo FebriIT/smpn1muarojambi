@@ -18,4 +18,8 @@ class Kelas extends Model
     {
         return $this->hasMany(Materi::class);
     }
+    public function tugas()
+    {
+        return $this->belongsToMany('App\Tugas', 'kelas_tugas', 'kelas_id');
+    }
 }

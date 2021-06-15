@@ -35,11 +35,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            {{-- @if(auth()->user()->role=='guru')
-                            Kelas {{$data->nama_kelas}}
-                            @elseif (auth()->user()->role=='siswa')
-                            Kelas {{ $datasiswa->nama_kelas }}
-                            @endif --}}
+                            Siswa
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -105,11 +101,18 @@
                                         <td>{{++$key}}</td>
                                         <td>{{$materi->materi}}</td>
                                         <td>{{$materi->file_materi}}</td>
-                                        <td>{{$materi->link_materi}}</td>
+                                        <td>
+                                            @if ($materi->link_materi==!null)
+                                            <span class="right badge badge-success">Active</span>
+                                            @else
+                                            <span class="right badge badge-danger">Not Active</span>
+                                            @endif
+                                        </td>
                                         <td class="project-actions text-right">
                                             <div>
 
-                                                <a class="btn btn-primary btn-sm" href="{{ url('siswa/materi/download/'.$materi->file_materi) }}">
+                                                <a class="btn btn-primary btn-sm"
+                                                    href="{{ url('siswa/materi/download/'.$materi->file_materi) }}">
 
                                                     download
                                                 </a>
@@ -131,40 +134,78 @@
                         <!-- /.card-body -->
                     </div>
                 </div>
-                {{-- <div class="col-5">
-                        <div class="card">
-                            <div class="card-header">
+                <div class="col-5">
+                    <div class="card">
+                        <div class="card-header">
 
-                                Kelas {{$data->nama_kelas}}
+                            Tugas
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="datamateri" class="table table-bordered table-striped"
+                                style="font-size: 14px;width: 100%">
+                                <thead>
+                                    <tr>
+                                        <th>Nama Mapel</th>
+                                        <th>Pembuat</th>
+                                        <th>Mapel</th>
+                                        <th>Waktu</th>
+                                        <th>Jenis Ujian</th>
+                                        @if(auth()->user()->role=='siswa')
+                                        <th>Aksi</th>
+                                        @endif
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach($datatugas as $tugas)
+                                    <tr>
+                                        <td>{{ $tugas->judul }}</td>
+                                        <td>{{ $tugas->guru->nama_guru }}</td>
+                                        <td>{{ $tugas->mapel->mapel_nama }}</td>
+                                        <td>{{ $tugas->waktu }}</td>
+
+                                        <td>
+
+                                            @if ($tugas->jenis_tugas=='Ujian')
+                                            <span class="right badge badge-danger">{{ $tugas->jenis_tugas }}</span>
+                                            @else
+                                            <span class="right badge badge-info">{{ $tugas->jenis_tugas }}</span>
+                                            @endif
+                                        </td>
+
+                                        @if(auth()->user()->role=='siswa')
+                                        {{-- <td>
+                                            @php
+                                            $sudah = \App\TugasSiswa::where('tugas_id', $tugas->id)->where('siswa_id',
+                                            auth()->user()->siswa->id)->first();
+                                            @endphp
+                                            @if($sudah)
+                                            <a href="#" class="btn btn-danger btn-sm">selesai</a>
+                                            @else
+                                            <a href="/siswa/tugas/{{ $tugas->id }}/takesoal"
+                                                class="btn btn-primary btn-sm">Kerjakan</a>
+                                            @endif
+
+                                        </td> --}}
+                                        @endif
+
+                                    </tr>
+                                    @endforeach
+
+                                </tbody>
+
+                            </table>
+
+
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+
             </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-                <table id="datapengumuman" class="table table-bordered table-striped" style="font-size: 14px">
-                    <thead>
-                        <tr>
-                            <th style="width: 5%">No</th>
-                            <th>Nama</th>
-                            <th>NISN</th>
-                            <th>Jenis Kelamin</th>
-                            <th>Tanggal Lahir</th>
-                            <th style="width: 17%">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-
-                </table>
-
-
-            </div>
-            <!-- /.card-body -->
-        </div>
-</div> --}}
-<!-- ./col -->
-</div>
-</div><!-- /.container-fluid -->
-</section>
+        </div><!-- /.container-fluid -->
+    </section>
 </div>
 
 @stop
