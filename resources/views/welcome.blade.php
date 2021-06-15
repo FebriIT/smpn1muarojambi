@@ -138,7 +138,7 @@
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
                     <div class="courses_box mb-4">
                         <div class="course-img-wrap">
-                            <img src="{{ asset('storage/berita/'.$row->kategori->kategori_nama.'/'.$row->berita_gambar) }}" style="height: 250px;width:250px;object-fit:cover;" class="img-fluid" alt="courses-img">
+                            <img src="{{ asset('storage/berita/'.$row->kategori->kategori_nama.'/'.$row->berita_gambar) }}" style="height: 250px;width:100%;object-fit:cover;" class="img-fluid" alt="courses-img">
                         </div>
                         <!-- // end .course-img-wrap -->
                         <a href="{{ url('artikel/'.$row->berita_slug) }}" class="course-box-content">
