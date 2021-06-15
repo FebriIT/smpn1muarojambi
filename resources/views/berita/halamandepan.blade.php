@@ -39,7 +39,7 @@
                 <div class="blog-single-item">
                     <div class="blog-img_block">
 
-                        <img src="{{ asset('storage/berita/'.$row->kategori->kategori_nama.'/'.$row->berita_gambar) }}" class="img-fluid" alt="blog-img">
+                        <img src="{{ asset('storage/berita/'.$row->kategori->kategori_nama.'/'.$row->berita_gambar) }}" style="width:100%;" class="img-fluid" alt="blog-img">
                         <div class="blog-date">
                             <span><?php
 

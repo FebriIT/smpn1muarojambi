@@ -40,10 +40,11 @@ class KelasController extends Controller
     {
         $data = Kelas::find($id);
         $datasiswa = $data->siswa;
+        $datatugas = $data->tugas;
         $materi = Materi::where('kelas_id', $id)->orderBy('id', 'desc')->get();
 
 
-        return view('kelas.open', compact('data', 'datasiswa', 'materi'));
+        return view('kelas.open', compact('data', 'datasiswa', 'materi', 'datatugas'));
     }
 
     public function opensiswa()
@@ -52,6 +53,7 @@ class KelasController extends Controller
         $data = Kelas::find($id);
         $datasiswa = $data->siswa;
         $datatugas = $data->tugas;
+
         $materi = Materi::where('kelas_id', $id)->orderBy('id', 'desc')->get();
         return view('kelas.open', compact('datasiswa', 'materi', 'datatugas'));
     }

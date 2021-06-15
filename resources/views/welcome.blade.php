@@ -4,7 +4,8 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="maximum-scale=1">
+    {{-- <meta name="viewport" content="maximum-scale=1"> --}}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SMP N 1 MUARO JAMBI</title>
     <link rel="shorcut icon" href="{{asset('template/theme/images/LOGO SMPN 1 OK.png')}}">
     <!-- Bootstrap CSS -->
@@ -50,6 +51,7 @@
                         <div class="carousel-caption d-md-block">
                             <div class="slider_title">
                                 <h1>Berpikir Kreatif &amp; Inovatif</h1>
+                                <br>
                                 <h4>Bagi kami kreativitas merupakan gerbang masa depan.<br> kreativitas akan mendorong
                                     inovasi. <br> Itulah yang kami lakukan.</h4>
                                 {{-- <div class="slider-btn">
@@ -63,6 +65,7 @@
                         <div class="carousel-caption d-md-block">
                             <div class="slider_title">
                                 <h1>Guru Berkualitas Tinggi</h1>
+                                <br>
                                 <h4>Guru merupakan faktor penting dalam proses belajar-mengajar.<br> Itulah kenapa kami
                                     mendatangkan guru-guru <br>terbaik dari berbagai penjuru.</h4>
                                 {{-- <div class="slider-btn">
@@ -76,6 +79,7 @@
                         <div class="carousel-caption d-md-block">
                             <div class="slider_title">
                                 <h1>Proses Belajar Interaktif</h1>
+                                <br>
                                 <h4>Kami membuat proses belajar mengajar menjadi lebih interaktif.<br> dengan demikian
                                     siswa lebih menyukai <br>proses belajar.</h4>
                                 {{-- <div class="slider-btn">

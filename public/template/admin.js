@@ -48,7 +48,17 @@ $(document).ready(function () {
 
     // form editor
     // Summernote
-    $('#summernote').summernote();
+    $('#summernote').summernote({
+        toolbar: [
+    // [groupName, [list of button]]
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['font', ['strikethrough', 'superscript', 'subscript']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']]
+        ]
+    });
     $('#summernote1').summernote();
     $('#summernote2').summernote();
     $('#summernote3').summernote();

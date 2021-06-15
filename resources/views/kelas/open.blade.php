@@ -76,7 +76,7 @@
             <!-- /.row -->
 
             <div class="row">
-                <div class="col-7">
+                <div class="col-lg-7 col-sm-12">
                     <div class="card">
                         <div class="card-header">
 
@@ -134,7 +134,7 @@
                         <!-- /.card-body -->
                     </div>
                 </div>
-                <div class="col-5">
+                <div class="col-lg-5 col-sm-12">
                     <div class="card">
                         <div class="card-header">
 
@@ -147,7 +147,7 @@
                                 <thead>
                                     <tr>
                                         <th>Nama Mapel</th>
-                                        <th>Pembuat</th>
+                                        <th>Penulis</th>
                                         <th>Mapel</th>
                                         <th>Waktu</th>
                                         <th>Jenis Ujian</th>
@@ -174,8 +174,8 @@
                                             @endif
                                         </td>
 
-                                        @if(auth()->user()->role=='siswa')
-                                        {{-- <td>
+                                        {{-- @if(auth()->user()->role=='siswa')
+                                        <td>
                                             @php
                                             $sudah = \App\TugasSiswa::where('tugas_id', $tugas->id)->where('siswa_id',
                                             auth()->user()->siswa->id)->first();
@@ -187,8 +187,8 @@
                                                 class="btn btn-primary btn-sm">Kerjakan</a>
                                             @endif
 
-                                        </td> --}}
-                                        @endif
+                                        </td>
+                                        @endif --}}
 
                                     </tr>
                                     @endforeach

@@ -47,7 +47,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <div class="row">
-                                        <div class="col-md-10">
+                                        <div class="col-lg-10 col-sm-12">
                                             <input type="text" name="berita_judul" required
                                                 class="form-control rounded-0" id="exampleInputRounded0"
                                                 placeholder="Judul Berita atau Artikel">
@@ -56,7 +56,7 @@
                                                 <i>*{{$errors->first('berita_judul')}}</i></p>
                                             @endif
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-lg-2 col-sm-12">
                                             <button type="submit" class="btn-sm btn-primary float-right"><i
                                                     class="fas fa-plus"></i> Publish</button>
                                         </div>
@@ -66,7 +66,7 @@
                         </div>
                     </div>
 
-                    <div class="col-8">
+                    <div class="col-lg-8 col-sm-12">
                         <div class="card card-outline card-danger">
                             <div class="card-header">
                                 <h3 class="card-title">
@@ -75,13 +75,13 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <textarea id="summernote" rows="3" name="berita_isi" required>
+                                <textarea id="summernote" rows="5" name="berita_isi" required>
                                 </textarea>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-4">
+                    <div class="col-lg-4 col-sm-12">
                         <div class="card card-outline card-danger">
                             <div class="card-header">
                                 <h3 class="card-title">
@@ -137,7 +137,7 @@ $(function () {
         rules: {
             berita_gambar: {
                 extension: "jpg,jpeg,png",
-                
+
             },
         },
         messages: {
