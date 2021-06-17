@@ -652,5 +652,6 @@ struktur.onchange = function () {
         this.value = "";
     };
 };
+$('#summernote7').summernote();
 </script>
 @endsection
