@@ -68,6 +68,9 @@
                                         <a class="nav-link" id="labkom" data-toggle="pill" href="#vert-tabs-labkom"
                                             role="tab" aria-controls="vert-tabs-labkom" aria-selected="false">LAB
                                             Komputer</a>
+                                            <a class="nav-link" id="struktur" data-toggle="pill" href="#vert-tabs-struktur"
+                                            role="tab" aria-controls="vert-tabs-struktur" aria-selected="false">Struktur Organisasi</a>
+
                                     </div>
                                 </div>
                                 <div class="col-7 col-sm-9">
@@ -462,6 +465,67 @@
                                                 <!-- /.card-body -->
                                             </div>
                                         </div>
+                                        <div class="tab-pane fade" id="vert-tabs-struktur" role="tabpanel"
+                                            aria-labelledby="struktur">
+                                            <div class="card card-warning">
+                                                <div class="card-header">
+                                                    <h3 class="card-title">Struktur Organisasi</h3>
+                                                </div>
+                                                <!-- /.card-header -->
+                                                <div class="card-body">
+                                                    <form action="/admin/pengaturan/strukturorganisasi" method="POST" id="formstruktur"
+                                                        enctype="multipart/form-data">
+                                                        {{ csrf_field() }}
+
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <!-- text input -->
+                                                                <div class="form-group">
+                                                                    <label>Judul</label>
+                                                                    <input type="text" name="judul" class="form-control"
+                                                                        placeholder="Enter ..."
+                                                                        value="{{ $struktur->judul }}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <!-- textarea -->
+                                                                <div class="form-group">
+                                                                    <label>Deskripsi</label>
+                                                                    <div class="card-body">
+                                                                        <textarea id="summernote7" rows="3"
+                                                                            name="deskripsi" required>{!! $struktur->deskripsi !!}
+                                                                        </textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <div class="form-group">
+                                                                    <label>Foto</label>
+                                                                    <div class="custom-file">
+                                                                        <input type="file" name="gambar"
+                                                                            class="custom-file-input" id="idstruktur">
+                                                                        <label class="custom-file-label"
+                                                                            for="idstruktur">@if($struktur->gambar){{ $struktur->gambar }}@else
+                                                                            Choose file @endif</label>
+                                                                        <span id="error" class="error invalid-feedback"
+                                                                            style=""></span>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="modal-footer">
+
+                                                            <button type="submit"
+                                                                class="btn btn-primary">Simpan</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <!-- /.card-body -->
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -549,6 +613,40 @@ $(function () {
 });
 var labkom = document.getElementById("idlabkom");
 labkom.onchange = function () {
+    if (this.files[0].size > 400000) {
+        alert("File Maximal 400 kb");
+        this.value = "";
+    };
+};
+$(function () {
+    $('#formstruktur').validate({
+        rules: {
+            gambar: {
+                extension: "jpg,jpeg,png",
+                // required: false,
+            },
+        },
+        messages: {
+            gambar: {
+                extension: "format file harus jpg,jpeg,png",
+            },
+        },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+            error.addClass('invalid-feedback');
+            element.closest('.form-group').append(error);
+        },
+        highlight: function (element, errorClass, validClass) {
+            $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).removeClass('is-invalid');
+        }
+    });
+
+});
+var struktur = document.getElementById("idstruktur");
+struktur.onchange = function () {
     if (this.files[0].size > 400000) {
         alert("File Maximal 400 kb");
         this.value = "";

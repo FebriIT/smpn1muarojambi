@@ -18,9 +18,30 @@ class PengaturanController extends Controller
         $admsklh = Pengaturan::where('id', 5)->first();
         $perpustakaan = Pengaturan::where('id', 6)->first();
         $labkom = Pengaturan::where('id', 7)->first();
+        $struktur = Pengaturan::where('id', 8)->first();
 
 
-        return view('pengaturan.index', compact('data', 'tentangkami', 'visimisi', 'sejarah', 'sosialmedia', 'admsklh', 'perpustakaan', 'labkom'));
+        return view('pengaturan.index', compact('data', 'struktur', 'tentangkami', 'visimisi', 'sejarah', 'sosialmedia', 'admsklh', 'perpustakaan', 'labkom'));
+    }
+    public function struktur(Request $req)
+    {
+        // dd($req->all());
+        $judul = $req->judul;
+        $deskripsi = $req->deskripsi;
+        $data = Pengaturan::find(8);
+        $data->update(['judul' => $judul, 'deskripsi' => $deskripsi]);
+        if ($req->has('gambar')) {
+            //   ini untuk update profile
+            // dd();
+            if (file_exists(str_replace('\\', '/', public_path()) . '/storage/pengaturan/strukturorganisasi/' . $data->gambar)) {
+                unlink(public_path() . '/storage/pengaturan/strukturorganisasi/' . $data->gambar);
+            }
+
+            $req->file('gambar')->move(public_path() . '/storage/pengaturan/strukturorganisasi', $req->file('gambar')->getClientOriginalName());
+            $data->gambar = $req->file('gambar')->getClientOriginalName();
+            $data->save();
+        }
+        return redirect()->back()->with('success', 'Struktur Organisasi Berhasil Diubah');
     }
     public function tentangkami(Request $req)
     {

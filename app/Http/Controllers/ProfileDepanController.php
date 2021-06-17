@@ -52,4 +52,9 @@ class ProfileDepanController extends Controller
         $data = Pengaturan::where('id', 3)->first();
         return view('profiledepan.sejarah', compact('data'));
     }
+    public function strukturorganisasi()
+    {
+        $data = Pengaturan::where('id', 8)->first();
+        return view('profiledepan.strukturorganisasi', compact('data'));
+    }
 }

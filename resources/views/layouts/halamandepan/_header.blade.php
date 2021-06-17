@@ -53,6 +53,7 @@
                                     <li><a class="dropdown-item" href="{{ url('sejarah') }}">Sejarah</a></li>
                                     <li><a class="dropdown-item" href="{{ url('hubungikami') }}">Hubungi Kami</a></li>
                                     <li><a class="dropdown-item" href="{{ url('sosialmedia') }}">Sosial Media</a></li>
+                                    <li><a class="dropdown-item" href="{{ url('strukturorganisasi') }}">Struktur Organisasi</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
