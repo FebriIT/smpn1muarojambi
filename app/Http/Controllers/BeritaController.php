@@ -91,7 +91,6 @@ class BeritaController extends Controller
         if (auth()->user()->role == 'admin') {
             return redirect('admin/listberita')->with('toast_success', 'Data Berhasil Diupdate');
         } elseif (auth()->user()->role == 'guru') {
-
             return redirect('guru/listberita')->with('toast_success', 'Data Berhasil Diupdate');
         }
     }
@@ -143,7 +142,7 @@ class BeritaController extends Controller
         $data = Berita::find($id);
         $kategori = Kategori::find($data->kategori_id)->kategori_nama;
         // dd($kategori);
-        $image_path = "storage/berita/" . $kategori . '/' . $data->berita_gambar;
+        $image_path = public_path() . "/storage/berita/" . $kategori . '/' . $data->berita_gambar;
         // dd(File::exists($image_path)); // Value is not URL but directory file path
         if (File::exists($image_path)) {
             File::delete($image_path);
