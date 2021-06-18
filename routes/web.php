@@ -68,7 +68,7 @@ Route::prefix('admin')->middleware('auth', 'checkRole:admin')->group(function ()
     Route::get('postberita', 'BeritaController@postberita')->name('admin/postberita');
     Route::post('postberita/tambah', [
         'uses' => 'BeritaController@tambah',
-        'as' => 'berita.tambah'
+        'as' => 'beritaadmin.tambah'
     ]);
     // Route::post('postberita/tambah', 'BeritaController@tambah');
     Route::get('/berita/{id}/hapus', 'BeritaController@hapus');
@@ -166,7 +166,7 @@ Route::prefix('guru')->middleware('auth', 'checkRole:guru')->group(function () {
     Route::get('postberita', 'BeritaController@postberita')->name('guru/postberita');
     Route::post('postberita/tambah', [
         'uses' => 'BeritaController@tambah',
-        'as' => 'berita.tambah'
+        'as' => 'beritaguru.tambah'
     ]);
     // Route::post('postberita/tambah', 'BeritaController@tambah');
     Route::get('/berita/{id}/hapus', 'BeritaController@hapus');

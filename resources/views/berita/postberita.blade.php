@@ -32,7 +32,12 @@
     <section class="content">
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
-            <form action="{{ route('berita.tambah') }}" method="POST" enctype="multipart/form-data" id="formberita">
+            <form action="
+            @if (auth()->user()->role=='admin')
+            {{ route('beritaadmin.tambah') }}
+            @elseif (auth()->user()->role=='guru')
+            {{ route('beritaguru.tambah') }}
+            @endif" method="POST" enctype="multipart/form-data" id="formberita">
                 {{ csrf_field() }}
                 <div class="row">
                     <div class="col-12">

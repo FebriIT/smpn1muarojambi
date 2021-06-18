@@ -60,7 +60,6 @@ class BeritaController extends Controller
                 $data->save();
             }
             if (auth()->user()->role == 'admin') {
-
                 return redirect('admin/listberita')->with('success', 'Berita Berhasil Dipublish');
             } elseif (auth()->user()->role == 'guru') {
                 return redirect('guru/listberita')->with('success', 'Berita Berhasil Dipublish');
