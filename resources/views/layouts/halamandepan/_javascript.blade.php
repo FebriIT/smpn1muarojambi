@@ -10,6 +10,7 @@
 <script src="{{asset('template/theme/js/tweetie.min.js')}}"></script>
 <!-- Subscribe -->
 <script src="{{asset('template/theme/js/subscribe.js')}}"></script>
+
 <!-- Script JS -->
 <script src="{{asset('template/theme/js/script.js')}}"></script>
 <script src="{{asset('template/theme/js/jssocials.js')}}"></script>

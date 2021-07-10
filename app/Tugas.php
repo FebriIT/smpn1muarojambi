@@ -20,4 +20,13 @@ class Tugas extends Model
     {
         return $this->belongsTo(Mapel::class);
     }
+    public function soalessay()
+    {
+        return $this->hasMany(SoalEssay::class);
+    }
+
+    public function soalpilihanganda()
+    {
+        return $this->hasMany(SoalPilihanGanda::class);
+    }
 }

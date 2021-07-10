@@ -17,3 +17,5 @@
     <!--Social Share-->
     <link href="{{asset('template/theme/css/jssocials.css')}}" rel="stylesheet">
     <link href="{{asset('template/theme/css/jssocials-theme-flat.css')}}" rel="stylesheet">
+
+

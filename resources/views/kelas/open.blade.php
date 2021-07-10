@@ -174,7 +174,7 @@
                                             @endif
                                         </td>
 
-                                        {{-- @if(auth()->user()->role=='siswa')
+                                        @if(auth()->user()->role=='siswa')
                                         <td>
                                             @php
                                             $sudah = \App\TugasSiswa::where('tugas_id', $tugas->id)->where('siswa_id',
@@ -188,7 +188,7 @@
                                             @endif
 
                                         </td>
-                                        @endif --}}
+                                        @endif
 
                                     </tr>
                                     @endforeach

@@ -82,4 +82,18 @@ class TugasController extends Controller
         $data = SoalEssay::find($id)->delete();
         return redirect()->back()->with('toast_success', 'Soal Berhasil Dihapus');
     }
+    public function takesoal($id)
+    {
+        $tugas = Tugas::find($id);
+
+        return view('tugas.takesoal', compact('tugas'));
+    }
+
+    public function soal($id)
+    {
+        $tugas = Tugas::find($id);
+        // $data = $tugas->soal->shuffle()->all();
+        $data = $tugas->soalpilihanganda->all();
+        return view('tugas.soal', ['tugas' => $tugas, 'data' => $data]);
+    }
 }

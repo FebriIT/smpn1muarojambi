@@ -32,6 +32,7 @@ Route::get('/labkomputer', 'ProfileDepanController@labkomputer');
 Route::get('/guru', 'ProfileDepanController@guru');
 Route::get('/sejarah', 'ProfileDepanController@sejarah');
 Route::get('/strukturorganisasi', 'ProfileDepanController@strukturorganisasi');
+Route::get('/gallery', 'GalleryController@halamandepan');
 
 
 // Route::post('/register', 'AuthController@postRegister');
@@ -117,6 +118,11 @@ Route::prefix('admin')->middleware('auth', 'checkRole:admin')->group(function ()
     Route::post('/pengaturan/perpustakaan', 'PengaturanController@perpustakaan');
     Route::post('/pengaturan/labkom', 'PengaturanController@labkom');
     Route::post('/pengaturan/strukturorganisasi', 'PengaturanController@struktur');
+
+
+    Route::get('/gallery', 'GalleryController@index')->name('admin/gallery');
+    Route::post('/gallery/tambah', 'GalleryController@tambah');
+    Route::get('/gallery/{id}/hapus', 'GalleryController@hapus');
 });
 
 
@@ -184,6 +190,8 @@ Route::prefix('siswa')->middleware('auth', 'checkRole:siswa')->group(function ()
     Route::get('/materi/download/{file_materi}', 'MateriController@getDownload');
 
     Route::get('/kelas', 'KelasController@opensiswa')->name('siswa/kelas');
+    Route::get('/tugas/{id}/takesoal', 'TugasController@takesoal');
+    Route::get('/tugas/{id}/soal', 'TugasController@soal');
 });
 
 

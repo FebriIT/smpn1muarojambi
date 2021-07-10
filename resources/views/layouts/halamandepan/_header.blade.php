@@ -72,6 +72,9 @@
                                 <a class="nav-link" href="{{ url('/guru') }}">Guru</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/gallery') }}">Gallery</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{url('/artikel')}}">Kolom Guru</a>
                             </li>
                             <li class="nav-item">

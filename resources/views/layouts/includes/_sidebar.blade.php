@@ -177,6 +177,15 @@
                 </ul>
             </li>
             <li class="nav-item">
+                <a href="{{route('admin/gallery')}}" class="{{Request::is('admin/gallery')?'active':''}} nav-link ">
+                    <i class="nav-icon fas fa-file"></i>
+                    <p>
+                        Gallery
+                    </p>
+                    {{-- <span class="right badge badge-danger">New</span> --}}
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="{{route('admin/pengaturan')}}" class="{{Request::is('admin/pengaturan')?'active':''}} nav-link ">
                     <i class="nav-icon fas fa-cogs"></i>
                     <p>
@@ -269,7 +278,7 @@
                     </p>
                 </a>
             </li>
-            {{-- <li class="nav-item">
+            <li class="nav-item">
                 <a href="{{route('guru/tugas')}}" class="{{Request::is('guru/tugas')?'active':''}} nav-link">
                     <i class="nav-icon fas fa-book"></i>
                     <p>
@@ -277,7 +286,7 @@
                     </p>
 
                 </a>
-            </li> --}}
+            </li>
             {{-- <li class="nav-item">
                 <a href="{{route('guru/mapel')}}" class="{{Request::is('guru/mapel')?'active':''}} nav-link">
             <i class="nav-icon fas fa-book"></i>
