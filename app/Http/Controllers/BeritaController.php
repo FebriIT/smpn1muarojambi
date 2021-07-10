@@ -98,7 +98,7 @@ class BeritaController extends Controller
     public function singlepost($slug)
     {
         $kategori = Kategori::all();
-        $populer = Berita::orderBy('berita_views', 'desc')->get();
+        $populer = Berita::orderBy('berita_views', 'desc')->paginate(5);
         $post = Berita::where('berita_slug', '=', $slug)->first();
         $idberita = $post->id;
         Berita::find($idberita)->increment('berita_views');
