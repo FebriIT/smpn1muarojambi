@@ -14,6 +14,7 @@ use App\Kelas;
 use App\Materi;
 use App\Tugas;
 use App\Timeline;
+use App\Gallery;
 
 class DashboardController extends Controller
 {
@@ -36,6 +37,7 @@ class DashboardController extends Controller
         $countuser = User::all()->count();
         $lastuser = User::orderBy('created_at', 'desc')->paginate(8);
         $timeline = Timeline::orderBy('id', 'desc')->get();
-        return view('dashboard', compact('timeline', 'countpengumuman', 'countagenda', 'countberita', 'lastuser', 'countuser', 'guru', 'siswa', 'mapel', 'kelas', 'materi', 'tugas'));
+        $gallery = Gallery::all()->count();
+        return view('dashboard', compact('gallery', 'timeline', 'countpengumuman', 'countagenda', 'countberita', 'lastuser', 'countuser', 'guru', 'siswa', 'mapel', 'kelas', 'materi', 'tugas'));
     }
 }

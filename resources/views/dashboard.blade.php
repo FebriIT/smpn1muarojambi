@@ -166,6 +166,21 @@
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3>{{ $gallery }}</h3>
+
+                            <p>Jumlah Gallery</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-file"></i>
+                        </div>
+                        <a href="/admin/siswa" class="small-box-footer">More info <i
+                                class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
                 <!-- ./col -->
             </div>
             <!-- /.row -->
