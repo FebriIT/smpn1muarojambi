@@ -75,7 +75,7 @@
                                 <a class="nav-link" href="{{ url('/gallery') }}">Gallery</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{url('/artikel')}}">Kolom Guru</a>
+                                <a class="nav-link" href="{{url('/artikel')}}">Berita dan Artikel</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{url('/pengumuman')}}">Pengumuman</a>

@@ -297,7 +297,7 @@
             </a>
             </li> --}}
 
-            <li class="nav-item
+            {{-- <li class="nav-item
                 @if (Request::is('guru/kategori'))
                 {{Request::is('guru/kategori')?'menu-open':''}}
                 @elseif(Request::is('guru/postberita'))
@@ -343,7 +343,7 @@
                     </li>
 
                 </ul>
-            </li>
+            </li> --}}
 
             <li class="nav-item">
                 <a href="/logout" class="nav-link">

@@ -168,16 +168,16 @@ Route::prefix('guru')->middleware('auth', 'checkRole:guru')->group(function () {
     Route::get('/kategori/{id}/hapus', 'KategoriController@hapus');
     Route::post('/kategori/{id}/edit', 'KategoriController@edit');
 
-    Route::get('listberita', 'BeritaController@index')->name('guru/listberita');
-    Route::get('postberita', 'BeritaController@postberita')->name('guru/postberita');
-    Route::post('postberita/tambah', [
-        'uses' => 'BeritaController@tambah',
-        'as' => 'beritaguru.tambah'
-    ]);
-    // Route::post('postberita/tambah', 'BeritaController@tambah');
-    Route::get('/berita/{id}/hapus', 'BeritaController@hapus');
-    Route::get('/berita/edit/{id}', 'BeritaController@edit');
-    Route::post('/berita/update/{id}', 'BeritaController@update');
+    // Route::get('listberita', 'BeritaController@index')->name('guru/listberita');
+    // Route::get('postberita', 'BeritaController@postberita')->name('guru/postberita');
+    // Route::post('postberita/tambah', [
+    //     'uses' => 'BeritaController@tambah',
+    //     'as' => 'beritaguru.tambah'
+    // ]);
+
+    // Route::get('/berita/{id}/hapus', 'BeritaController@hapus');
+    // Route::get('/berita/edit/{id}', 'BeritaController@edit');
+    // Route::post('/berita/update/{id}', 'BeritaController@update');
 });
 
 //route siswa
