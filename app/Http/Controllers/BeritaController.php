@@ -131,6 +131,7 @@ class BeritaController extends Controller
 
     public function halamandepan()
     {
+        // change orderbys
         $data = Berita::orderBy('id','desc')->get();
         $kategori = Kategori::all();
         $populer = Berita::orderBy('berita_views', 'desc')->paginate(5);

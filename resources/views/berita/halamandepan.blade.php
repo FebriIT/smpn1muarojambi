@@ -55,7 +55,7 @@
                         {!! Str::words(strip_tags($row->berita_isi),25, '...') !!}
                         <div class="blog-icons">
                             <div class="blog-share_block">
-                                <a href="/artikel/{{$row->berita_slug}}">Read More</a>
+                                <a href="/artikel/{{$row->berita_slug}}">Read Mores</a>
                             </div>
                         </div>
                     </div>
